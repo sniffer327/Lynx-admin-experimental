@@ -13,12 +13,14 @@ import {MdButtonModule} from "@angular2-material/button";
 import {MdCardModule} from "@angular2-material/card";
 import {MdToolbarModule} from "@angular2-material/toolbar";
 import {MdIconModule, MdIconRegistry} from "@angular2-material/icon";
+import { ItemsComponent } from './items/items.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RootComponent,
-    MainComponent
+    MainComponent,
+    ItemsComponent
   ],
   imports: [
     BrowserModule,
