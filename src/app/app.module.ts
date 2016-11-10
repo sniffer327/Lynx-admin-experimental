@@ -29,7 +29,6 @@ import {MdIconModule, MdIconRegistry} from "@angular2-material/icon";
     MdToolbarModule,
     MdButtonModule,
     MdIconModule,
-
     routing
   ],
   providers: [appRoutingProviders],
