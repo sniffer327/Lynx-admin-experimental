@@ -1,24 +1,33 @@
 <md-sidenav-layout fullscreen>
+
   <md-toolbar color="primary">
+
     <button md-icon-button (click)="sidenav.toggle()">
       <i class="material-icons">menu</i>
     </button>
-    <span>BYYD Platform</span>
+
+    <span>Lynx CMS Admin</span>
+
     <span class="example-fill-remaining-space"></span>
+
     <button md-button class="login-button">
       <i class="material-icons">person</i>
-      <span></span>
     </button>
+
   </md-toolbar>
+
   <md-sidenav #sidenav>
     Start Sidenav.
     <br>
     <button md-button>Close</button>
   </md-sidenav>
+
   <md-sidenav #end align="end">
     End Sidenav.
-    <button md-button >Close</button>
+    <button md-button>Close</button>
   </md-sidenav>
+
   <!-- Routed views go here -->
   <router-outlet></router-outlet>
+
 </md-sidenav-layout>
