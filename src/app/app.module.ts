@@ -31,9 +31,11 @@ import { ItemsComponent } from './items/items.component';
     MdToolbarModule,
     MdButtonModule,
     MdIconModule,
+    MdCardModule,
     routing
   ],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
