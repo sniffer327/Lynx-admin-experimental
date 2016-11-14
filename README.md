@@ -1,5 +1,6 @@
 # Полезные ссылки:
 - [Material Admin Dashboard Theme](http://byrushan.com/projects/ma/1-5-2/angular/#/home)
+- [Material Design (вёрстка)](https://getmdl.io/components/index.html)
 
 # NgAdmin
 
