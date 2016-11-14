@@ -1,3 +1,8 @@
+# Полезные ссылки:
+- [Material Admin Dashboard Theme](http://byrushan.com/projects/ma/1-5-2/angular/#/home)
+- [Material Design (вёрстка)](https://getmdl.io/components/index.html)
+- [Materail2 (Angular2)](https://github.com/angular/material2)
+
 # NgAdmin
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.15.
