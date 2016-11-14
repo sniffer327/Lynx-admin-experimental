@@ -4,6 +4,7 @@ export class LynxConstants {
    * @type {boolean}
    */
   private static Production: boolean = false;
+
   /**
    * Адрес сервера
    * @returns {string}
@@ -11,6 +12,7 @@ export class LynxConstants {
   public static get serverUrl(): string {
     return this.Production ? "http://platform2.byyd.me/webapi" :"http://localhost/lynxCmsApi";
   }
+
   /**
    * Адрес до API-методов
    * @returns {string}
