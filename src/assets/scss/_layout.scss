@@ -5,9 +5,40 @@ md-toolbar.lynx-toolbar.md-primary {
   background: $main-color;
 }
 
+// Боковое меню
+.lynx-layout md-sidenav {
+  width: 250px;
+  background-color: $dark-color;
+  color: $white-dark-color;
+}
+
+.sidenav-header {
+  height: $header-height;
+  background-color: $sub-color;
+  color: $white-color;
+  font-size: $header-size;
+
+  @include flex-center;
+}
+
+.sidenav-list {
+  margin: $main-padding 0 0 0;
+  padding: 0;
+  list-style-type: none;
+
+  li a {
+    @include white-dark-link;
+    padding: 10px $main-padding + 10px;
+  }
+}
+
+// Контентная часть
+.md-sidenav-content {
+  background-color: $background-color;
+}
+
 .lynx-container {
   padding: $main-padding;
-  background-color: $background-color;
 }
 
 .lynx-content-block {
