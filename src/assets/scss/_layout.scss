@@ -1,5 +1,10 @@
 // Layout styles
 
+// Общие стили
+.material-icons {
+  vertical-align: middle;
+}
+
 // Главная панель навигации
 md-toolbar.lynx-toolbar.md-primary {
   background: $main-color;
@@ -29,6 +34,10 @@ md-toolbar.lynx-toolbar.md-primary {
   li a {
     @include white-dark-link;
     padding: 10px $main-padding + 10px;
+
+    i {
+      margin-right: 4px;
+    }
   }
 }
 
