@@ -4,3 +4,30 @@
   box-shadow: 0 2px 8px #E0E0E0;
   border-radius: 2px;
 }
+
+@mixin transition {
+  transition: all .2s ease;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin default-link {
+  text-decoration: none;
+}
+
+@mixin white-dark-link {
+  display: block;
+  color: $white-dark-color;
+
+  @include default-link;
+  @include transition;
+
+  &:hover {
+    color: $white-dark-color-h;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}

@@ -1,4 +1,4 @@
-<md-sidenav-layout fullscreen>
+<md-sidenav-layout fullscreen class="lynx-layout">
 
   <md-toolbar color="primary" class="lynx-toolbar">
 
@@ -6,17 +6,30 @@
       <i class="material-icons">menu</i>
     </button>
 
-    <span>Lynx CMS Admin</span>
-
     <span class="example-fill-remaining-space"></span>
 
   </md-toolbar>
 
   <md-sidenav #sidenav mode="side" [opened]="true">
-    <ul>
-      <li>Товары</li>
-      <li>Страницы</li>
-      <li>Пользователи</li>
+    <div class="sidenav-header">
+      Lynx CMS Admin
+    </div>
+
+    <ul class="sidenav-list">
+      <li>
+        <a href="#">
+          Товары
+        </a>
+      </li>
+      <li>
+        <a href="#">Страницы</a>
+      </li>
+      <li>
+        <a href="#">Новости</a>
+      </li>
+      <li>
+        <a href="#">Пользователи</a>
+      </li>
     </ul>
   </md-sidenav>
 
