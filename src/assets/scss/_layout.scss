@@ -23,7 +23,13 @@ md-toolbar.lynx-toolbar.md-primary {
   color: $white-color;
   font-size: $header-size;
 
-  @include flex-center;
+  a {
+    height: $header-height;
+
+    @include default-link;
+    @include white-dark-link;
+    @include flex-center;
+  }
 }
 
 .sidenav-list {
