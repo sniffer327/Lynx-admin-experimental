@@ -14,13 +14,15 @@ import {MdCardModule} from "@angular2-material/card";
 import {MdToolbarModule} from "@angular2-material/toolbar";
 import {MdIconModule, MdIconRegistry} from "@angular2-material/icon";
 import { ItemsComponent } from './items/items.component';
+import { ItemsEditComponent } from './items-edit/items-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RootComponent,
     MainComponent,
-    ItemsComponent
+    ItemsComponent,
+    ItemsEditComponent
   ],
   imports: [
     BrowserModule,
