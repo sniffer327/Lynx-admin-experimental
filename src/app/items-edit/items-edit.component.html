@@ -8,9 +8,9 @@
   <form action="" id="item-edit">
 
     <div class="form-group row">
-      <label for="example-text-input" class="col-xs-2 col-form-label">Text</label>
+      <label for="example-text-input" class="col-xs-2 col-form-label">Название</label>
       <div class="col-xs-10">
-        <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
+        <input class="form-control" type="text" id="example-text-input" [(ngModel)]="item.title" name="title">
       </div>
     </div>
 
