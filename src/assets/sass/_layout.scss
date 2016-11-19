@@ -50,7 +50,11 @@ md-toolbar.lynx-toolbar.md-primary {
 // Заголовок
 .lynx-title {
   color: $main-color;
-  margin-bottom: 15px;
+  margin: $main-padding 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 // Контентная часть
