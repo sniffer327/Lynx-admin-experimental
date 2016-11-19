@@ -1,19 +1,19 @@
 <div class="row">
 
-  <div class="col-md-4">
+  <div class="col-md-4" *ngFor="let module of modules">
     <md-card>
       <md-card-header>
         <md-card-title>
-          <a routerLink="/items">Товары</a>
+          <a [routerLink]="module.url">{{ module.title }}</a>
         </md-card-title>
         <md-card-subtitle>
-          Модуль с товарами
+          {{ module.subtitle }}
         </md-card-subtitle>
       </md-card-header>
-      <img md-card-image src="/assets/images/developing.jpg">
+      <img md-card-image [src]="module.img">
       <md-card-content>
         <p>
-          В данном модуле Вы можете отредактировать товары
+          {{ module.description }}
         </p>
       </md-card-content>
     </md-card>
