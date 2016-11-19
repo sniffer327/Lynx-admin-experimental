@@ -27,11 +27,18 @@
 @mixin white-dark-link {
   display: block;
   color: $white-dark-color;
+  border-left: 2px solid transparent;
 
   @include default-link;
   @include transition;
 
   &:hover {
+    color: $white-dark-color-h;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  &.active {
+    border-left-color: $main-color;
     color: $white-dark-color-h;
     background-color: rgba(0, 0, 0, 0.2);
   }

@@ -2,20 +2,31 @@
   Список товаров
 </h4>
 
+<!--Таблица с товарами-->
 <div class="lynx-content-block">
-  <p>
-    <a routerLink="/item-edit">Edit</a> Лампа
-  </p>
-</div>
 
-<div class="lynx-content-block">
-  <p>
-    <a routerLink="/item-edit">Edit</a> Табурет
-  </p>
-</div>
+  <table class="table table-striped items-table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Название</th>
+      <th>Категория</th>
+      <th>Цена</th>
+      <th>Изображение</th>
+      <th>Описание</th>
+    </tr>
+    </thead>
 
-<div class="lynx-content-block">
-  <p>
-    <a routerLink="/item-edit">Edit</a> Самозванец
-  </p>
+    <tbody>
+    <tr *ngFor="let item of items">
+      <td>{{ item.id }}</td>
+      <td><a routerLink="/item-edit">{{ item.title }}</a></td>
+      <td>{{ item.categoryId }}</td>
+      <td>{{ item.price }}</td>
+      <td>{{ item.imageUrl }}</td>
+      <td>{{ item.description }}</td>
+    </tr>
+    </tbody>
+  </table>
+
 </div>

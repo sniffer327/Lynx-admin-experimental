@@ -8,95 +8,49 @@
   <form action="" id="item-edit">
 
     <div class="form-group row">
-      <label for="example-text-input" class="col-xs-2 col-form-label">Название</label>
+      <label for="id-input" class="col-xs-2 col-form-label">ID</label>
       <div class="col-xs-10">
-        <input class="form-control" type="text" id="example-text-input" [(ngModel)]="item.title" name="title">
+        <input class="form-control" type="text" id="id-input" [(ngModel)]="item.id" disabled name="id">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="example-search-input" class="col-xs-2 col-form-label">Search</label>
+      <label for="title-input" class="col-xs-2 col-form-label">Название</label>
       <div class="col-xs-10">
-        <input class="form-control" type="search" value="How do I shoot web" id="example-search-input">
+        <input class="form-control" type="text" id="title-input" [(ngModel)]="item.title" name="title">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="example-email-input" class="col-xs-2 col-form-label">Email</label>
+      <label for="price-input" class="col-xs-2 col-form-label">Цена</label>
       <div class="col-xs-10">
-        <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input">
+        <input class="form-control" type="text" id="price-input" [(ngModel)]="item.price" name="price">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="example-url-input" class="col-xs-2 col-form-label">URL</label>
+      <label for="category-input" class="col-xs-2 col-form-label">Категория</label>
       <div class="col-xs-10">
-        <input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input">
+        <input class="form-control" type="text" id="category-input" [(ngModel)]="item.categoryId" name="category">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="example-tel-input" class="col-xs-2 col-form-label">Telephone</label>
+      <label for="imageUrl-input" class="col-xs-2 col-form-label">Изображение</label>
       <div class="col-xs-10">
-        <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
+        <input class="form-control" type="text" id="imageUrl-input" [(ngModel)]="item.imageUrl" name="imageurl">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="example-password-input" class="col-xs-2 col-form-label">Password</label>
+      <label for="description-input" class="col-xs-2 col-form-label">Описание</label>
       <div class="col-xs-10">
-        <input class="form-control" type="password" value="hunter2" id="example-password-input">
+        <textarea name="description" class="form-control"
+                  id="description-input" [(ngModel)]="item.description" cols="30" rows="10"></textarea>
       </div>
     </div>
 
-    <div class="form-group row">
-      <label for="example-number-input" class="col-xs-2 col-form-label">Number</label>
-      <div class="col-xs-10">
-        <input class="form-control" type="number" value="42" id="example-number-input">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Date and time</label>
-      <div class="col-xs-10">
-        <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="example-date-input" class="col-xs-2 col-form-label">Date</label>
-      <div class="col-xs-10">
-        <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="example-month-input" class="col-xs-2 col-form-label">Month</label>
-      <div class="col-xs-10">
-        <input class="form-control" type="month" value="2011-08" id="example-month-input">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="example-week-input" class="col-xs-2 col-form-label">Week</label>
-      <div class="col-xs-10">
-        <input class="form-control" type="week" value="2011-W33" id="example-week-input">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="example-time-input" class="col-xs-2 col-form-label">Time</label>
-      <div class="col-xs-10">
-        <input class="form-control" type="time" value="13:45:00" id="example-time-input">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="example-color-input" class="col-xs-2 col-form-label">Color</label>
-      <div class="col-xs-10">
-        <input class="form-control" type="color" value="#563d7c" id="example-color-input">
-      </div>
-    </div>
+    <button class="btn btn-primary">Сохранить</button>
 
   </form>
 

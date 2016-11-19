@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {ItemModel} from "../Models/item";
+import {Component, OnInit} from '@angular/core';
+import {ItemModel, IItem} from "../Models/item";
 
 @Component({
   selector: 'app-items-edit',
@@ -8,13 +8,21 @@ import {ItemModel} from "../Models/item";
 })
 export class ItemsEditComponent implements OnInit {
 
-  public item: ItemModel;
+  public item: IItem;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
 
-    this.item = new ItemModel('Лампа настольная', 1300, 'Неочень практичная, зато белоснежная');
+    this.item = {
+      id: 12,
+      title: 'Лампа столовая',
+      price: 1400,
+      description: 'Отличная лампа белого цвета',
+      categoryId: 2,
+      imageUrl: '/lamp.jpg'
+    };
 
   }
 
