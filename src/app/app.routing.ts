@@ -7,6 +7,7 @@ import {AppComponent} from "./app.component";
 import {RootComponent} from "./root/root.component";
 import {MainComponent} from "./main/main.component";
 import {ItemsComponent} from "./items/items.component";
+import {ItemsEditComponent} from "./items-edit/items-edit.component";
 
 const appRoutes: Routes = [
   {
@@ -30,6 +31,16 @@ const appRoutes: Routes = [
       {
         path: '',
         component: ItemsComponent
+      }
+    ]
+  },
+  {
+    path: 'item-edit',
+    component: RootComponent,
+    children: [
+      {
+        path: '',
+        component: ItemsEditComponent
       }
     ]
   }

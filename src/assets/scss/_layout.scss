@@ -47,6 +47,12 @@ md-toolbar.lynx-toolbar.md-primary {
   }
 }
 
+// Заголовок
+.lynx-title {
+  color: $main-color;
+  margin-bottom: 15px;
+}
+
 // Контентная часть
 .md-sidenav-content {
   background-color: $background-color;
