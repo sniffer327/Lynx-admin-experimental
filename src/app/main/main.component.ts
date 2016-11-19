@@ -7,9 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  public modules;
+
+  constructor() {}
 
   ngOnInit() {
+
+    this.modules = [
+      {
+        title: 'Товары',
+        url: '/items',
+        img: '/assets/images/developing.jpg',
+        subtitle: 'Модуль с товарами',
+        description: 'В данном модуле Вы можете отредактировать товары'
+      },
+      {
+        title: 'Новости',
+        url: '/news',
+        img: '/assets/images/news.jpg',
+        subtitle: 'Модуль с новостями',
+        description: 'В данном модуле Вы можете отредактировать новости'
+      }
+    ];
+
   }
 
 }
