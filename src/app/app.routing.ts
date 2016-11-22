@@ -12,7 +12,7 @@ import {AuthorizationComponent} from "./authorization/authorization.component";
 
 const appRoutes: Routes = [
   {
-    path: 'auth', component: RootComponent, children: [
+    path: 'auth', component: AppComponent, children: [
       {path: '', component: AuthorizationComponent}
     ]
   },
