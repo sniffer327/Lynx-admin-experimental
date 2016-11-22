@@ -6,6 +6,7 @@ import { IItem } from "../Models/item";
   templateUrl: './items.component.html',
   styleUrls: ['./items.component.scss']
 })
+
 export class ItemsComponent implements OnInit {
 
   public items: IItem[];
