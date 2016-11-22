@@ -3,14 +3,14 @@ export class LynxConstants {
    * Режим Продакшна - true, отладки - false
    * @type {boolean}
    */
-  private static Production: boolean = false;
+  private static Production: boolean = true;
 
   /**
    * Адрес сервера
    * @returns {string}
    */
   public static get serverUrl(): string {
-    return this.Production ? "http://platform2.byyd.me/webapi" :"http://localhost/lynxCmsApi";
+    return this.Production ? "http://manage.lynx.pro/system" : "http://localhost/lynxCmsApi";
   }
 
   /**
