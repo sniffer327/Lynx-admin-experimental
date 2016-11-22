@@ -8,8 +8,14 @@ import {RootComponent} from "./root/root.component";
 import {MainComponent} from "./main/main.component";
 import {ItemsComponent} from "./items/items.component";
 import {ItemsEditComponent} from "./items-edit/items-edit.component";
+import {AuthorizationComponent} from "./authorization/authorization.component";
 
 const appRoutes: Routes = [
+  {
+    path: 'auth', component: RootComponent, children: [
+      {path: '', component: AuthorizationComponent}
+    ]
+  },
   {
     path: 'app',
     component: AppComponent
