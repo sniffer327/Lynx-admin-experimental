@@ -15,6 +15,7 @@ import {MdToolbarModule} from "@angular2-material/toolbar";
 import {MdIconModule, MdIconRegistry} from "@angular2-material/icon";
 import { ItemsComponent } from './items/items.component';
 import { ItemsEditComponent } from './items-edit/items-edit.component';
+import { AuthorizationComponent } from './authorization/authorization.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ItemsEditComponent } from './items-edit/items-edit.component';
     RootComponent,
     MainComponent,
     ItemsComponent,
-    ItemsEditComponent
+    ItemsEditComponent,
+    AuthorizationComponent
   ],
   imports: [
     BrowserModule,
