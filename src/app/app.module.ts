@@ -16,6 +16,8 @@ import {MdIconModule, MdIconRegistry} from "@angular2-material/icon";
 import { ItemsComponent } from './items/items.component';
 import { ItemsEditComponent } from './items-edit/items-edit.component';
 import { AuthorizationComponent } from './authorization/authorization.component';
+import {AuthService} from "./Services/auth.service";
+import {LynxService} from "./Services/lynx.service";
 
 @NgModule({
   declarations: [
@@ -38,7 +40,11 @@ import { AuthorizationComponent } from './authorization/authorization.component'
     MdCardModule,
     routing
   ],
-  providers: [appRoutingProviders],
+  providers: [
+    appRoutingProviders,
+    AuthService,
+    LynxService
+  ],
   bootstrap: [AppComponent]
 })
 
