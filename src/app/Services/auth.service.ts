@@ -11,10 +11,11 @@ export class AuthService {
               private router: Router) {
 
     this.accountData = new UserInfoModel();
-    this.UserInfoObserveble().subscribe(res => {
+    /*this.UserInfoObserveble()
+      .subscribe(res => {
         this.accountData = res;
       },
-      error => console.log(error));
+      error => console.log(error));*/
   }
 
   public Login(login: string, password: string): any {
@@ -31,9 +32,9 @@ export class AuthService {
    * @returns {UserInfoModel}
    * @constructor
    */
-  public UserInfoObserveble(): Observable<UserInfoModel> {
+/*  public UserInfoObserveble(): Observable<UserInfoModel> {
     return this.lynxService.Get('/Account/UserInfo');
-  }
+  }*/
 
   public UserInfo(): UserInfoModel {
     this.lynxService.Get('/Account/UserInfo').subscribe(

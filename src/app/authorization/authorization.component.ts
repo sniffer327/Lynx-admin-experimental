@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../Services/auth.service";
 import {Router} from "@angular/router";
 
@@ -10,16 +10,22 @@ import {Router} from "@angular/router";
 export class AuthorizationComponent implements OnInit {
 
   constructor(private authService: AuthService,
-              private router: Router) { }
+              private router: Router) {
+  }
+
 
   public Login(login: string, password: string): void {
-    this.authService.Login(login, password).subscribe(
-      res => this.LoginHandler(res),
-      error => this.LoginHandler(error)
-    );
+    this.authService.Login(login, password)
+      .subscribe(
+        res => this.LoginHandler(res),
+        error => this.LoginHandler(error)
+      );
   }
 
   private LoginHandler(response: any): void {
+
+    console.log(response);
+
     this.AuthCheck();
 
     if (response != null || response.email != null) {
