@@ -41,7 +41,7 @@ const appRoutes: Routes = [
     ]
   },
   {
-    path: 'item-edit',
+    path: 'item-edit/:id',
     component: RootComponent,
     children: [
       {
