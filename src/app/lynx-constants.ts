@@ -3,7 +3,7 @@ export class LynxConstants {
    * Режим Продакшна - true, отладки - false
    * @type {boolean}
    */
-  private static Production: boolean = true;
+  private static Production: boolean = false;
 
   /**
    * Адрес сервера
