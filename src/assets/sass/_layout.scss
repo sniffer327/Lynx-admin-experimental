@@ -76,3 +76,12 @@ md-toolbar.lynx-toolbar.md-primary {
     margin-top: $main-padding;
   }
 }
+
+// Стилизация для таблиц
+.lynx-table {
+  thead th,
+  tbody td {
+    vertical-align: middle;
+    text-align: center;
+  }
+}

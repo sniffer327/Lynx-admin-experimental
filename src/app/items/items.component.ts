@@ -14,9 +14,12 @@ export class ItemsComponent implements OnInit {
 
   constructor(private lynxService: LynxService) { }
 
-  public GetItems() {
-    this.lynxService.Post('/Items/GetItems', {}).subscribe(
-      res => console.log(res)
+  public GetItems(): void {
+    this.lynxService.Post('/Items/GetItems?itemType=1', {}).subscribe(
+      res => {
+        this.items = res.Result;
+        console.log(res.Result);
+      }
     );
   }
 
