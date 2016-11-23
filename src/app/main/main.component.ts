@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UserInfoModel} from "../Models/user-info-model";
+import {AuthService} from "../Services/auth.service";
 
 @Component({
   selector: 'app-main',
@@ -9,9 +11,13 @@ export class MainComponent implements OnInit {
 
   public modules;
 
-  constructor() {}
+  public accountData: UserInfoModel;
+
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
+    this.AuthChecked();
+
 
     this.modules = [
       {
@@ -32,4 +38,20 @@ export class MainComponent implements OnInit {
 
   }
 
+  /**
+   * Проверка авторизации
+   * @constructor
+   */
+  private AuthChecked() {
+    if (this.authService.accountData != null && (this.authService.accountData.email == null || this.authService.accountData.email == '')) {
+      this.accountData = new UserInfoModel();
+      this.authService.UserInfoObserveble().subscribe(res => {
+          this.accountData = res;
+          //this.datePickerObject.startDateStart = this.accountData.dateActivation;
+        },
+        error => console.log(error));
+    } else {
+      this.accountData = this.authService.accountData;
+    }
+  }
 }
