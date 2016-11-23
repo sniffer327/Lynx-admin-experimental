@@ -1,3 +1,4 @@
+// Модель для информации о пользователе
 export class UserInfoModel {
   public id: number;
   public email: string;

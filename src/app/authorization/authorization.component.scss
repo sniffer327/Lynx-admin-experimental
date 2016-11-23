@@ -1,0 +1,48 @@
+// Стили для формы авторизации
+
+@import "../../assets/sass/vars",
+        "../../assets/sass/mixins";
+
+.lynx-auth-bg-wrapper {
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #154265 20%;
+  background-image: radial-gradient(farthest-side ellipse at 10% 0, #3d77a5 20%, #60718a);
+  background-image: -webkit-radial-gradient(10% 0, farthest-side ellipse, #3d77a5 20%, #60718a);
+  background-image: -moz-radial-gradient(10% 0, farthest-side ellipse, #3d77a5 20%, #60718a);
+  background-attachment: fixed, fixed;
+}
+
+.lynx-auth-form {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  transform: translateY(-50%);
+  margin: 0 auto;
+  width: 540px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
+
+  & > div {
+    padding: $main-padding;
+  }
+
+  .lynx-auth-form__title {
+    background-color: $main-color;
+    color: $white-color;
+    font-size: 22px;
+  }
+
+  .lynx-auth-form__content {
+    padding-top: $main-padding + $main-padding;
+  }
+
+  .lynx-auth-form__content input + input {
+    margin-top: $main-padding;
+  }
+}
