@@ -1,3 +1,20 @@
-<input type="text" #email name="email" placeholder="Email">
-<input type="password" #password name="password" placeholder="Пароль">
-<button class="btn btn-primary" (click)="Login(email.value, password.value)">Войти</button>
+<div class="lynx-auth-bg-wrapper">
+
+  <div class="lynx-auth-form">
+
+    <div class="lynx-auth-form__title text-xs-center">
+      Войти
+    </div>
+
+    <div class="lynx-auth-form__content">
+      <input type="text" #email name="email" placeholder="Email" class="form-control">
+      <input type="password" #password name="password" placeholder="Пароль" class="form-control">
+    </div>
+
+    <div class="lynx-auth-form__footer text-xs-right">
+      <button class="btn btn-primary" (click)="Login(email.value, password.value)">Войти</button>
+    </div>
+
+  </div>
+
+</div>
