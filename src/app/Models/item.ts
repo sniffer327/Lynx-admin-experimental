@@ -1,3 +1,4 @@
+import {CategoryModel} from "./category";
 /**
  * Created by sniffer on 19.11.16.
  */
@@ -5,24 +6,31 @@
 export interface IItem {
   id: number;
   title: string;
-  price: number;
-  description?: string;
-  categoryId?: number;
-  imageUrl?: string;
+  subTitle: string;
+  categoryId: number;
+  description: string;
+  body: string;
+  meta_keywords: string;
+  meta_description: string;
+  Prioritet: number;
+  DateCreating: Date;
+  DateEditing: Date;
+  ItemType: number;
+  ParentCategory: CategoryModel;
 }
 
 export class ItemModel implements IItem {
-
-  constructor(public id: number, public title: string, public price: number, public description?: string,
-              public categoryId?: number, public imageUrl?: string) {
-
-    this.id = id;
-    this.title = title || 'Без названия';
-    this.price = price || 0;
-    this.description = description;
-    this.categoryId = categoryId;
-    this.imageUrl = imageUrl;
-
-  }
-
+  id: number;
+  title: string;
+  subTitle: string;
+  categoryId: number;
+  description: string;
+  body: string;
+  meta_keywords: string;
+  meta_description: string;
+  Prioritet: number;
+  DateCreating: Date;
+  DateEditing: Date;
+  ItemType: number;
+  ParentCategory: CategoryModel;
 }
