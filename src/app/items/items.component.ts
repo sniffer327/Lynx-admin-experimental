@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IItem } from "../Models/item";
+import { ItemModel } from "../Models/item";
+import { LynxService } from "../Services/lynx.service";
 
 @Component({
   selector: 'app-items',
@@ -9,31 +10,18 @@ import { IItem } from "../Models/item";
 
 export class ItemsComponent implements OnInit {
 
-  public items: IItem[];
+  public items: ItemModel[];
 
-  constructor() { }
+  constructor(private lynxService: LynxService) { }
+
+  public GetItems() {
+    this.lynxService.Post('/Items/GetItems', {}).subscribe(
+      res => console.log(res)
+    );
+  }
 
   ngOnInit() {
-
-    this.items = [
-      {
-        id: 12,
-        title: 'Лампа столовая',
-        price: 1400,
-        description: 'Отличная лампа белого цвета',
-        categoryId: 2,
-        imageUrl: '/lamp.jpg'
-      },
-      {
-        id: 14,
-        title: 'Кочерга',
-        price: 1200,
-        description: 'Подгодит для проникновения в задний проход',
-        categoryId: 1,
-        imageUrl: '/rumble.jpg'
-      }
-    ];
-
+    this.GetItems();
   }
 
 }

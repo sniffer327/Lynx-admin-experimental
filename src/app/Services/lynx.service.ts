@@ -20,11 +20,11 @@ export class LynxService {
     let opt = new RequestOptions({headers: headers});
 
     let result = this.http.get(LynxConstants.apiUrl + url, opt)
-      .map(res => {
-        console.log(res);
-        return res.json();
-      })
+      .map(
+        res => res.json()
+      )
       .catch(this.handleError);
+
     return result;
   }
 
@@ -32,13 +32,12 @@ export class LynxService {
     let body = JSON.stringify(data);
     let headers = new Headers({'Content-Type': 'application/json; charset=utf-8'});
     let opt = new RequestOptions({headers: headers});
-    //let result = this.http.post(LynxConstants.apiUrl + url, data, opt)
     let result = this.http.post(LynxConstants.apiUrl + url, data, opt)
-      .map(res => {
-        console.log(res);
-        return res.json();
-      })
+      .map(
+        res => res.json()
+      )
       .catch(this.handleError);
+
     return result;
   }
 
@@ -61,17 +60,21 @@ export class LynxService {
   private handleError(error: any) {
     let errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    console.error(errMsg); // log to console instead
+
+    console.error(errMsg);
+
     return Observable.throw(errMsg);
   }
 
   //Превращает объект в цепочку параметров
   public URLParamsCreater<T>(model: T): URLSearchParams {
     let result = new URLSearchParams();
+
     for (var key in model) {
       // TODO: проверить на то, чтобы небыло вложенного объекта, только строка или число
       result.set(key, model[key]);
     }
+
     return result;
   }
 }
