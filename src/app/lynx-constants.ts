@@ -10,7 +10,7 @@ export class LynxConstants {
    * @returns {string}
    */
   public static get serverUrl(): string {
-    return this.Production ? "http://manage.lynx.pro/system" : "http://localhost/lynxCmsApi";
+    return this.Production ? "http://manageApi.lynx.pro" : "http://localhost/lynxCmsApi";
   }
 
   /**
