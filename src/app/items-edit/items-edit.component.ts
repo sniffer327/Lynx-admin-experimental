@@ -23,6 +23,7 @@ export class ItemsEditComponent implements OnInit {
   }
 
   public GetItemInfo() {
+
     this.lynxService.Get('/Items/GetItem?itemId=' + this.id)
       .subscribe(
         res => {
@@ -30,6 +31,18 @@ export class ItemsEditComponent implements OnInit {
           console.log('Данные о товаре: ', res);
         }
       )
+
+  }
+
+  Save() {
+
+    this.lynxService.Post('/Items', this.item)
+      .subscribe(
+        res => {
+          console.log('Данные успешно сохранены ');
+        }
+      )
+
   }
 
   ngOnInit() {
