@@ -10,8 +10,9 @@ import {ActivatedRoute, Params} from "@angular/router";
 })
 export class ItemsEditComponent implements OnInit {
 
+  private isEdit: boolean;
   public item: ItemModel;
-  public id: number;
+  public id?: number;
 
   constructor(private lynxService: LynxService,
               private route: ActivatedRoute) {
@@ -20,9 +21,11 @@ export class ItemsEditComponent implements OnInit {
       this.id = +params['id'];
     });
 
+    (this.id) ? this.isEdit = true : this.isEdit = false;
+
   }
 
-  public GetItemInfo() {
+  public GetItemInfo(): void {
 
     this.lynxService.Get('/Items/GetItem?itemId=' + this.id)
       .subscribe(
@@ -34,21 +37,27 @@ export class ItemsEditComponent implements OnInit {
 
   }
 
-  Save() {
+  Save(): void {
 
-    this.lynxService.Post('/Items', this.item)
-      .subscribe(
-        res => {
-          console.log('Данные успешно сохранены ');
-        }
-      )
+    // TODO: Раскомментить, когда будет готов обработчик на сервере
+    // this.lynxService.Post('/Items', this.item)
+    //   .subscribe(
+    //     res => {
+    //       console.log('Данные успешно сохранены ');
+    //     }
+    //   )
+
+    console.log('Сохраняю: ', this.item);
 
   }
 
   ngOnInit() {
 
-    this.GetItemInfo();
-
+    if (this.isEdit) {
+      this.GetItemInfo();
+    } else {
+      this.item = new ItemModel();
+    }
   }
 
 }
