@@ -18,6 +18,7 @@ import { ItemsEditComponent } from './items-edit/items-edit.component';
 import { AuthorizationComponent } from './authorization/authorization.component';
 import {AuthService} from "./Services/auth.service";
 import {LynxService} from "./Services/lynx.service";
+import {CKEditorModule} from "ng2-ckeditor";
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {LynxService} from "./Services/lynx.service";
     MdButtonModule,
     MdIconModule,
     MdCardModule,
+    CKEditorModule,
     routing
   ],
   providers: [
