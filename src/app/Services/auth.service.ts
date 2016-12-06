@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {LynxService} from "./lynx.service";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
-import {UserInfoModel} from "../Models/user-info-model";
+import {UserInfoModel} from "../Models/user-info.model";
 
 @Injectable()
 export class AuthService {

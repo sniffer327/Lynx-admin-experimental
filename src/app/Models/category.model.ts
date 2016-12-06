@@ -1,7 +1,7 @@
 /**
  * Created by sniffer on 23.11.16.
  */
-import {ItemModel} from "./item";
+import {ItemModel} from "./item.model";
 
 export class CategoryModel {
   id: number;

@@ -1,4 +1,5 @@
-import {CategoryModel} from "./category";
+import {CategoryModel} from "./category.model";
+import {ImageModel} from "./image.model";
 /**
  * Created by sniffer on 19.11.16.
  */
@@ -17,4 +18,5 @@ export class ItemModel {
   public DateEditing: Date;
   public ItemType: number;
   public ParentCategory: CategoryModel;
+  public Images: ImageModel[];
 }
