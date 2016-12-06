@@ -19,6 +19,7 @@ import {AuthorizationComponent} from './authorization/authorization.component';
 import {AuthService} from "./Services/auth.service";
 import {LynxService} from "./Services/lynx.service";
 import {CKEditorModule} from "ng2-ckeditor";
+import {ItemImagesComponent} from './custom-components/item-images/item-images.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {CKEditorModule} from "ng2-ckeditor";
     MainComponent,
     ItemsComponent,
     ItemsEditComponent,
-    AuthorizationComponent
+    AuthorizationComponent,
+    ItemImagesComponent
   ],
   imports: [
     BrowserModule,
