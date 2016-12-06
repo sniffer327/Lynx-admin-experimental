@@ -20,6 +20,7 @@ import {AuthService} from "./Services/auth.service";
 import {LynxService} from "./Services/lynx.service";
 import {CKEditorModule} from "ng2-ckeditor";
 import {ItemImagesComponent} from './custom-components/item-images/item-images.component';
+import {MdCheckboxModule} from "@angular2-material/checkbox";
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import {ItemImagesComponent} from './custom-components/item-images/item-images.c
     MdButtonModule,
     MdIconModule,
     MdCardModule,
+    MdCheckboxModule,
     CKEditorModule,
     routing
   ],
