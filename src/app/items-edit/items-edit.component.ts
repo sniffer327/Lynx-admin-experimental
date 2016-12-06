@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ItemModel} from "../Models/item";
+import {ItemModel} from "../Models/item.model";
 import {LynxService} from "../Services/lynx.service";
 import {ActivatedRoute, Params} from "@angular/router";
 
@@ -31,6 +31,15 @@ export class ItemsEditComponent implements OnInit {
       .subscribe(
         res => {
           this.item = res;
+
+          this.item.Images = [
+            {
+              url: 'Путь к изображению',
+              title: 'Изображение',
+              isMain: true
+            }
+          ];
+
           console.log('Данные о товаре: ', res);
         }
       )
@@ -54,8 +63,11 @@ export class ItemsEditComponent implements OnInit {
   ngOnInit() {
 
     if (this.isEdit) {
+
       this.GetItemInfo();
+
     } else {
+
       this.item = new ItemModel();
     }
   }

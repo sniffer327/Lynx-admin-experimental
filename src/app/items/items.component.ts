@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemModel } from "../Models/item";
+import { ItemModel } from "../Models/item.model";
 import { LynxService } from "../Services/lynx.service";
 
 @Component({

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {ImageModel} from "../../Models/image.model";
 
 @Component({
   selector: 'item-images',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./item-images.component.scss']
 })
 export class ItemImagesComponent implements OnInit {
+  @Input() images: ImageModel[];
 
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
