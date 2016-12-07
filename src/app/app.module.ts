@@ -21,6 +21,8 @@ import {LynxService} from "./Services/lynx.service";
 import {CKEditorModule} from "ng2-ckeditor";
 import {ItemImagesComponent} from './custom-components/item-images/item-images.component';
 import {MdCheckboxModule} from "@angular2-material/checkbox";
+import {CookieService} from "angular2-cookie/services/cookies.service";
+import {CanActivateService} from "./Services/can-activate.service";
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import {MdCheckboxModule} from "@angular2-material/checkbox";
   providers: [
     appRoutingProviders,
     AuthService,
-    LynxService
+    LynxService,
+    CookieService,
+    CanActivateService
   ],
   bootstrap: [AppComponent]
 })

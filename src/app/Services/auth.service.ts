@@ -1,21 +1,23 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {LynxService} from "./lynx.service";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {UserInfoModel} from "../Models/user-info.model";
+import {CookieService} from "angular2-cookie/services/cookies.service";
 
 @Injectable()
 export class AuthService {
 
   constructor(private lynxService: LynxService,
-              private router: Router) {
+              private router: Router,
+              private cookieService: CookieService) {
 
     this.accountData = new UserInfoModel();
     this.UserInfoObserveble()
       .subscribe(res => {
-        this.accountData = res;
-      },
-      error => console.log(error));
+          this.accountData = res;
+        },
+        error => console.log(error));
   }
 
   public Login(login: string, password: string): any {
@@ -48,7 +50,10 @@ export class AuthService {
   }
 
   public CheckAuth(): Observable<any> {
-    let result = this.lynxService.Get('/Account/CheckAuth');
-    return result;
+    return this.lynxService.Get('/Account/CheckAuth');
+  }
+
+  public CheckAuthCookies(key: string): string {
+    return this.cookieService.get(key);
   }
 }

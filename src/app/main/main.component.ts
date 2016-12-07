@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserInfoModel} from "../Models/user-info.model";
 import {AuthService} from "../Services/auth.service";
 
@@ -7,17 +7,18 @@ import {AuthService} from "../Services/auth.service";
   templateUrl: './main.component.html',
   styleUrls: ['main.component.scss']
 })
+
 export class MainComponent implements OnInit {
 
   public modules;
 
   public accountData: UserInfoModel;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) {
+  }
 
   ngOnInit() {
     this.AuthChecked();
-
 
     this.modules = [
       {
