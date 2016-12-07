@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {LynxService} from "./Services/lynx.service";
+import {Router} from "@angular/router";
+import {AuthService} from "./Services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -6,6 +9,4 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss']
 })
 
-export class AppComponent {
-  title = 'app works!';
-}
+export class AppComponent {}

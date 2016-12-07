@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../Services/auth.service";
 import {Router} from "@angular/router";
+import {CookieService} from "angular2-cookie/services/cookies.service";
 
 @Component({
   selector: 'app-authorization',
@@ -10,14 +11,23 @@ import {Router} from "@angular/router";
 export class AuthorizationComponent implements OnInit {
 
   constructor(private authService: AuthService,
-              private router: Router) {
+              private router: Router,
+              private cookieService: CookieService) {
   }
 
 
   public Login(login: string, password: string): void {
+
     this.authService.Login(login, password)
       .subscribe(
-        res => this.LoginHandler(res),
+
+        res => {
+
+          this.LoginHandler(res);
+
+          this.cookieService.put('isActivate', 'true');
+        },
+
         error => this.LoginHandler(error)
       );
   }
