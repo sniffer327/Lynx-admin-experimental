@@ -7,6 +7,8 @@ import {LynxConstants} from "../lynx-constants";
 export class LynxService {
 
   constructor(private http: Http) {
+
+    // CORS
     let _build = (<any> http)._backend._browserXHR.build;
     (<any> http)._backend._browserXHR.build = () => {
       let _xhr = _build();
@@ -15,6 +17,13 @@ export class LynxService {
     };
   }
 
+  /**
+   * Main GET handler
+   * @param url
+   * @param options
+   * @returns {Observable<R>}
+   * @constructor
+   */
   private ServiceGet(url: string, options?: RequestOptionsArgs): Observable<any> {
     let headers = new Headers({'Content-Type': 'application/json; charset=utf-8'});
     let opt = new RequestOptions({headers: headers});
@@ -28,6 +37,15 @@ export class LynxService {
     return result;
   }
 
+
+  /**
+   * Main POST handler
+   * @param url
+   * @param data
+   * @param options
+   * @returns {Observable<R>}
+   * @constructor
+   */
   private ServicePost(url: string, data: any, options?: RequestOptionsArgs): Observable<any> {
     let body = JSON.stringify(data);
     let headers = new Headers({'Content-Type': 'application/json; charset=utf-8'});
@@ -41,14 +59,6 @@ export class LynxService {
     return result;
   }
 
-
-  /**
-   * Обмен данных методом Get
-   * @param url
-   * @param options
-   * @returns {Observable<R>}
-   * @constructor
-   */
   public Get(url: string, options?: RequestOptionsArgs): Observable<any> {
     return this.ServiceGet(url, options);
   }

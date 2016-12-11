@@ -28,6 +28,7 @@ const appRoutes: Routes = [
   {
     path: '',
     component: RootComponent,
+    canActivate: [ CanActivateService ],
     children: [
       {
         path: '',
@@ -49,6 +50,7 @@ const appRoutes: Routes = [
   {
     path: 'item-edit',
     component: RootComponent,
+    canActivate: [ CanActivateService ],
     children: [
       {
         path: '',
@@ -59,6 +61,7 @@ const appRoutes: Routes = [
   {
     path: 'item-edit/:id',
     component: RootComponent,
+    canActivate: [ CanActivateService ],
     children: [
       {
         path: '',

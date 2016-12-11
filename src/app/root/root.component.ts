@@ -25,8 +25,6 @@ export class RootComponent implements OnInit {
 
       res => {
 
-        this.authService.accountData = null;
-
         this.cookieService.remove('isActivate');
 
         this.router.navigate(['/auth']);
@@ -37,6 +35,9 @@ export class RootComponent implements OnInit {
 
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    this.authService.CheckAuth();
+  }
 
 }
