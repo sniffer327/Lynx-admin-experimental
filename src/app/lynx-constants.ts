@@ -1,4 +1,5 @@
 export class LynxConstants {
+
   /**
    * Режим Продакшна - true, отладки - false
    * @type {boolean}
