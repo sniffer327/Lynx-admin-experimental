@@ -44,14 +44,27 @@ export class MainComponent implements OnInit {
    * @constructor
    */
   private AuthChecked() {
-    if (this.authService.accountData != null && (this.authService.accountData.email == null || this.authService.accountData.email == '')) {
+
+    let accountData = this.authService.accountData,
+        accountEmail = this.authService.accountData.email;
+
+    if (accountData != null && (accountEmail == null || accountEmail == '')) {
+
       this.accountData = new UserInfoModel();
-      this.authService.UserInfoObserveble().subscribe(res => {
-          this.accountData = res;
-          //this.datePickerObject.startDateStart = this.accountData.dateActivation;
-        },
-        error => console.log(error));
+
+      this.authService.UserInfoObserveble()
+        .subscribe(
+          res => {
+            this.accountData = res;
+
+            //this.datePickerObject.startDateStart = this.accountData.dateActivation;
+          },
+
+          error => console.log(error)
+        );
+
     } else {
+
       this.accountData = this.authService.accountData;
     }
   }

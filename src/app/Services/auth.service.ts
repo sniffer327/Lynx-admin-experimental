@@ -13,11 +13,15 @@ export class AuthService {
               private cookieService: CookieService) {
 
     this.accountData = new UserInfoModel();
+
     this.UserInfoObserveble()
-      .subscribe(res => {
+      .subscribe(
+        res => {
           this.accountData = res;
         },
-        error => console.log(error));
+
+        error => console.log(error)
+      );
   }
 
   public Login(login: string, password: string): any {
@@ -39,13 +43,16 @@ export class AuthService {
   }
 
   public UserInfo(): UserInfoModel {
-    this.lynxService.Get('/Account/UserInfo').subscribe(
-      res => {
-        this.accountData = res;
-      },
-      error => {
-        console.log(error);
-      });
+
+    this.lynxService.Get('/Account/UserInfo')
+      .subscribe(
+        res => {
+          this.accountData = res;
+        },
+
+        error => console.log(error)
+      );
+
     return this.accountData;
   }
 
