@@ -9,21 +9,11 @@ import {CookieService} from "angular2-cookie/services/cookies.service";
 export class AuthService {
 
   constructor(private lynxService: LynxService,
-              private router: Router,
-              private cookieService: CookieService) {
+              private cookieService: CookieService,
+              private router: Router) {}
 
-    this.accountData = new UserInfoModel();
 
-    this.UserInfoObserveble()
-      .subscribe(
-        res => {
-          this.accountData = res;
-        },
-
-        error => console.log(error)
-      );
-  }
-
+  // Main login handler
   public Login(login: string, password: string): any {
     return this.lynxService.Post("/Account/Login", {
       email: login,
@@ -31,36 +21,25 @@ export class AuthService {
     });
   }
 
-  public accountData: UserInfoModel;
 
-  /**
-   * Получение информации о пользователе
-   * @returns {UserInfoModel}
-   * @constructor
-   */
-  public UserInfoObserveble(): Observable<UserInfoModel> {
-    return this.lynxService.Get('/Account/UserInfo');
-  }
-
-  public UserInfo(): UserInfoModel {
-
-    this.lynxService.Get('/Account/UserInfo')
-      .subscribe(
-        res => {
-          this.accountData = res;
-        },
-
-        error => console.log(error)
-      );
-
-    return this.accountData;
-  }
-
+  // Проверка авторизации
   public CheckAuth(): Observable<any> {
     return this.lynxService.Get('/Account/CheckAuth');
   }
 
-  public CheckAuthCookies(key: string): string {
-    return this.cookieService.get(key);
+
+  // Проверка cookie авторизации
+  public CheckAuthCookies(key: string): boolean {
+
+    const authCookie = !!this.cookieService.get(key);
+
+    if (!authCookie) {
+
+      this.router.navigate(['/auth']);
+
+      return false;
+    }
+
+    return authCookie;
   }
 }

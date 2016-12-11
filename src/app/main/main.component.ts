@@ -12,13 +12,9 @@ export class MainComponent implements OnInit {
 
   public modules;
 
-  public accountData: UserInfoModel;
-
-  constructor(private authService: AuthService) {
-  }
+  constructor() {}
 
   ngOnInit() {
-    this.AuthChecked();
 
     this.modules = [
       {
@@ -37,35 +33,5 @@ export class MainComponent implements OnInit {
       }
     ];
 
-  }
-
-  /**
-   * Проверка авторизации
-   * @constructor
-   */
-  private AuthChecked() {
-
-    let accountData = this.authService.accountData,
-        accountEmail = this.authService.accountData.email;
-
-    if (accountData != null && (accountEmail == null || accountEmail == '')) {
-
-      this.accountData = new UserInfoModel();
-
-      this.authService.UserInfoObserveble()
-        .subscribe(
-          res => {
-            this.accountData = res;
-
-            //this.datePickerObject.startDateStart = this.accountData.dateActivation;
-          },
-
-          error => console.log(error)
-        );
-
-    } else {
-
-      this.accountData = this.authService.accountData;
-    }
   }
 }
