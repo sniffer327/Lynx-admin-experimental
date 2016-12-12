@@ -23,6 +23,7 @@ import {ItemImagesComponent} from './custom-components/item-images/item-images.c
 import {MdCheckboxModule} from "@angular2-material/checkbox";
 import {CookieService} from "angular2-cookie/services/cookies.service";
 import {CanActivateService} from "./Services/can-activate.service";
+import {LynxLoggingService} from "./Services/lynx-logging.service";
 
 @NgModule({
 
@@ -56,7 +57,8 @@ import {CanActivateService} from "./Services/can-activate.service";
     AuthService,
     LynxService,
     CookieService,
-    CanActivateService
+    CanActivateService,
+    LynxLoggingService
   ],
 
   bootstrap: [AppComponent]
