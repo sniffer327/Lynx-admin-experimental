@@ -2,11 +2,16 @@ import {Injectable} from '@angular/core';
 import {Http, URLSearchParams, RequestOptionsArgs, RequestOptions, Headers} from "@angular/http";
 import {Observable} from "rxjs";
 import {LynxConstants} from "../lynx-constants";
+import {LynxLoggingService} from "./lynx-logging.service";
+import {AuthService} from './auth.service';
+import {Router} from "@angular/router";
 
 @Injectable()
 export class LynxService {
 
-  constructor(private http: Http) {
+  constructor(private http: Http,
+              private authService: AuthService,
+              private router: Router) {
 
     // CORS
     let _build = (<any> http)._backend._browserXHR.build;
@@ -37,6 +42,9 @@ export class LynxService {
     return result;
   }
 
+  public Get(url: string, options?: RequestOptionsArgs): Observable<any> {
+    return this.ServiceGet(url, options);
+  }
 
   /**
    * Main POST handler
@@ -59,16 +67,12 @@ export class LynxService {
     return result;
   }
 
-  public Get(url: string, options?: RequestOptionsArgs): Observable<any> {
-    return this.ServiceGet(url, options);
-  }
-
   public Post(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
     return this.ServicePost(url, body, options);
   }
 
   /**
-   * Основной обработчик ошибок запросов
+   * Основной обработчик ошибок для запросов
    * @param error
    * @returns {any}
    */
@@ -76,7 +80,13 @@ export class LynxService {
     let errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
 
-    console.error(errMsg);
+    if (error.status === 401) {
+      this.authService.DestroyAuthCookies();
+
+      this.router.navigate(['/auth']);
+    }
+
+    LynxLoggingService.Error('Ошибка запроса ', errMsg);
 
     return Observable.throw(errMsg);
   }

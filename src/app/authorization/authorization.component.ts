@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../Services/auth.service";
 import {Router} from "@angular/router";
 import {CookieService} from "angular2-cookie/services/cookies.service";
+import {LynxConstants} from "../lynx-constants";
 
 @Component({
   selector: 'app-authorization',
@@ -25,7 +26,7 @@ export class AuthorizationComponent implements OnInit {
 
           this.LoginHandler(res);
 
-          this.cookieService.put('isActivate', 'true');
+          this.cookieService.put(LynxConstants.SessionCookieKey, 'true');
         },
 
         error => this.LoginHandler(error)
@@ -63,8 +64,6 @@ export class AuthorizationComponent implements OnInit {
       );
   }
 
-  ngOnInit() {
-    this.AuthCheck();
-  }
+  ngOnInit() {}
 
 }
