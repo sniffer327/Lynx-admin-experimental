@@ -24,6 +24,7 @@ import {MdCheckboxModule} from "@angular2-material/checkbox";
 import {CookieService} from "angular2-cookie/services/cookies.service";
 import {CanActivateService} from "./Services/can-activate.service";
 import {LynxLoggingService} from "./Services/lynx-logging.service";
+import {LynxCookiesService} from "./Services/lynx-cookies.service";
 
 @NgModule({
 
@@ -58,7 +59,8 @@ import {LynxLoggingService} from "./Services/lynx-logging.service";
     LynxService,
     CookieService,
     CanActivateService,
-    LynxLoggingService
+    LynxLoggingService,
+    LynxCookiesService
   ],
 
   bootstrap: [AppComponent]

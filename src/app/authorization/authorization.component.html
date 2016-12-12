@@ -1,6 +1,6 @@
 <div class="lynx-auth-bg-wrapper">
 
-  <div class="lynx-auth-form">
+  <form (ngSubmit)="Login(email.value, password.value)" #loginForm="ngForm" class="lynx-auth-form">
 
     <div class="lynx-auth-form__title text-xs-center">
       Войти
@@ -12,9 +12,9 @@
     </div>
 
     <div class="lynx-auth-form__footer text-xs-right">
-      <button class="btn btn-primary" (click)="Login(email.value, password.value)">Войти</button>
+      <button type="submit" class="btn btn-primary">Войти</button>
     </div>
 
-  </div>
+  </form>
 
 </div>

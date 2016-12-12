@@ -1,16 +1,16 @@
 import {Injectable} from '@angular/core';
-import {Http, URLSearchParams, RequestOptionsArgs, RequestOptions, Headers} from "@angular/http";
+import {Http, RequestOptionsArgs, RequestOptions, Headers} from "@angular/http";
 import {Observable} from "rxjs";
+import {Router} from "@angular/router";
 import {LynxConstants} from "../lynx-constants";
 import {LynxLoggingService} from "./lynx-logging.service";
-import {AuthService} from './auth.service';
-import {Router} from "@angular/router";
+import {LynxCookiesService} from "./lynx-cookies.service";
 
 @Injectable()
 export class LynxService {
 
-  constructor(private http: Http,
-              private authService: AuthService,
+  constructor(private cookies: LynxCookiesService,
+              private http: Http,
               private router: Router) {
 
     // CORS
@@ -81,7 +81,7 @@ export class LynxService {
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
 
     if (error.status === 401) {
-      this.authService.DestroyAuthCookies();
+      this.cookies.DestroyAuthCookies();
 
       this.router.navigate(['/auth']);
     }

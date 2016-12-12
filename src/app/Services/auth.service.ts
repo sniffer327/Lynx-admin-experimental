@@ -2,16 +2,16 @@ import {Injectable} from '@angular/core';
 import {LynxService} from "./lynx.service";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
-import {CookieService} from "angular2-cookie/services/cookies.service";
 import {LynxLoggingService} from "./lynx-logging.service";
-import {LynxConstants} from "../lynx-constants";
+import {LynxCookiesService} from "./lynx-cookies.service";
 
 @Injectable()
 export class AuthService {
 
   constructor(private lynxService: LynxService,
-              private cookieService: CookieService,
-              private router: Router) {}
+              private router: Router,
+              private cookies: LynxCookiesService) {
+  }
 
   /**
    * Главный LogIn обработчик
@@ -34,10 +34,9 @@ export class AuthService {
   public Logout(): void {
 
     this.lynxService.Get('/Account/LogOut').subscribe(
-
       () => {
 
-        this.DestroyAuthCookies();
+        this.cookies.DestroyAuthCookies();
 
         this.router.navigate(['/auth']);
 
@@ -54,33 +53,5 @@ export class AuthService {
    */
   public CheckAuth(): Observable<any> {
     return this.lynxService.Get('/Account/CheckAuth');
-  }
-
-  /**
-   * Проверка cookies авторизации
-   * @param key {string} Ключ, который необходимо найти
-   * @returns {boolean}
-   * @constructor
-   */
-  public CheckAuthCookies(key: string): boolean {
-
-    const authCookie = !!this.cookieService.get(key);
-
-    if (!authCookie) {
-
-      this.router.navigate(['/auth']);
-
-      return false;
-    }
-
-    return authCookie;
-  }
-
-  /**
-   * Уничтожаем Cookie авторизации
-   * @constructor
-   */
-  public DestroyAuthCookies() {
-    this.cookieService.remove(LynxConstants.SessionCookieKey);
   }
 }
