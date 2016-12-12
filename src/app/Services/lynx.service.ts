@@ -67,6 +67,11 @@ export class LynxService {
     return this.ServicePost(url, body, options);
   }
 
+  /**
+   * Основной обработчик ошибок запросов
+   * @param error
+   * @returns {any}
+   */
   private handleError(error: any) {
     let errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
@@ -74,17 +79,5 @@ export class LynxService {
     console.error(errMsg);
 
     return Observable.throw(errMsg);
-  }
-
-  //Превращает объект в цепочку параметров
-  public URLParamsCreater<T>(model: T): URLSearchParams {
-    let result = new URLSearchParams();
-
-    for (var key in model) {
-      // TODO: проверить на то, чтобы небыло вложенного объекта, только строка или число
-      result.set(key, model[key]);
-    }
-
-    return result;
   }
 }

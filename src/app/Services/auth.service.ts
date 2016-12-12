@@ -12,8 +12,7 @@ export class AuthService {
               private cookieService: CookieService,
               private router: Router) {}
 
-
-  // Main login handler
+  // Главный login обработчик
   public Login(login: string, password: string): any {
     return this.lynxService.Post("/Account/Login", {
       email: login,
@@ -21,14 +20,29 @@ export class AuthService {
     });
   }
 
+  // Главный logout обработчик
+  public Logout(): void {
+
+    this.lynxService.Get('/Account/LogOut').subscribe(
+
+      () => {
+
+        this.cookieService.remove('isActivate');
+
+        this.router.navigate(['/auth']);
+
+      },
+
+      error => console.log(error)
+    );
+  }
 
   // Проверка авторизации
   public CheckAuth(): Observable<any> {
     return this.lynxService.Get('/Account/CheckAuth');
   }
 
-
-  // Проверка cookie авторизации
+  // Проверка cookies авторизации
   public CheckAuthCookies(key: string): boolean {
 
     const authCookie = !!this.cookieService.get(key);

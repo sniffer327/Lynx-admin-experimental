@@ -12,32 +12,12 @@ import {CookieService} from "angular2-cookie/services/cookies.service";
 
 export class RootComponent implements OnInit {
 
-  constructor(private authService: AuthService,
-              private lynxService: LynxService,
-              private router: Router,
-              private cookieService: CookieService) { }
+  constructor(private authService: AuthService) { }
 
-  public LogOut(event): void {
-
-    event.stopPropagation();
-
-    this.lynxService.Get('/Account/LogOut').subscribe(
-
-      res => {
-
-        this.cookieService.remove('isActivate');
-
-        this.router.navigate(['/auth']);
-
-      },
-
-      error => console.log(error));
-
+  public LogOut(): void {
+    this.authService.Logout();
   }
 
-  ngOnInit() {
-
-    this.authService.CheckAuth();
-  }
+  ngOnInit() {}
 
 }
