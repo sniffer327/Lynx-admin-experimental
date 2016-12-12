@@ -25,6 +25,7 @@ import {CookieService} from "angular2-cookie/services/cookies.service";
 import {CanActivateService} from "./Services/can-activate.service";
 
 @NgModule({
+
   declarations: [
     AppComponent,
     RootComponent,
@@ -34,6 +35,7 @@ import {CanActivateService} from "./Services/can-activate.service";
     AuthorizationComponent,
     ItemImagesComponent
   ],
+
   imports: [
     BrowserModule,
     FormsModule,
@@ -48,6 +50,7 @@ import {CanActivateService} from "./Services/can-activate.service";
     CKEditorModule,
     routing
   ],
+
   providers: [
     appRoutingProviders,
     AuthService,
@@ -55,6 +58,7 @@ import {CanActivateService} from "./Services/can-activate.service";
     CookieService,
     CanActivateService
   ],
+
   bootstrap: [AppComponent]
 })
 
