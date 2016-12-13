@@ -1,73 +1,43 @@
 /**
  * Created by Roman on 26.09.2016.
  */
-import {Routes, RouterModule, CanActivate} from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 import {ModuleWithProviders} from "@angular/core";
-import {AppComponent} from "./app.component";
-import {RootComponent} from "./root/root.component";
-import {MainComponent} from "./main/main.component";
 import {ItemsComponent} from "./items/items.component";
 import {ItemsEditComponent} from "./items-edit/items-edit.component";
 import {AuthorizationComponent} from "./authorization/authorization.component";
 import {CanActivateService} from "./Services/can-activate.service";
+import {MainComponent} from "./main/main.component";
 
 const appRoutes: Routes = [
   {
     path: 'auth',
-    component: AppComponent,
-    children: [
-      {
-        path: '', component: AuthorizationComponent
-      }
-    ]
-  },
-  {
-    path: 'app',
-    component: AppComponent
-  },
-  {
-    path: '',
-    component: RootComponent,
-    canActivate: [ CanActivateService ],
-    children: [
-      {
-        path: '',
-        component: MainComponent
-      }
-    ]
+    component: AuthorizationComponent
+    // TODO: подключить data с параметром для отдельного layout
   },
   {
     path: 'items',
-    component: RootComponent,
-    canActivate: [ CanActivateService ],
-    children: [
-      {
-        path: '',
-        component: ItemsComponent
-      }
-    ]
+    component: ItemsComponent,
+    canActivate: [ CanActivateService ]
   },
   {
     path: 'item-edit',
-    component: RootComponent,
-    canActivate: [ CanActivateService ],
-    children: [
-      {
-        path: '',
-        component: ItemsEditComponent
-      }
-    ]
+    component: ItemsEditComponent,
+    canActivate: [ CanActivateService ]
   },
   {
     path: 'item-edit/:id',
-    component: RootComponent,
-    canActivate: [ CanActivateService ],
-    children: [
-      {
-        path: '',
-        component: ItemsEditComponent
-      }
-    ]
+    component: ItemsEditComponent,
+    canActivate: [ CanActivateService ]
+  },
+  {
+    path: '',
+    component: MainComponent,
+    canActivate: [ CanActivateService ]
+  },
+  {
+    path: '**',
+    redirectTo: '/'
   }
 ];
 
