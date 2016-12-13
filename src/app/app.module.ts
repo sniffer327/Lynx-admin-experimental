@@ -5,7 +5,6 @@ import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
 import {routing, appRoutingProviders} from "./app.routing";
-import {RootComponent} from './root/root.component';
 import {MainComponent} from './main/main.component';
 import {MdSidenavModule} from "@angular2-material/sidenav";
 import {MdCoreModule} from "@angular2-material/core";
@@ -30,7 +29,6 @@ import {LynxCookiesService} from "./Services/lynx-cookies.service";
 
   declarations: [
     AppComponent,
-    RootComponent,
     MainComponent,
     ItemsComponent,
     ItemsEditComponent,
