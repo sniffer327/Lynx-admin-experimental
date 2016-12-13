@@ -40,6 +40,7 @@ export class AuthService {
 
         this.router.navigate(['/auth']);
 
+        LynxLoggingService.Log('Выход из аккаунта');
       },
 
       error => LynxLoggingService.Log('Ошибка LogOut ', error)

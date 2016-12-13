@@ -40,7 +40,7 @@ export class AuthorizationComponent implements OnInit {
 
       this.router.navigate(['/']);
 
-      console.log('Успешная авторизация', response);
+      console.log('Успешная авторизация');
 
     } else {
 
