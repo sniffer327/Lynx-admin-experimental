@@ -46,12 +46,31 @@ export class AuthService {
     );
   }
 
+
+  public CheckAuth(): void {
+
+    this.CheckUserAuth()
+      .subscribe(
+
+        res => {
+          LynxLoggingService.Log('Проверка авторизации ', res);
+        },
+
+        error => {
+
+          this.router.navigate(['/auth']);
+
+          LynxLoggingService.Error('Ошибка проверки авторизации ', error);
+        }
+      );
+  }
+
   /**
    * Проверка авторизации
    * @returns {Observable<any>}
    * @constructor
    */
-  public CheckAuth(): Observable<any> {
+  private CheckUserAuth(): Observable<any> {
     return this.lynxService.Get('/Account/CheckAuth');
   }
 }

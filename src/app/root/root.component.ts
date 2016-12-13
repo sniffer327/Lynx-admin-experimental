@@ -15,6 +15,9 @@ export class RootComponent implements OnInit {
     this.authService.Logout();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // console.log('lol');
+    //this.authService.CheckAuth();
+  }
 
 }
