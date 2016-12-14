@@ -13,7 +13,6 @@ const appRoutes: Routes = [
   {
     path: 'auth',
     component: AuthorizationComponent
-    // TODO: подключить data с параметром для отдельного layout
   },
   {
     path: 'items',
