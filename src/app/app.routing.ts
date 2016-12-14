@@ -25,25 +25,33 @@ const appRoutes: Routes = [
     canActivate: [ CanActivateService ],
     children: [
 
+      // Главная страница
       {
         path: '',
         component: MainComponent
       },
+
+      // Страница со списком товаров
       {
         path: 'items',
         component: ItemsComponent
       },
+
+      // Страница добавления товара
       {
         path: 'item-edit',
         component: ItemsEditComponent
       },
+
+      // Страница редактирования товара
       {
         path: 'item-edit/:id',
         component: ItemsEditComponent
       }
-
     ]
   },
+
+  // Некорректный маршрут
   {
     path: '**',
     redirectTo: '/'
