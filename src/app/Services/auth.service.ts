@@ -57,11 +57,11 @@ export class AuthService {
           LynxLoggingService.Log('Проверка авторизации ', res);
         },
 
-        error => {
+        () => {
 
           this.router.navigate(['/auth']);
 
-          LynxLoggingService.Error('Ошибка проверки авторизации ', error);
+          LynxLoggingService.Error('Пользователь не авторизован');
         }
       );
   }

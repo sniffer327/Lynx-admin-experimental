@@ -24,6 +24,7 @@ import {CookieService} from "angular2-cookie/services/cookies.service";
 import {CanActivateService} from "./Services/can-activate.service";
 import {LynxLoggingService} from "./Services/lynx-logging.service";
 import {LynxCookiesService} from "./Services/lynx-cookies.service";
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
 
@@ -33,7 +34,8 @@ import {LynxCookiesService} from "./Services/lynx-cookies.service";
     ItemsComponent,
     ItemsEditComponent,
     AuthorizationComponent,
-    ItemImagesComponent
+    ItemImagesComponent,
+    LayoutComponent
   ],
 
   imports: [
