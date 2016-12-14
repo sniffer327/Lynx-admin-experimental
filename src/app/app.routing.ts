@@ -8,31 +8,41 @@ import {ItemsEditComponent} from "./items-edit/items-edit.component";
 import {AuthorizationComponent} from "./authorization/authorization.component";
 import {CanActivateService} from "./Services/can-activate.service";
 import {MainComponent} from "./main/main.component";
+import {LayoutComponent} from "./layout/layout.component";
 
 const appRoutes: Routes = [
+
+  // Страница авторизации
   {
     path: 'auth',
     component: AuthorizationComponent
   },
-  {
-    path: 'items',
-    component: ItemsComponent,
-    canActivate: [ CanActivateService ]
-  },
-  {
-    path: 'item-edit',
-    component: ItemsEditComponent,
-    canActivate: [ CanActivateService ]
-  },
-  {
-    path: 'item-edit/:id',
-    component: ItemsEditComponent,
-    canActivate: [ CanActivateService ]
-  },
+
+  // Основной layout
   {
     path: '',
-    component: MainComponent,
-    canActivate: [ CanActivateService ]
+    component: LayoutComponent,
+    canActivate: [ CanActivateService ],
+    children: [
+
+      {
+        path: '',
+        component: MainComponent
+      },
+      {
+        path: 'items',
+        component: ItemsComponent
+      },
+      {
+        path: 'item-edit',
+        component: ItemsEditComponent
+      },
+      {
+        path: 'item-edit/:id',
+        component: ItemsEditComponent
+      }
+
+    ]
   },
   {
     path: '**',
