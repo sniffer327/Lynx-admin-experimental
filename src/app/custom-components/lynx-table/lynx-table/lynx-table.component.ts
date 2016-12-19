@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'lynx-table',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lynx-table.component.scss']
 })
 export class LynxTableComponent implements OnInit {
+
+  @Input() items: any;
 
   constructor() { }
 
