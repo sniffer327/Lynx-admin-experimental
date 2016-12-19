@@ -25,6 +25,7 @@ import {CanActivateService} from "./Services/can-activate.service";
 import {LynxLoggingService} from "./Services/lynx-logging.service";
 import {LynxCookiesService} from "./Services/lynx-cookies.service";
 import { LayoutComponent } from './layout/layout.component';
+import { LynxModule } from './custom-components/lynx-table/lynx-table.module';
 
 @NgModule({
 
@@ -50,7 +51,8 @@ import { LayoutComponent } from './layout/layout.component';
     MdCardModule,
     MdCheckboxModule,
     CKEditorModule,
-    routing
+    routing,
+    LynxModule
   ],
 
   providers: [
