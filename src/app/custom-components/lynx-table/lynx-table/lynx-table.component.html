@@ -25,6 +25,11 @@
     </thead>
 
     <tbody>
+      <tr>
+        <td *ngIf="items">
+          {{ RenderItem(items[0].DateCreating) }}
+        </td>
+      </tr>
       <tr *ngFor="let item of items">
         <td *ngFor="let column of columns">
           {{ item[column] }}

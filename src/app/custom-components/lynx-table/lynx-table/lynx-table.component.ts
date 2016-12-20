@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'lynx-table',
@@ -16,7 +17,11 @@ export class LynxTableComponent implements OnInit {
   // Колонки таблицы
   @Input() columns: string[];
 
-  constructor() { }
+  constructor(private datePipe: DatePipe) { }
+
+  public RenderItem(date): string {
+    return this.datePipe.transform(date, 'dd.MM.yyyy');
+  }
 
   ngOnInit() {
   }
