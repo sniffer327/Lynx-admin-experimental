@@ -29,7 +29,9 @@
 
         <td *ngFor="let column of columns">
 
-          <lynx-item></lynx-item>
+          <lynx-item
+            [item]="item"
+            [column]="column"></lynx-item>
 
         </td>
 
