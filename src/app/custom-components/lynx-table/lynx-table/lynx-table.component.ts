@@ -19,6 +19,12 @@ export class LynxTableComponent implements OnInit {
 
   constructor(private datePipe: DatePipe) { }
 
+  /**
+   * Формирование разметки для элемента таблицы
+   * @param date
+   * @returns {string}
+   * @constructor
+   */
   public RenderItem(date): string {
     return this.datePipe.transform(date, 'dd.MM.yyyy');
   }

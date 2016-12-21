@@ -6,6 +6,7 @@ import {CommonModule, DatePipe} from '@angular/common';
 import { RouterModule } from "@angular/router";
 
 import { LynxTableComponent } from "./lynx-table/lynx-table.component";
+import { LynxItemComponent } from './lynx-item/lynx-item.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,10 @@ import { LynxTableComponent } from "./lynx-table/lynx-table.component";
     DatePipe
   ],
 
-  declarations: [ LynxTableComponent ],
+  declarations: [
+    LynxTableComponent,
+    LynxItemComponent
+  ],
 
   exports: [ LynxTableComponent ]
 })
