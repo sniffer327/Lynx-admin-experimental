@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ItemModel} from "../Models/item.model";
 import {LynxService} from "../Services/lynx.service";
 import {LynxLoggingService} from "../Services/lynx-logging.service";
+import {IItemColumn} from "../custom-components/lynx-table/Models/item.model";
 
 @Component({
   selector: 'app-items',
@@ -18,7 +19,7 @@ export class ItemsComponent implements OnInit {
   public itemsHeader: string[];
 
   // Столбцы таблицы
-  public itemsColumns: string[];
+  public itemsColumns: IItemColumn[];
 
   constructor(private lynxService: LynxService) {
   }
@@ -64,14 +65,27 @@ export class ItemsComponent implements OnInit {
     // <td>{{ item.Prioritet }}</td>
     // <td>{{ item.DateCreating | date: "dd.MM.yy" }}</td>
     // <td>{{ item.DateEditing | date: "dd.MM.yy" }}</td>
+
     // Столбцы таблицы
     this.itemsColumns = [
-      'id',
-      'title',
-      'categoryId',
-      'Prioritet',
-      'DateCreating',
-      'DateEditing'
+      {
+        data: 'id'
+      },
+      {
+        data: 'title',
+      },
+      {
+        data: 'categoryId'
+      },
+      {
+        data: 'Prioritet'
+      },
+      {
+        data: 'DateCreating'
+      },
+      {
+        data: 'DateEditing'
+      }
     ];
   }
 

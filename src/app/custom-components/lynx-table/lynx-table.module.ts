@@ -14,10 +14,6 @@ import { LynxItemComponent } from './lynx-item/lynx-item.component';
     RouterModule
   ],
 
-  providers: [
-    DatePipe
-  ],
-
   declarations: [
     LynxTableComponent,
     LynxItemComponent

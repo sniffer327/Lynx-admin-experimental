@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-lynx-item',
+  selector: 'lynx-item',
   templateUrl: './lynx-item.component.html',
   styleUrls: ['./lynx-item.component.scss']
 })
