@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {IItemColumn} from "../Models/item.model";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'lynx-item',
@@ -14,7 +15,38 @@ export class LynxItemComponent implements OnInit {
   // Содержимое столбца в элементе
   @Input() column: IItemColumn;
 
-  constructor() { }
+  constructor(private datePipe: DatePipe) { }
+
+  // Получем данные для ячейки
+  GetData(): any {
+
+    // Получем pipe
+    let columnPipe = this.column.pipe;
+
+    // Получаем данные для столбца
+    let columnData = this.column.data;
+
+    // Получаем значение ячейки
+    let data = this.item[columnData];
+
+    // Если Pipe отсутствует
+    if (!columnPipe) {
+
+      return data;
+
+    } else {
+
+      return this.DataPipeTransform(data, columnPipe);
+    }
+  }
+
+  // Трансформируем данные через pipe
+  public DataPipeTransform(column: any, pipe: string): any {
+
+    if (pipe == 'date') {
+      return this.datePipe.transform(column, 'dd-MM-yy');
+    }
+  }
 
   ngOnInit() {
   }

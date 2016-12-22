@@ -81,10 +81,12 @@ export class ItemsComponent implements OnInit {
         data: 'Prioritet'
       },
       {
-        data: 'DateCreating'
+        data: 'DateCreating',
+        pipe: 'date'
       },
       {
-        data: 'DateEditing'
+        data: 'DateEditing',
+        pipe: 'date'
       }
     ];
   }

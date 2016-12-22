@@ -4,5 +4,6 @@
 
 // Интерфейс для колонки таблицы
 export interface IItemColumn {
-  data: string
+  data: string,
+  pipe?: string
 }

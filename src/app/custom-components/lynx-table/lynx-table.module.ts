@@ -19,6 +19,10 @@ import { LynxItemComponent } from './lynx-item/lynx-item.component';
     LynxItemComponent
   ],
 
+  providers: [
+    DatePipe
+  ],
+
   exports: [ LynxTableComponent ]
 })
 
