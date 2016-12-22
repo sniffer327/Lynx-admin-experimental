@@ -26,9 +26,15 @@
 
     <tbody>
       <tr *ngFor="let item of items">
+
         <td *ngFor="let column of columns">
-          {{ item[column] }}
+
+          <lynx-item
+            [item]="item"
+            [column]="column"></lynx-item>
+
         </td>
+
       </tr>
     </tbody>
   </table>

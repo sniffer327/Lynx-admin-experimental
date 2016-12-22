@@ -5,6 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './lynx-table.component.html',
   styleUrls: ['./lynx-table.component.scss']
 })
+
 export class LynxTableComponent implements OnInit {
 
   // Список элементов
