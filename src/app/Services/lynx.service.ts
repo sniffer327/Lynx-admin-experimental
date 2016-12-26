@@ -1,12 +1,17 @@
 import {Injectable} from '@angular/core';
-import {Http, URLSearchParams, RequestOptionsArgs, RequestOptions, Headers} from "@angular/http";
+import {Http, RequestOptionsArgs, RequestOptions, Headers} from "@angular/http";
 import {Observable} from "rxjs";
+import {Router} from "@angular/router";
 import {LynxConstants} from "../lynx-constants";
+import {LynxLoggingService} from "./lynx-logging.service";
+import {LynxCookiesService} from "./lynx-cookies.service";
 
 @Injectable()
 export class LynxService {
 
-  constructor(private http: Http) {
+  constructor(private cookies: LynxCookiesService,
+              private http: Http,
+              private router: Router) {
 
     // CORS
     let _build = (<any> http)._backend._browserXHR.build;
@@ -37,6 +42,9 @@ export class LynxService {
     return result;
   }
 
+  public Get(url: string, options?: RequestOptionsArgs): Observable<any> {
+    return this.ServiceGet(url, options);
+  }
 
   /**
    * Main POST handler
@@ -59,32 +67,27 @@ export class LynxService {
     return result;
   }
 
-  public Get(url: string, options?: RequestOptionsArgs): Observable<any> {
-    return this.ServiceGet(url, options);
-  }
-
   public Post(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
     return this.ServicePost(url, body, options);
   }
 
+  /**
+   * Основной обработчик ошибок для запросов
+   * @param error
+   * @returns {any}
+   */
   private handleError(error: any) {
     let errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
 
-    console.error(errMsg);
+    if (error.status === 401) {
+      this.cookies.DestroyAuthCookies();
 
-    return Observable.throw(errMsg);
-  }
-
-  //Превращает объект в цепочку параметров
-  public URLParamsCreater<T>(model: T): URLSearchParams {
-    let result = new URLSearchParams();
-
-    for (var key in model) {
-      // TODO: проверить на то, чтобы небыло вложенного объекта, только строка или число
-      result.set(key, model[key]);
+      this.router.navigate(['/auth']);
     }
 
-    return result;
+    LynxLoggingService.Error('Ошибка запроса ', errMsg);
+
+    return Observable.throw(errMsg);
   }
 }

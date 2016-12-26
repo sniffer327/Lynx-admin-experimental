@@ -5,50 +5,9 @@
 <!--Таблица с товарами-->
 <div class="lynx-content-block">
 
-  <div class="items-controls">
-    <div class="row">
-
-      <div class="col-md-6">
-        <input type="text" class="form-control" placeholder="Найти...">
-      </div>
-
-      <div class="col-md-6">
-        <a href="#" class="btn btn-primary" title="Добавить">
-          <i class="material-icons">note_add</i>
-        </a>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered items-table lynx-table">
-      <thead>
-      <tr>
-        <th>ID</th>
-        <th>Название</th>
-        <th>Категория</th>
-        <th>Приоритет</th>
-        <th>Дата создания</th>
-        <th>Дата редактирования</th>
-      </tr>
-      </thead>
-
-      <tbody>
-      <tr *ngFor="let item of items">
-        <td>{{ item.id }}</td>
-        <td class="text-xs-left">
-          <a [routerLink]="['/item-edit', item.id]">
-            {{ item.title }}
-          </a>
-        </td>
-        <td>{{ item.categoryId }}</td>
-        <td>{{ item.Prioritet }}</td>
-        <td>{{ item.DateCreating | date: "dd.MM.yy" }}</td>
-        <td>{{ item.DateEditing | date: "dd.MM.yy" }}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+  <lynx-table
+    [items]="items"
+    [header]="itemsHeader"
+    [columns]="itemsColumns"></lynx-table>
 
 </div>

@@ -1,73 +1,60 @@
 /**
  * Created by Roman on 26.09.2016.
  */
-import {Routes, RouterModule, CanActivate} from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 import {ModuleWithProviders} from "@angular/core";
-import {AppComponent} from "./app.component";
-import {RootComponent} from "./root/root.component";
-import {MainComponent} from "./main/main.component";
 import {ItemsComponent} from "./items/items.component";
 import {ItemsEditComponent} from "./items-edit/items-edit.component";
 import {AuthorizationComponent} from "./authorization/authorization.component";
 import {CanActivateService} from "./Services/can-activate.service";
+import {MainComponent} from "./main/main.component";
+import {LayoutComponent} from "./layout/layout.component";
 
 const appRoutes: Routes = [
+
+  // Страница авторизации
   {
     path: 'auth',
-    component: AppComponent,
-    children: [
-      {
-        path: '', component: AuthorizationComponent
-      }
-    ]
+    component: AuthorizationComponent
   },
-  {
-    path: 'app',
-    component: AppComponent
-  },
+
+  // Основной layout
   {
     path: '',
-    component: RootComponent,
+    component: LayoutComponent,
     canActivate: [ CanActivateService ],
     children: [
+
+      // Главная страница
       {
         path: '',
         component: MainComponent
-      }
-    ]
-  },
-  {
-    path: 'items',
-    component: RootComponent,
-    canActivate: [ CanActivateService ],
-    children: [
+      },
+
+      // Страница со списком товаров
       {
-        path: '',
+        path: 'items',
         component: ItemsComponent
-      }
-    ]
-  },
-  {
-    path: 'item-edit',
-    component: RootComponent,
-    canActivate: [ CanActivateService ],
-    children: [
+      },
+
+      // Страница добавления товара
       {
-        path: '',
+        path: 'item-edit',
+        component: ItemsEditComponent
+      },
+
+      // Страница редактирования товара
+      {
+        path: 'item-edit/:id',
         component: ItemsEditComponent
       }
     ]
   },
+
+  // Некорректный маршрут
   {
-    path: 'item-edit/:id',
-    component: RootComponent,
-    canActivate: [ CanActivateService ],
-    children: [
-      {
-        path: '',
-        component: ItemsEditComponent
-      }
-    ]
+    path: '**',
+    redirectTo: '/'
   }
 ];
 

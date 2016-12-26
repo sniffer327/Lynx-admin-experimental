@@ -2,18 +2,24 @@ import {Injectable} from '@angular/core';
 import {LynxService} from "./lynx.service";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
-import {UserInfoModel} from "../Models/user-info.model";
-import {CookieService} from "angular2-cookie/services/cookies.service";
+import {LynxLoggingService} from "./lynx-logging.service";
+import {LynxCookiesService} from "./lynx-cookies.service";
 
 @Injectable()
 export class AuthService {
 
   constructor(private lynxService: LynxService,
-              private cookieService: CookieService,
-              private router: Router) {}
+              private router: Router,
+              private cookies: LynxCookiesService) {
+  }
 
-
-  // Main login handler
+  /**
+   * Главный LogIn обработчик
+   * @param login {String} Логин
+   * @param password {String} Пароль
+   * @returns {Observable<any>}
+   * @constructor
+   */
   public Login(login: string, password: string): any {
     return this.lynxService.Post("/Account/Login", {
       email: login,
@@ -21,25 +27,51 @@ export class AuthService {
     });
   }
 
+  /**
+   * Главный LogOut обработчик
+   * @constructor
+   */
+  public Logout(): void {
 
-  // Проверка авторизации
-  public CheckAuth(): Observable<any> {
-    return this.lynxService.Get('/Account/CheckAuth');
+    this.lynxService.Get('/Account/LogOut').subscribe(
+      () => {
+
+        this.cookies.DestroyAuthCookies();
+
+        this.router.navigate(['/auth']);
+
+        LynxLoggingService.Log('Выход из аккаунта');
+      },
+
+      error => LynxLoggingService.Log('Ошибка LogOut ', error)
+    );
   }
 
 
-  // Проверка cookie авторизации
-  public CheckAuthCookies(key: string): boolean {
+  public CheckAuth(): void {
 
-    const authCookie = !!this.cookieService.get(key);
+    this.CheckUserAuth()
+      .subscribe(
 
-    if (!authCookie) {
+        res => {
+          LynxLoggingService.Log('Проверка авторизации ', res);
+        },
 
-      this.router.navigate(['/auth']);
+        () => {
 
-      return false;
-    }
+          this.router.navigate(['/auth']);
 
-    return authCookie;
+          LynxLoggingService.Error('Пользователь не авторизован');
+        }
+      );
+  }
+
+  /**
+   * Проверка авторизации
+   * @returns {Observable<any>}
+   * @constructor
+   */
+  private CheckUserAuth(): Observable<any> {
+    return this.lynxService.Get('/Account/CheckAuth');
   }
 }

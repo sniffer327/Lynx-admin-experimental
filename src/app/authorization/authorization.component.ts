@@ -2,12 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../Services/auth.service";
 import {Router} from "@angular/router";
 import {CookieService} from "angular2-cookie/services/cookies.service";
+import {LynxConstants} from "../lynx-constants";
 
 @Component({
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
   styleUrls: ['./authorization.component.scss']
 })
+
 export class AuthorizationComponent implements OnInit {
 
   constructor(private authService: AuthService,
@@ -25,7 +27,7 @@ export class AuthorizationComponent implements OnInit {
 
           this.LoginHandler(res);
 
-          this.cookieService.put('isActivate', 'true');
+          this.cookieService.put(LynxConstants.SessionCookieKey, 'true');
         },
 
         error => this.LoginHandler(error)
@@ -34,13 +36,11 @@ export class AuthorizationComponent implements OnInit {
 
   private LoginHandler(response: any): void {
 
-    this.AuthCheck();
-
     if (response != null || response.email != null) {
 
       this.router.navigate(['/']);
 
-      console.log('Успешная авторизация', response);
+      console.log('Успешная авторизация');
 
     } else {
 
@@ -48,23 +48,6 @@ export class AuthorizationComponent implements OnInit {
     }
   }
 
-  private AuthCheck(): void {
-
-    let res = this.authService.CheckAuth()
-      .subscribe(
-
-        res => {
-          this.router.navigate(['/']);
-
-          console.log('Проверка авторизации', res);
-        },
-
-        error => this.router.navigate(['/auth'])
-      );
-  }
-
-  ngOnInit() {
-    this.AuthCheck();
-  }
+  ngOnInit() {}
 
 }
