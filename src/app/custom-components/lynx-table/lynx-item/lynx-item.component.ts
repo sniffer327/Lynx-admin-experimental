@@ -29,21 +29,18 @@ export class LynxItemComponent implements OnInit {
     // Получаем значение ячейки
     let data = this.item[columnData];
 
-    // Если Pipe отсутствует
-    if (!columnPipe) {
-
-      return data;
-
-    } else {
-
+    // Если Pipe существует
+    if (columnPipe) {
       return this.DataPipeTransform(data, columnPipe);
     }
+
+    return data;
   }
 
   // Трансформируем данные через pipe
   public DataPipeTransform(column: any, pipe: string): any {
 
-    if (pipe == 'date') {
+    if (pipe === 'date') {
       return this.datePipe.transform(column, 'dd-MM-yy');
     }
   }
