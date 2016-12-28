@@ -42,18 +42,7 @@ export class ItemsComponent implements OnInit {
 
     this.GetItems();
 
-    // <td>{{ item.id }}</td>
-    // <td class="text-xs-left">
-    // <a [routerLink]="['/item-edit', item.id]">
-    //   {{ item.title }}
-    // </a>
-    // </td>
-    // <td>{{ item.categoryId }}</td>
-    // <td>{{ item.Prioritet }}</td>
-    // <td>{{ item.DateCreating | date: "dd.MM.yy" }}</td>
-    // <td>{{ item.DateEditing | date: "dd.MM.yy" }}</td>
-
-    // Столбцы таблицы
+    // Параметры таблицыс товарами
     this.itemsColumns = [
       {
         header: 'ID',
@@ -62,6 +51,11 @@ export class ItemsComponent implements OnInit {
       {
         header: 'Название',
         data: 'title',
+        template: {
+          type: 'link',
+          linkUrl: '/item-edit',
+          param: 'id'
+        }
       },
       {
         header: 'Категория',
