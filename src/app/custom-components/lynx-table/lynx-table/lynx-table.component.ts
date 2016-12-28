@@ -11,9 +11,6 @@ export class LynxTableComponent implements OnInit {
   // Список элементов
   @Input() items: any;
 
-  // Заголовок таблицы
-  @Input() header: string[];
-
   // Колонки таблицы
   @Input() columns: string[];
 

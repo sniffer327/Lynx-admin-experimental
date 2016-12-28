@@ -15,9 +15,6 @@ export class ItemsComponent implements OnInit {
   // Список товаров
   public items: ItemModel[];
 
-  // Заголовки к таблице
-  public itemsHeader: string[];
-
   // Столбцы таблицы
   public itemsColumns: IItemColumn[];
 
@@ -45,46 +42,36 @@ export class ItemsComponent implements OnInit {
 
     this.GetItems();
 
-    // Заголовок таблицы
-    this.itemsHeader = [
-      'ID',
-      'Название',
-      'Категория',
-      'Приоритет',
-      'Дата создания',
-      'Дата редактирования'
-    ];
-
-    // <td>{{ item.id }}</td>
-    // <td class="text-xs-left">
-    // <a [routerLink]="['/item-edit', item.id]">
-    //   {{ item.title }}
-    // </a>
-    // </td>
-    // <td>{{ item.categoryId }}</td>
-    // <td>{{ item.Prioritet }}</td>
-    // <td>{{ item.DateCreating | date: "dd.MM.yy" }}</td>
-    // <td>{{ item.DateEditing | date: "dd.MM.yy" }}</td>
-
-    // Столбцы таблицы
+    // Параметры таблицыс товарами
     this.itemsColumns = [
       {
+        header: 'ID',
         data: 'id'
       },
       {
+        header: 'Название',
         data: 'title',
+        template: {
+          type: 'link',
+          linkUrl: '/item-edit',
+          param: 'id'
+        }
       },
       {
+        header: 'Категория',
         data: 'categoryId'
       },
       {
+        header: 'Приоритет',
         data: 'Prioritet'
       },
       {
+        header: 'Дата создания',
         data: 'DateCreating',
         pipe: 'date'
       },
       {
+        header: 'Дата редактирования',
         data: 'DateEditing',
         pipe: 'date'
       }
