@@ -15,9 +15,6 @@ export class ItemsComponent implements OnInit {
   // Список товаров
   public items: ItemModel[];
 
-  // Заголовки к таблице
-  public itemsHeader: string[];
-
   // Столбцы таблицы
   public itemsColumns: IItemColumn[];
 
@@ -45,16 +42,6 @@ export class ItemsComponent implements OnInit {
 
     this.GetItems();
 
-    // Заголовок таблицы
-    this.itemsHeader = [
-      'ID',
-      'Название',
-      'Категория',
-      'Приоритет',
-      'Дата создания',
-      'Дата редактирования'
-    ];
-
     // <td>{{ item.id }}</td>
     // <td class="text-xs-left">
     // <a [routerLink]="['/item-edit', item.id]">
@@ -69,22 +56,28 @@ export class ItemsComponent implements OnInit {
     // Столбцы таблицы
     this.itemsColumns = [
       {
+        header: 'ID',
         data: 'id'
       },
       {
+        header: 'Название',
         data: 'title',
       },
       {
+        header: 'Категория',
         data: 'categoryId'
       },
       {
+        header: 'Приоритет',
         data: 'Prioritet'
       },
       {
+        header: 'Дата создания',
         data: 'DateCreating',
         pipe: 'date'
       },
       {
+        header: 'Дата редактирования',
         data: 'DateEditing',
         pipe: 'date'
       }
