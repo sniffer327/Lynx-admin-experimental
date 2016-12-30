@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ItemModel} from "../Models/item.model";
 import {LynxService} from "../Services/lynx.service";
+import {LynxLoggingService} from "../Services/lynx-logging.service";
 import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
@@ -23,7 +24,6 @@ export class ItemsEditComponent implements OnInit {
     });
 
     (this.id) ? this.isEdit = true : this.isEdit = false;
-
   }
 
   public GetItemInfo(): void {
@@ -41,10 +41,9 @@ export class ItemsEditComponent implements OnInit {
             }
           ];
 
-          console.log('Данные о товаре: ', res);
+          LynxLoggingService.Log('Данные о товаре: ', res);
         }
       )
-
   }
 
   Save(): void {
@@ -57,20 +56,15 @@ export class ItemsEditComponent implements OnInit {
     //     }
     //   )
 
-    console.log('Сохраняю: ', this.item);
-
+    LynxLoggingService.Log('Сохраняю: ', this.item);
   }
 
   ngOnInit() {
 
-    if (this.isEdit) {
-
-      this.GetItemInfo();
-
-    } else {
-
-      this.item = new ItemModel();
-    }
+    // Проверка - редактируем ли товар
+    (this.isEdit)
+      ? this.GetItemInfo()
+      : this.item = new ItemModel();
   }
 
 }
