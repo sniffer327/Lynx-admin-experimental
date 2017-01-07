@@ -14,6 +14,7 @@
 .classpath
 *.launch
 .settings/
+.vscode/
 
 # misc
 /.sass-cache
@@ -22,14 +23,16 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
+debug.log
 /typings
 
 # e2e
 /e2e/*.js
 /e2e/*.map
 
-#System Files
+# System Files
 .DS_Store
 Thumbs.db
+
+# Project config
 /src/app/lynx-constants.ts
-.vscode/
