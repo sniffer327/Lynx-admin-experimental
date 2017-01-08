@@ -3,6 +3,7 @@ import {ItemModel} from "../Models/item.model";
 import {LynxService} from "../Services/lynx.service";
 import {LynxLoggingService} from "../Services/lynx-logging.service";
 import {IItemColumn} from "../custom-components/lynx-table/Models/item.model";
+import {CategoryModel} from "../Models/category.model";
 
 @Component({
   selector: 'app-items',
@@ -15,6 +16,8 @@ export class ItemsComponent implements OnInit {
   // Список товаров
   public items: ItemModel[];
 
+  public categories: CategoryModel[];
+
   // Столбцы таблицы
   public itemsColumns: IItemColumn[];
 
@@ -26,7 +29,6 @@ export class ItemsComponent implements OnInit {
    * @constructor
    */
   public GetItems(): void {
-
     this.lynxService.Post('/Items/GetItems?itemType=1', {})
       .subscribe(
         res => {
@@ -38,8 +40,23 @@ export class ItemsComponent implements OnInit {
       );
   }
 
+  /**
+   * Получение списка товаров
+   * @constructor
+   */
+  public GetCategories(): void {
+
+    this.lynxService.Post('/Items/GetCategoriesAsync', {})
+      .subscribe(
+        res => {
+          this.categories = res.Result;
+        }
+      );
+  }
+
   ngOnInit() {
 
+    this.GetCategories();
     this.GetItems();
 
     // Параметры таблицыс товарами
@@ -59,7 +76,7 @@ export class ItemsComponent implements OnInit {
       },
       {
         header: 'Категория',
-        data: 'categoryId'
+        data: 'CategoryTitle'
       },
       {
         header: 'Приоритет',
