@@ -37,9 +37,33 @@ const appRoutes: Routes = [
         component: ItemsComponent
       },
 
+      // Страница со списком страниц
+      {
+        path: 'pages',
+        component: ItemsComponent
+      },
+
+      // Страница со списком новостей
+      {
+        path: 'news',
+        component: ItemsComponent
+      },
+
       // Страница добавления товара
       {
         path: 'item-edit',
+        component: ItemsEditComponent
+      },
+
+      // Страница добавления страницы
+      {
+        path: 'page-edit',
+        component: ItemsEditComponent
+      },
+
+      // Страница добавления новости
+      {
+        path: 'news-edit',
         component: ItemsEditComponent
       },
 
@@ -47,7 +71,17 @@ const appRoutes: Routes = [
       {
         path: 'item-edit/:id',
         component: ItemsEditComponent
-      }
+      },
+      // Страница редактирования страницы
+      {
+        path: 'page-edit/:id',
+        component: ItemsEditComponent
+      },
+      // Страница редактирования новости
+      {
+        path: 'news-edit/:id',
+        component: ItemsEditComponent
+      },
     ]
   },
 

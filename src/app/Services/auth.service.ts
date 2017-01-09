@@ -55,7 +55,7 @@ export class AuthService {
     this.CheckUserAuth()
       .subscribe(
         res => {
-          LynxLoggingService.Log('Проверка авторизации ', res);
+          //LynxLoggingService.Log('Проверка авторизации ', res);
           AuthService.LoginInfo = this.LoginInfo = res;
         },
         () => {

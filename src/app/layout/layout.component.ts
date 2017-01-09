@@ -43,7 +43,7 @@ export class LayoutComponent implements OnInit {
    * @param siteId
    * @constructor
    */
-  public ChangeSite(siteId: number): void{
+  public ChangeSite(siteId: number): void {
     this.lynxService.Get("/Main/SetWorkingSite?siteId=" + siteId).subscribe(res => {
       this.router.navigate(['/']);
     }, error => console.log(error));
