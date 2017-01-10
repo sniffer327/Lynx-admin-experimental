@@ -6,15 +6,15 @@ export class LynxLoggingService {
 
   constructor() {}
 
-  static Log(description: string, string: string = ''): void {
+  static Log(description: string, element: any = ''): void {
     if (!LynxConstants.Production) {
-      console.log(description, string);
+      console.log(description, element);
     }
   }
 
-  static Error(description: string, string: string = ''): void {
+  static Error(description: string, element: any = ''): void {
     if (!LynxConstants.Production) {
-      console.error(description, string);
+      console.error(description, element);
     }
   }
 }

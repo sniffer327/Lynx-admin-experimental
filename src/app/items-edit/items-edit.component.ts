@@ -3,6 +3,7 @@ import {ItemModel} from "../Models/item.model";
 import {LynxService} from "../Services/lynx.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {CategoryModel} from "../Models/category.model";
+import {LynxLoggingService} from "../Services/lynx-logging.service";
 
 @Component({
   selector: 'app-items-edit',
@@ -68,10 +69,9 @@ export class ItemsEditComponent implements OnInit {
             }
           ];*/
 
-          console.log('Данные о товаре: ', res);
+          LynxLoggingService.Log('Данные о товаре: ', res);
         }
       )
-
   }
 
   public Save(): void {
@@ -81,8 +81,8 @@ export class ItemsEditComponent implements OnInit {
     }, error => {
     });
 
-    //console.log('Сохраняю: ', this.item);
 
+    LynxLoggingService.Log('Сохраняю: ', this.item);
   }
 
   public DeleteItem(): void {
@@ -108,10 +108,7 @@ export class ItemsEditComponent implements OnInit {
 
   ngOnInit() {
 
-    if (this.isEdit) {
-      this.GetItemInfo();
-    } else {
-      this.item = new ItemModel();
+
 
       switch (this.backPage){
         case 'items': this.item.ItemType = 1; break;
@@ -122,7 +119,10 @@ export class ItemsEditComponent implements OnInit {
     }
 
     this.GetCategories();
-
+    // Проверка - редактируем ли товар
+    (this.isEdit)
+      ? this.GetItemInfo()
+      : this.item = new ItemModel();
   }
 
 }

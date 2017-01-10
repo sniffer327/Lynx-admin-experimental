@@ -69,7 +69,7 @@ export class ItemsComponent implements OnInit {
     //this.GetCategories();
     this.GetItems();
 
-    // Параметры таблицыс товарами
+    // Параметры таблицы с товарами
     this.itemsColumns = [
       {
         header: 'ID',
