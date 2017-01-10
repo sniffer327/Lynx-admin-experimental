@@ -104,19 +104,26 @@ export class ItemsEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    
+    // Если редактирование
+    if (this.isEdit) {
 
-    // switch (this.backPage){
-    //   case 'items': this.item.ItemType = 1; break;
-    //   case 'news': this.item.ItemType = 2; break;
-    //   case 'pages': this.item.ItemType = 3; break;
-    //   default: this.item.ItemType = 1; break;
-    // }
+      this.GetItemInfo();
 
+    } else {
+
+      this.item = new ItemModel();
+
+      // Записываем в модель принадлежность текущего item
+      switch (this.backPage) {
+        case 'items': this.item.ItemType = 1; break;
+        case 'news': this.item.ItemType = 2; break;
+        case 'pages': this.item.ItemType = 3; break;
+        default: this.item.ItemType = 1; break;
+      }
+    }
+
+    // Список категорий
     this.GetCategories();
-
-    // Проверка - редактируем ли товар
-    (this.isEdit)
-      ? this.GetItemInfo()
-      : this.item = new ItemModel();
   }
 }
