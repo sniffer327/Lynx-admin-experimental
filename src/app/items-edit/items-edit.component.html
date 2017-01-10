@@ -13,7 +13,7 @@
 
 <div class="lynx-content-block">
 
-  <form action="" (ngSubmit)="Save()" #itemEditForm="ngForm" id="item-edit" *ngIf="item">
+  <form action="" (ngSubmit)="Save(true)" #itemEditForm="ngForm" id="item-edit" *ngIf="item">
 
     <div *ngIf="isEdit">
       <strong>ID</strong> редактируемого объекта - {{ item.id }}
@@ -106,7 +106,7 @@
         <label for="item-meta_keywords" class="col-form-label">
           Meta-описание
         </label>
-        <textarea class="form-control" id="item-meta_keywords" [(ngModel)]="item.meta_keywords" name="meta_keywords"></textarea>
+        <textarea class="form-control" id="item-meta_desc" [(ngModel)]="item.meta_keywords" name="meta_desc"></textarea>
       </div>
 
     </div>
@@ -117,7 +117,8 @@
 
     <hr>
 
-    <button class="btn btn-primary" type="submit">Сохранить</button>
+    <button class="btn btn-primary" type="submit">Сохранить и выйти</button>
+    <button class="btn btn-info" type="button" (click)="Save()">Сохранить</button>
     <button class="btn btn-danger" type="button" (click)="DeleteItem()">Удалить</button>
 
   </form>
