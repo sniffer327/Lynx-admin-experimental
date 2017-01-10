@@ -16,99 +16,55 @@
   <form action="" (ngSubmit)="Save()" #itemEditForm="ngForm" id="item-edit" *ngIf="item">
 
     <div class="form-group row" *ngIf="isEdit">
-      <label for="item-id" class="col-xs-2 col-form-label">ID</label>
-      <div class="col-xs-10">
+      <label for="item-id" class="col-xs-1 col-form-label">ID</label>
+      <div class="col-xs-1">
         <input class="form-control" type="text" id="item-id" [(ngModel)]="item.id" disabled name="id">
       </div>
-    </div>
 
-    <div class="form-group row">
-      <label for="item-title" class="col-xs-2 col-form-label">Наименование</label>
-      <div class="col-xs-10">
-        <input class="form-control" type="text" id="item-title" [(ngModel)]="item.title" name="title">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="item-subtitle" class="col-xs-2 col-form-label">Подзаголовок</label>
-      <div class="col-xs-10">
-        <input class="form-control" type="text" id="item-subtitle" [(ngModel)]="item.subTitle" name="subtitle">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="item-categoryid" class="col-xs-2 col-form-label">ID категории</label>
-      <div class="col-xs-10">
-        <input class="form-control" type="text" id="item-categoryid" [(ngModel)]="item.categoryId" name="categoryid">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="item-description" class="col-xs-2 col-form-label">Описание</label>
-      <div class="col-xs-10">
-        <input class="form-control" type="text" id="item-description" [(ngModel)]="item.description" name="description">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="item-meta_keywords" class="col-xs-2 col-form-label">Ключевые слова</label>
-      <div class="col-xs-10">
-        <input class="form-control" type="text" id="item-meta_keywords" [(ngModel)]="item.meta_keywords"
-               name="meta_keywords">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="item-meta_description" class="col-xs-2 col-form-label">Ключевое описание</label>
-      <div class="col-xs-10">
-        <input class="form-control" type="text" id="item-meta_description" [(ngModel)]="item.meta_description"
-               name="meta_description">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="item-prioritet" class="col-xs-2 col-form-label">Приоритет</label>
-      <div class="col-xs-10">
+      <label for="item-prioritet" class="col-xs-1 col-form-label">Приоритет</label>
+      <div class="col-xs-1">
         <input class="form-control" type="text" id="item-prioritet" [(ngModel)]="item.Prioritet" name="prioritet">
       </div>
-    </div>
 
-    <div class="form-group row">
-      <label for="item-datecreating" class="col-xs-2 col-form-label">Дата создания</label>
-      <div class="col-xs-10">
+      <label for="item-datecreating" class="col-xs-1 col-form-label">Дата создания</label>
+      <div class="col-xs-2">
         <input class="form-control" type="text" id="item-datecreating" [(ngModel)]="item.DateCreating"
                name="datecreating">
       </div>
-    </div>
 
-    <div class="form-group row">
       <label for="item-dateEditing" class="col-xs-2 col-form-label">Дата редактирования</label>
-      <div class="col-xs-10">
+      <div class="col-xs-2">
         <input class="form-control" type="text" id="item-dateEditing" [(ngModel)]="item.DateEditing"
                name="dateediting">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="item-itemtype" class="col-xs-2 col-form-label">Тип товара</label>
-      <div class="col-xs-10">
-        <input class="form-control" type="text" id="item-itemtype" [(ngModel)]="item.ItemType" name="itemtype">
+      <label for="item-title" class="col-xs-1 col-form-label">Наименование</label>
+      <div class="col-xs-4">
+        <input class="form-control" type="text" id="item-title" [(ngModel)]="item.title" name="title">
+      </div>
+
+      <label for="item-subtitle" class="col-xs-1 col-form-label">Подзаголовок</label>
+      <div class="col-xs-6">
+        <input class="form-control" type="text" id="item-subtitle" [(ngModel)]="item.subTitle" name="subtitle">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="item-parentcategory" class="col-xs-2 col-form-label">Родительская категория</label>
-      <div class="col-xs-10">
-        <input class="form-control" type="text" id="item-parentcategory" [(ngModel)]="item.ParentCategory"
-               name="parentcategory">
+      <label for="item-description" class="col-xs-1 col-form-label">Описание</label>
+      <div class="col-xs-7">
+        <input class="form-control" type="text" id="item-description" [(ngModel)]="item.description" name="description">
+      </div>
+
+      <label for="item-categoryid" class="col-xs-1 col-form-label">Категория</label>
+      <div class="col-xs-3" *ngIf="categories">
+        <select class="form-control" id="item-categoryid" [(ngModel)]="item.categoryId" name="categoryid">
+          <option *ngFor="let category of categories" [value]="category.id"> {{category.title}}</option>
+        </select>
+        <!--<input class="form-control" type="text" id="item-categoryid" [(ngModel)]="item.categoryId" name="categoryid">-->
       </div>
     </div>
-
-    <hr>
-
-    <item-images [images]="item.Images"></item-images>
-
-    <hr>
 
     <div class="form-group row">
       <label for="item-body" class="col-xs-12 col-form-label">Содержимое товара</label>
@@ -117,7 +73,33 @@
       </div>
     </div>
 
+    <div class="form-group row">
+      <label for="item-meta_keywords" class="col-xs-1 col-form-label">META Key</label>
+      <div class="col-xs-5">
+        <input class="form-control" type="text" id="item-meta_keywords" [(ngModel)]="item.meta_keywords"
+               name="meta_keywords">
+      </div>
+
+      <label for="item-meta_description" class="col-xs-1 col-form-label">META Desc</label>
+      <div class="col-xs-5">
+        <input class="form-control" type="text" id="item-meta_description" [(ngModel)]="item.meta_description"
+               name="meta_description">
+      </div>
+    </div>
+
+    <!--    <div class="form-group row">
+          <label for="item-itemtype" class="col-xs-2 col-form-label">Тип товара</label>
+          <div class="col-xs-10">
+            <input class="form-control" type="text" id="item-itemtype" [(ngModel)]="item.ItemType" name="itemtype">
+          </div>
+        </div>-->
+
+    <hr>
+    <item-images [images]="item.Images"></item-images>
+    <hr>
+
     <button class="btn btn-primary" type="submit">Сохранить</button>
+    <button class="btn btn-danger" type="button" (click)="DeleteItem()">Удалить</button>
 
   </form>
 

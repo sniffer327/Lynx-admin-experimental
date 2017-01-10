@@ -26,6 +26,7 @@ import {LynxLoggingService} from "./Services/lynx-logging.service";
 import {LynxCookiesService} from "./Services/lynx-cookies.service";
 import { LayoutComponent } from './layout/layout.component';
 import { LynxModule } from './custom-components/lynx-table/lynx-table.module';
+import {SelectModule} from 'ng2-select/ng2-select';
 
 @NgModule({
 
@@ -52,7 +53,8 @@ import { LynxModule } from './custom-components/lynx-table/lynx-table.module';
     MdCheckboxModule,
     CKEditorModule,
     routing,
-    LynxModule
+    LynxModule,
+    SelectModule
   ],
 
   providers: [

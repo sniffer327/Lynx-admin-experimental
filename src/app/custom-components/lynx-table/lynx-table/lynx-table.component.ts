@@ -8,6 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 
 export class LynxTableComponent implements OnInit {
 
+  @Input() addLink: string;
+
   // Список элементов
   @Input() items: any;
 

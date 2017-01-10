@@ -3,7 +3,8 @@
  */
 
 export class ImageModel {
-  public url: string;
-  public title: string;
+  public path: string;
+  public name: string;
   public isMain: boolean;
+  public pathPrefix: string;
 }

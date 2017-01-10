@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {LynxLoggingService} from "./lynx-logging.service";
 import {LynxCookiesService} from "./lynx-cookies.service";
+import {LoginInfoModel} from "../Models/login-info.model";
 
 @Injectable()
 export class AuthService {
@@ -47,18 +48,17 @@ export class AuthService {
     );
   }
 
+  public static LoginInfo: LoginInfoModel = new LoginInfoModel();
+  public LoginInfo: LoginInfoModel;
 
   public CheckAuth(): void {
-
     this.CheckUserAuth()
       .subscribe(
-
         res => {
-          LynxLoggingService.Log('Проверка авторизации ', res);
+          //LynxLoggingService.Log('Проверка авторизации ', res);
+          AuthService.LoginInfo = this.LoginInfo = res;
         },
-
         () => {
-
           this.router.navigate(['/auth']);
 
           LynxLoggingService.Error('Пользователь не авторизован');

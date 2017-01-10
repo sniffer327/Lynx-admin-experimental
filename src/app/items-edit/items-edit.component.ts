@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ItemModel} from "../Models/item.model";
 import {LynxService} from "../Services/lynx.service";
+import {ActivatedRoute, Params, Router} from "@angular/router";
+import {CategoryModel} from "../Models/category.model";
 import {LynxLoggingService} from "../Services/lynx-logging.service";
-import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   selector: 'app-items-edit',
@@ -15,9 +16,36 @@ export class ItemsEditComponent implements OnInit {
   private isEdit: boolean;
   public item: ItemModel;
   public id?: number;
+  public backPage: string;
+
+  public categories: CategoryModel[];
 
   constructor(private lynxService: LynxService,
+              private router: Router,
               private route: ActivatedRoute) {
+
+    this.route.url.subscribe(res => {
+      let tmp = res[0].path;
+
+      switch (tmp) {
+        case "item-edit":
+          this.backPage = "items";
+          //this.item.ItemType = 1;
+          break;
+        case "page-edit":
+          this.backPage = "pages";
+          //this.item.ItemType = 3;
+          break;
+        case "news-edit":
+          this.backPage = "news";
+          //this.item.ItemType = 2;
+          break;
+        default:
+          this.backPage = "items";
+          break;
+      }
+    }, () => console.log());
+
 
     this.route.params.forEach((params: Params) => {
       this.id = +params['id'];
@@ -33,34 +61,64 @@ export class ItemsEditComponent implements OnInit {
         res => {
           this.item = res;
 
-          this.item.Images = [
+          /*this.item.Images = [
             {
               url: 'Путь к изображению',
               title: 'Изображение',
               isMain: true
             }
-          ];
+          ];*/
 
           LynxLoggingService.Log('Данные о товаре: ', res);
         }
       )
   }
 
-  Save(): void {
-
+  public Save(): void {
     // TODO: Раскомментить, когда будет готов обработчик на сервере
-    // this.lynxService.Post('/Items', this.item)
-    //   .subscribe(
-    //     res => {
-    //       console.log('Данные успешно сохранены ');
-    //     }
-    //   )
+    this.lynxService.Post('/Items/UpdateItem', this.item).subscribe(res => {
+      this.router.navigate(['/' + this.backPage]);
+    }, error => {
+    });
+
 
     LynxLoggingService.Log('Сохраняю: ', this.item);
   }
 
+  public DeleteItem(): void {
+    this.lynxService.Get('/Items/DeleteItem?itemId=' + this.id).subscribe(res => {
+      this.router.navigate(['/' + this.backPage]);
+    }, error => {
+    });
+  }
+
+  /**
+   * Получение списка товаров
+   * @constructor
+   */
+  public GetCategories(): void {
+
+    this.lynxService.Post('/Items/GetCategoriesAsync', {})
+      .subscribe(
+        res => {
+          this.categories = res.Result;
+        }
+      );
+  }
+
   ngOnInit() {
 
+
+
+      switch (this.backPage){
+        case 'items': this.item.ItemType = 1; break;
+        case 'news': this.item.ItemType = 2; break;
+        case 'pages': this.item.ItemType = 3; break;
+        default: this.item.ItemType = 1; break;
+      }
+    }
+
+    this.GetCategories();
     // Проверка - редактируем ли товар
     (this.isEdit)
       ? this.GetItemInfo()
