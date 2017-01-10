@@ -9,6 +9,7 @@ export class ItemModel {
   public title: string;
   public subTitle: string;
   public categoryId: number;
+  public CategoryTitle: string;
   public description: string;
   public body: string;
   public meta_keywords: string;

@@ -11,13 +11,13 @@
     <md-card>
       <md-card-header>
         <md-card-title>
-          {{ image.title }}
+          {{ image.name }}
         </md-card-title>
         <md-card-subtitle>
-          {{ image.url }}
+          {{ image.path }}
         </md-card-subtitle>
       </md-card-header>
-      <img md-card-image src="/assets/images/news.jpg">
+      <img md-card-image [src]="image.pathPrefix + image.path">
       <md-card-content>
         <md-checkbox [(ngModel)]="image.isMain">
           Главное изображение

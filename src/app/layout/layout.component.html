@@ -7,6 +7,13 @@
       <i class="material-icons">menu</i>
     </button>
 
+    <select #siteSelect *ngIf="authService.LoginInfo && sitesList"
+            (change)="ChangeSite(siteSelect.value)"
+            [(ngModel)]="authService.LoginInfo.CurrentSiteId" class="form-control">
+      <option *ngFor="let site of sitesList" [value]="site.id"> {{site.siteName}}</option>
+    </select>
+
+
     <span class="example-fill-remaining-space"></span>
 
   </md-toolbar>
@@ -19,7 +26,6 @@
     </div>
 
     <ul class="sidenav-list">
-
       <li>
         <a routerLink="/items" routerLinkActive="active">
           <i class="material-icons">assignment</i> Товары
@@ -27,7 +33,7 @@
       </li>
 
       <li>
-        <a href="#">
+        <a routerLink="/pages">
           <i class="material-icons">receipt</i> Страницы
         </a>
       </li>
@@ -38,11 +44,11 @@
         </a>
       </li>
 
-      <li>
+<!--      <li>
         <a href="#">
           <i class="material-icons">account_circle</i> Пользователи
         </a>
-      </li>
+      </li>-->
 
       <li>
         <a href="#" (click)="LogOut(); false">
