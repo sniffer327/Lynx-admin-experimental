@@ -23,10 +23,12 @@ export class ItemsEditComponent implements OnInit {
   constructor(private lynxService: LynxService,
               private router: Router,
               private route: ActivatedRoute) {
-
+    
+    // Получение url параметра
     this.route.url.subscribe(res => {
       let tmp = res[0].path;
 
+      // Определяем что редактировать
       switch (tmp) {
         case "item-edit":
           this.backPage = "items";
@@ -41,16 +43,18 @@ export class ItemsEditComponent implements OnInit {
           this.backPage = "items";
           break;
       }
-    }, () => console.log());
+    });
 
-
+    // Получаем id редактируемого item
     this.route.params.forEach((params: Params) => {
       this.id = +params['id'];
     });
 
+    // Определяем - редактирование ли это
     (this.id) ? this.isEdit = true : this.isEdit = false;
   }
 
+  // Получаем данные item
   public GetItemInfo(): void {
 
     this.lynxService.Get('/Items/GetItem?itemId=' + this.id)
@@ -63,22 +67,26 @@ export class ItemsEditComponent implements OnInit {
       )
   }
 
+  // Обновление item
   public Save(): void {
-    // TODO: Раскомментить, когда будет готов обработчик на сервере
-    this.lynxService.Post('/Items/UpdateItem', this.item).subscribe(res => {
-      this.router.navigate(['/' + this.backPage]);
-    }, error => {
-    });
-
+    this.lynxService.Post('/Items/UpdateItem', this.item).subscribe(
+      res => {
+        this.router.navigate(['/' + this.backPage]);
+      },
+      error => LynxLoggingService.Error('Ошибка при обновлении', error)
+    );
 
     LynxLoggingService.Log('Сохраняю: ', this.item);
   }
 
+  // Удаление item
   public DeleteItem(): void {
-    this.lynxService.Get('/Items/DeleteItem?itemId=' + this.id).subscribe(res => {
-      this.router.navigate(['/' + this.backPage]);
-    }, error => {
-    });
+    this.lynxService.Get('/Items/DeleteItem?itemId=' + this.id).subscribe(
+      res => {
+        this.router.navigate(['/' + this.backPage]);
+      },
+      error => LynxLoggingService.Error('Ошибка при удалении', error)
+    );
   }
 
   /**
@@ -97,12 +105,12 @@ export class ItemsEditComponent implements OnInit {
 
   ngOnInit() {
 
-    switch (this.backPage){
-      case 'items': this.item.ItemType = 1; break;
-      case 'news': this.item.ItemType = 2; break;
-      case 'pages': this.item.ItemType = 3; break;
-      default: this.item.ItemType = 1; break;
-    }
+    // switch (this.backPage){
+    //   case 'items': this.item.ItemType = 1; break;
+    //   case 'news': this.item.ItemType = 2; break;
+    //   case 'pages': this.item.ItemType = 3; break;
+    //   default: this.item.ItemType = 1; break;
+    // }
 
     this.GetCategories();
 
