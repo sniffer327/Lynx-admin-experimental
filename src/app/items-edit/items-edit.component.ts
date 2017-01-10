@@ -107,11 +107,8 @@ export class ItemsEditComponent implements OnInit {
     
     // Если редактирование
     if (this.isEdit) {
-
       this.GetItemInfo();
-
     } else {
-
       this.item = new ItemModel();
 
       // Записываем в модель принадлежность текущего item

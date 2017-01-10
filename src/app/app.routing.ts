@@ -72,11 +72,13 @@ const appRoutes: Routes = [
         path: 'item-edit/:id',
         component: ItemsEditComponent
       },
+
       // Страница редактирования страницы
       {
         path: 'page-edit/:id',
         component: ItemsEditComponent
       },
+      
       // Страница редактирования новости
       {
         path: 'news-edit/:id',

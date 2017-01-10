@@ -9,20 +9,24 @@
   <div class="col-md-3 lynx-item-image" *ngFor="let image of images">
 
     <md-card>
+
       <md-card-header>
         <md-card-title>
-          {{ image.name }}
+          {{ image.name ? image.name : 'Без названия' }}
         </md-card-title>
-        <md-card-subtitle>
+        <md-card-subtitle [title]="image.path">
           {{ image.path }}
         </md-card-subtitle>
       </md-card-header>
+
       <img md-card-image [src]="image.pathPrefix + image.path">
+
       <md-card-content>
         <md-checkbox [(ngModel)]="image.isMain">
           Главное изображение
         </md-checkbox>
       </md-card-content>
+
     </md-card>
 
   </div>
