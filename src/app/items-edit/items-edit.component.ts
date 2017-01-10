@@ -30,15 +30,12 @@ export class ItemsEditComponent implements OnInit {
       switch (tmp) {
         case "item-edit":
           this.backPage = "items";
-          //this.item.ItemType = 1;
           break;
         case "page-edit":
           this.backPage = "pages";
-          //this.item.ItemType = 3;
           break;
         case "news-edit":
           this.backPage = "news";
-          //this.item.ItemType = 2;
           break;
         default:
           this.backPage = "items";
@@ -60,14 +57,6 @@ export class ItemsEditComponent implements OnInit {
       .subscribe(
         res => {
           this.item = res;
-
-          /*this.item.Images = [
-            {
-              url: 'Путь к изображению',
-              title: 'Изображение',
-              isMain: true
-            }
-          ];*/
 
           LynxLoggingService.Log('Данные о товаре: ', res);
         }
@@ -108,21 +97,18 @@ export class ItemsEditComponent implements OnInit {
 
   ngOnInit() {
 
-
-
-      switch (this.backPage){
-        case 'items': this.item.ItemType = 1; break;
-        case 'news': this.item.ItemType = 2; break;
-        case 'pages': this.item.ItemType = 3; break;
-        default: this.item.ItemType = 1; break;
-      }
+    switch (this.backPage){
+      case 'items': this.item.ItemType = 1; break;
+      case 'news': this.item.ItemType = 2; break;
+      case 'pages': this.item.ItemType = 3; break;
+      default: this.item.ItemType = 1; break;
     }
 
     this.GetCategories();
+
     // Проверка - редактируем ли товар
     (this.isEdit)
       ? this.GetItemInfo()
       : this.item = new ItemModel();
   }
-
 }
