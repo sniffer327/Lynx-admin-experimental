@@ -25,11 +25,16 @@ export class ItemsComponent implements OnInit {
 
   constructor(private lynxService: LynxService,
               private route: ActivatedRoute) {
+
     let urlSegment = "";
 
-    this.route.url.subscribe(res => {
-      urlSegment = res[0].path;
-    }, error => console.log(error));
+    this.route.url.subscribe(
+      res => {
+        urlSegment = res[0].path;
+      },
+      
+      error => LynxLoggingService.Error(error)
+    );
 
     switch (urlSegment) {
       case 'items':
@@ -60,13 +65,14 @@ export class ItemsComponent implements OnInit {
       .subscribe(
         res => {
           this.items = res.Result;
-          //LynxLoggingService.Log('Список товаров ', res.Result);
+          
+          LynxLoggingService.Log('Список товаров ', res.Result);
         }
       );
   }
 
   ngOnInit() {
-    //this.GetCategories();
+
     this.GetItems();
 
     // Параметры таблицы с товарами

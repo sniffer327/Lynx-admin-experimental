@@ -6,7 +6,9 @@ import {ImageModel} from "../../Models/image.model";
   templateUrl: './item-images.component.html',
   styleUrls: ['./item-images.component.scss']
 })
+
 export class ItemImagesComponent implements OnInit {
+
   @Input() images: ImageModel[];
 
   constructor() { }

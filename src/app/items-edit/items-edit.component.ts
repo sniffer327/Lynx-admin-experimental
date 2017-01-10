@@ -23,37 +23,38 @@ export class ItemsEditComponent implements OnInit {
   constructor(private lynxService: LynxService,
               private router: Router,
               private route: ActivatedRoute) {
-
+    
+    // Получение url параметра
     this.route.url.subscribe(res => {
       let tmp = res[0].path;
 
+      // Определяем что редактировать
       switch (tmp) {
         case "item-edit":
           this.backPage = "items";
-          //this.item.ItemType = 1;
           break;
         case "page-edit":
           this.backPage = "pages";
-          //this.item.ItemType = 3;
           break;
         case "news-edit":
           this.backPage = "news";
-          //this.item.ItemType = 2;
           break;
         default:
           this.backPage = "items";
           break;
       }
-    }, () => console.log());
+    });
 
-
+    // Получаем id редактируемого item
     this.route.params.forEach((params: Params) => {
       this.id = +params['id'];
     });
 
+    // Определяем - редактирование ли это
     (this.id) ? this.isEdit = true : this.isEdit = false;
   }
 
+  // Получаем данные item
   public GetItemInfo(): void {
 
     this.lynxService.Get('/Items/GetItem?itemId=' + this.id)
@@ -61,35 +62,31 @@ export class ItemsEditComponent implements OnInit {
         res => {
           this.item = res;
 
-          /*this.item.Images = [
-            {
-              url: 'Путь к изображению',
-              title: 'Изображение',
-              isMain: true
-            }
-          ];*/
-
           LynxLoggingService.Log('Данные о товаре: ', res);
         }
       )
   }
 
+  // Обновление item
   public Save(): void {
-    // TODO: Раскомментить, когда будет готов обработчик на сервере
-    this.lynxService.Post('/Items/UpdateItem', this.item).subscribe(res => {
-      this.router.navigate(['/' + this.backPage]);
-    }, error => {
-    });
-
+    this.lynxService.Post('/Items/UpdateItem', this.item).subscribe(
+      res => {
+        this.router.navigate(['/' + this.backPage]);
+      },
+      error => LynxLoggingService.Error('Ошибка при обновлении', error)
+    );
 
     LynxLoggingService.Log('Сохраняю: ', this.item);
   }
 
+  // Удаление item
   public DeleteItem(): void {
-    this.lynxService.Get('/Items/DeleteItem?itemId=' + this.id).subscribe(res => {
-      this.router.navigate(['/' + this.backPage]);
-    }, error => {
-    });
+    this.lynxService.Get('/Items/DeleteItem?itemId=' + this.id).subscribe(
+      res => {
+        this.router.navigate(['/' + this.backPage]);
+      },
+      error => LynxLoggingService.Error('Ошибка при удалении', error)
+    );
   }
 
   /**
@@ -107,10 +104,15 @@ export class ItemsEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    
+    // Если редактирование
+    if (this.isEdit) {
+      this.GetItemInfo();
+    } else {
+      this.item = new ItemModel();
 
-
-
-      switch (this.backPage){
+      // Записываем в модель принадлежность текущего item
+      switch (this.backPage) {
         case 'items': this.item.ItemType = 1; break;
         case 'news': this.item.ItemType = 2; break;
         case 'pages': this.item.ItemType = 3; break;
@@ -118,11 +120,7 @@ export class ItemsEditComponent implements OnInit {
       }
     }
 
+    // Список категорий
     this.GetCategories();
-    // Проверка - редактируем ли товар
-    (this.isEdit)
-      ? this.GetItemInfo()
-      : this.item = new ItemModel();
   }
-
 }

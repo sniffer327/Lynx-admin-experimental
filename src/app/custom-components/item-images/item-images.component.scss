@@ -5,3 +5,15 @@
 .lynx-item-image {
   margin-top: $main-padding;
 }
+
+.lynx-item-image md-card {
+  padding: $main-padding;
+}
+
+.lynx-item-image [md-card-image] {
+  width: calc(100% + 30px);
+  margin-top: $main-padding;
+  margin-right: -$main-padding;
+  margin-left: -$main-padding;
+  margin-bottom: $main-padding
+}
