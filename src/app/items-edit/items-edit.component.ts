@@ -23,7 +23,7 @@ export class ItemsEditComponent implements OnInit {
   constructor(private lynxService: LynxService,
               private router: Router,
               private route: ActivatedRoute) {
-    
+
     // Получение url параметра
     this.route.url.subscribe(res => {
       let tmp = res[0].path;
@@ -68,10 +68,12 @@ export class ItemsEditComponent implements OnInit {
   }
 
   // Обновление item
-  public Save(): void {
+  public Save(exit?: boolean): void {
     this.lynxService.Post('/Items/UpdateItem', this.item).subscribe(
       res => {
-        this.router.navigate(['/' + this.backPage]);
+        if (exit == true){
+          this.router.navigate(['/' + this.backPage]);
+        }
       },
       error => LynxLoggingService.Error('Ошибка при обновлении', error)
     );
@@ -104,7 +106,7 @@ export class ItemsEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
     // Если редактирование
     if (this.isEdit) {
       this.GetItemInfo();
