@@ -7,13 +7,6 @@
       <i class="material-icons">menu</i>
     </button>
 
-    <select #siteSelect *ngIf="authService.LoginInfo && sitesList"
-            (change)="ChangeSite(siteSelect.value)"
-            [(ngModel)]="authService.LoginInfo.CurrentSiteId" class="form-control">
-      <option *ngFor="let site of sitesList" [value]="site.id"> {{site.siteName}}</option>
-    </select>
-
-
     <span class="example-fill-remaining-space"></span>
 
   </md-toolbar>
@@ -23,6 +16,14 @@
       <a routerLink="/">
         Lynx CMS Admin
       </a>
+    </div>
+
+    <div>
+      <select #siteSelect *ngIf="authService.LoginInfo && sitesList"
+            (change)="ChangeSite(siteSelect.value)"
+            [(ngModel)]="authService.LoginInfo.CurrentSiteId" class="form-control">
+        <option *ngFor="let site of sitesList" [value]="site.id"> {{site.siteName}}</option>
+      </select>
     </div>
 
     <ul class="sidenav-list">
