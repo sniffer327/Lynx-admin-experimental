@@ -6,28 +6,37 @@
     <button class="btn btn-primary">+ Добавить</button>
   </div>
 
-  <div class="col-md-3 lynx-item-image" *ngFor="let image of images">
+  <div class="col-xs-12">
 
-    <md-card>
+    <table class="table table-bordered table-stripped item-images-table">
+      <tbody>
 
-      <md-card-header>
-        <md-card-title>
-          {{ image.name ? image.name : 'Без названия' }}
-        </md-card-title>
-        <md-card-subtitle [title]="image.path">
-          {{ image.path }}
-        </md-card-subtitle>
-      </md-card-header>
+        <tr *ngFor="let image of images">
 
-      <img md-card-image [src]="image.pathPrefix + image.path">
+          <td>
+            <img [src]="image.pathPrefix + image.path">
+          </td>
 
-      <md-card-content>
-        <md-checkbox [(ngModel)]="image.isMain">
-          Главное изображение
-        </md-checkbox>
-      </md-card-content>
+          <td>
+            {{ image.name ? image.name : 'Без названия' }}
+          </td>
 
-    </md-card>
+          <td>
+            <span [title]="image.path">
+            {{ image.path }}
+          </span>
+          </td>
+
+          <td>
+            <md-checkbox [(ngModel)]="image.isMain">
+              Главное изображение
+            </md-checkbox>
+          </td>
+
+        </tr>
+
+      </tbody>
+    </table>
 
   </div>
 
