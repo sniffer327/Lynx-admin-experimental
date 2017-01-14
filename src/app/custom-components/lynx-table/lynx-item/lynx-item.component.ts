@@ -42,7 +42,7 @@ export class LynxItemComponent implements OnInit {
     }
 
     return data;
-  }  
+  }
 
   // Получаем шаблон
   public GetTemplate(): string {
@@ -58,7 +58,7 @@ export class LynxItemComponent implements OnInit {
     // Если ссылка
     if (template.type === 'link') {
       this.CreateLinkTemplate(template);
-    }          
+    }
 
     return template.type;
   }
@@ -73,7 +73,7 @@ export class LynxItemComponent implements OnInit {
 
   // Создаём шаблон для ссылки
   private CreateLinkTemplate(template: IItemTemplate): void {
-    
+
     // Url для ссылки
     let link = template.linkUrl;
 
