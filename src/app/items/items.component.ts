@@ -32,7 +32,7 @@ export class ItemsComponent implements OnInit {
       res => {
         urlSegment = res[0].path;
       },
-      
+
       error => LynxLoggingService.Error(error)
     );
 
@@ -65,7 +65,7 @@ export class ItemsComponent implements OnInit {
       .subscribe(
         res => {
           this.items = res.Result;
-          
+
           LynxLoggingService.Log('Список товаров ', res.Result);
         }
       );
@@ -88,6 +88,9 @@ export class ItemsComponent implements OnInit {
           type: 'link',
           linkUrl: '/' + this.editUrlSegment,
           param: 'id'
+        },
+        styles: {
+          'text-align': 'left'
         }
       },
       {

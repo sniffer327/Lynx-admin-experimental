@@ -7,7 +7,8 @@ export interface IItemColumn {
   header: string,
   data: string,
   pipe?: string,
-  template?: IItemTemplate
+  template?: IItemTemplate,
+  styles?: any
 }
 
 // Интерфейс для шаблона элемента таблицы
