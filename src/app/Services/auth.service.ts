@@ -36,11 +36,8 @@ export class AuthService {
 
     this.lynxService.Get('/Account/LogOut').subscribe(
       () => {
-
         this.cookies.DestroyAuthCookies();
-
         this.router.navigate(['/auth']);
-
         LynxLoggingService.Log('Выход из аккаунта');
       },
 
@@ -56,12 +53,10 @@ export class AuthService {
       .subscribe(
         res => {
           LynxLoggingService.Log('Проверка авторизации ', res);
-          
           AuthService.LoginInfo = this.LoginInfo = res;
         },
         () => {
           this.router.navigate(['/auth']);
-
           LynxLoggingService.Error('Пользователь не авторизован');
         }
       );
