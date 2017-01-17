@@ -1,6 +1,9 @@
 <!--Разметка для элемента таблицы-->
-<span *ngIf="GetTemplate() === null">{{ GetData() }}</span>
+<span *ngIf="GetTemplate() === null">
+  {{ GetData() }}
+</span>
 
+<!--Разметка для ссылки-->
 <a *ngIf="GetTemplate() === 'link'" [routerLink]="[columnLink, columnLinkParam]">
     {{ GetData() }}
 </a>

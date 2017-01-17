@@ -22,11 +22,8 @@ export class AuthorizationComponent implements OnInit {
 
     this.authService.Login(login, password)
       .subscribe(
-
         res => {
-
           this.LoginHandler(res);
-
           this.cookieService.put(LynxConstants.SessionCookieKey, 'true');
         },
 
@@ -37,7 +34,7 @@ export class AuthorizationComponent implements OnInit {
   private LoginHandler(response: any): void {
 
     if (response != null || response.email != null) {
-
+      this.authService.CheckAuth();
       this.router.navigate(['/']);
 
       console.log('Успешная авторизация');
