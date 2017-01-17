@@ -9,10 +9,10 @@
       </a>
     </div>
 
-    <div>
+    <div class="input-field col s12">
       <select #siteSelect *ngIf="authService.LoginInfo && sitesList"
               (change)="ChangeSite(siteSelect.value)"
-              [(ngModel)]="authService.LoginInfo.CurrentSiteId" class="input-field col s12">
+              [(ngModel)]="authService.LoginInfo.CurrentSiteId">
         <option *ngFor="let site of sitesList" [value]="site.id"> {{site.siteName}}</option>
         <label>Сайты</label>
       </select>

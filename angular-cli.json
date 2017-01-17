@@ -16,7 +16,7 @@
       "mobile": false,
       "styles": [
         "../node_modules/material-design-icons/iconfont/material-icons.css",
-        "../node_modules/materialize-sass/sass/materialize.scss",
+        "../node_modules/materialize-css/sass/materialize.scss",
         "styles.scss"
       ],
       "scripts": [
