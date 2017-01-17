@@ -1,5 +1,10 @@
 // Main variables
 
+// Z-indexes
+$main-z: 100;
+$toolbar-z: 900;
+$side-nav-z: 999;
+
 // Colors
 $main-color: #2196F3;
 $sub-color: #1976D2;
@@ -24,3 +29,6 @@ $main-padding: 15px;
 
 // Heights
 $header-height: 64px;
+
+// Layout vars
+$side-nav-w: 250px;

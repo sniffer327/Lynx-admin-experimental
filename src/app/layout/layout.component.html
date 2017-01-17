@@ -1,18 +1,9 @@
 <!--Основной layout-->
-<md-sidenav-layout fullscreen class="lynx-layout">
+<section [ngClass]="SideNav()" class="lynx-layout">
 
-  <md-toolbar color="primary" class="lynx-toolbar">
+  <aside class="lynx-side-nav">
 
-    <button md-icon-button (click)="sidenav.toggle()">
-      <i class="material-icons">menu</i>
-    </button>
-
-    <span class="example-fill-remaining-space"></span>
-
-  </md-toolbar>
-
-  <md-sidenav #sidenav mode="side" [opened]="true">
-    <div class="sidenav-header">
+    <div class="lynx-brand">
       <a routerLink="/">
         Lynx CMS Admin
       </a>
@@ -20,9 +11,10 @@
 
     <div>
       <select #siteSelect *ngIf="authService.LoginInfo && sitesList"
-            (change)="ChangeSite(siteSelect.value)"
-            [(ngModel)]="authService.LoginInfo.CurrentSiteId" class="form-control">
+              (change)="ChangeSite(siteSelect.value)"
+              [(ngModel)]="authService.LoginInfo.CurrentSiteId" class="input-field col s12">
         <option *ngFor="let site of sitesList" [value]="site.id"> {{site.siteName}}</option>
+        <label>Сайты</label>
       </select>
     </div>
 
@@ -34,13 +26,13 @@
       </li>
 
       <li>
-        <a routerLink="/pages">
+        <a routerLink="/pages" routerLinkActive="active">
           <i class="material-icons">receipt</i> Страницы
         </a>
       </li>
 
       <li>
-        <a routerLink="/news">
+        <a routerLink="/news" routerLinkActive="active">
           <i class="material-icons">fiber_new</i> Новости
         </a>
       </li>
@@ -50,14 +42,30 @@
           <i class="material-icons">exit_to_app</i> Выйти
         </a>
       </li>
-
     </ul>
 
-  </md-sidenav>
+  </aside>
 
   <!-- Routed views go here -->
   <div class="lynx-container">
+
+    <nav class="lynx-toolbar">
+      <div class="nav-wrapper">
+
+        <a (click)="ToggleSideNav()" class="btn-floating blue">
+          <i class="material-icons">menu</i>
+        </a>
+
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="sass.html">Sass</a></li>
+          <li><a href="badges.html">Components</a></li>
+          <li><a href="collapsible.html">JavaScript</a></li>
+        </ul>
+
+      </div>
+    </nav>
+
     <router-outlet></router-outlet>
   </div>
 
-</md-sidenav-layout>
+</section>

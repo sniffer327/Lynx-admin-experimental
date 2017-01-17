@@ -1,4 +1,11 @@
 // Layout styles
+html, body, .lynx-layout {
+  height: 100%;
+}
+
+.lynx-layout {
+  position: relative;
+}
 
 // Общие стили
 .material-icons {
@@ -6,22 +13,23 @@
 }
 
 // Главная панель навигации
-md-toolbar.lynx-toolbar.md-primary {
+.lynx-toolbar {
   background: $main-color;
+  z-index: $toolbar-z;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 0 $main-padding;
 }
 
-// Боковое меню
-.lynx-layout md-sidenav {
-  width: 250px;
-  background-color: $dark-color;
-  color: $white-dark-color;
-}
-
-.sidenav-header {
-  height: $header-height;
-  background-color: $sub-color;
+.lynx-brand {
   color: $white-color;
   font-size: $header-size;
+  width: $side-nav-w;
+  height: $header-height;
+  background-color: $main-color;
+  border-left: none;
 
   a {
     height: $header-height;
@@ -30,6 +38,38 @@ md-toolbar.lynx-toolbar.md-primary {
     @include white-dark-link;
     @include flex-center;
   }
+}
+
+nav .nav-wrapper i {
+  line-height: inherit;
+  height: inherit;
+}
+
+// Боковое меню
+.lynx-layout .lynx-side-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: $side-nav-z;
+  width: $side-nav-w;
+  background-color: $dark-color;
+  color: $white-dark-color;
+  transform: translateX(-$side-nav-w);
+
+  @include transition;
+}
+
+.lynx-layout.sidenav-opened {
+
+  .lynx-side-nav {
+    transform: translateX(0);
+  }
+
+  .lynx-container {
+    margin-left: $side-nav-w;
+  }
+
 }
 
 .sidenav-list {
@@ -58,12 +98,11 @@ md-toolbar.lynx-toolbar.md-primary {
 }
 
 // Контентная часть
-.md-sidenav-content {
-  background-color: $background-color;
-}
-
 .lynx-container {
-  padding: $main-padding;
+  position: relative;
+  padding: $header-height + $main-padding $main-padding $main-padding;
+  background-color: $background-color;
+  min-height: 100%;
 }
 
 .lynx-content-block {
