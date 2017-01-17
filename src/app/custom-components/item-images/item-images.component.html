@@ -9,12 +9,21 @@
   <div class="col-xs-12">
 
     <table class="table table-bordered table-stripped item-images-table">
+      <thead>
+        <tr>
+          <th>Изображение</th>
+          <th>Название</th>
+          <th>Путь</th>
+          <th>Главное изображение</th>
+          <th>Действие</th>
+        </tr>
+      </thead>
       <tbody>
 
         <tr *ngFor="let image of images">
 
           <td>
-            <img [src]="image.pathPrefix + image.path">
+            <img [src]="image.pathPrefix + image.path" onError="this.src='/assets/images/no-image.jpg'">
           </td>
 
           <td>
@@ -22,15 +31,17 @@
           </td>
 
           <td>
-            <span [title]="image.path">
-            {{ image.path }}
-          </span>
+            <input [(ngModel)]="image.path" class="item-input" type="text" placeholder="Введите путь к изображению">
           </td>
 
           <td>
-            <md-checkbox [(ngModel)]="image.isMain">
-              Главное изображение
-            </md-checkbox>
+            <md-checkbox [(ngModel)]="image.isMain"></md-checkbox>
+          </td>
+
+          <td>
+            <button title="Удалить" class="btn btn-sm btn-danger">
+              <i class="material-icons">close</i>
+            </button>
           </td>
 
         </tr>
