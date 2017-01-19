@@ -1,4 +1,4 @@
-// Material initialization
+// Material styles
 
 @include md-core();
 
@@ -17,4 +17,13 @@ $theme: md-light-theme($primary, $accent);
   $dark-theme: md-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
   @include angular-material-theme($dark-theme);
+}
+
+// Default input full width
+md-input-container, md-select {
+  width: 100%;
+}
+
+md-select {
+  margin-top: 1rem;
 }
