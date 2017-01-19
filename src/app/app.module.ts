@@ -19,6 +19,7 @@ import {LynxLoggingService} from "./Services/lynx-logging.service";
 import {LynxCookiesService} from "./Services/lynx-cookies.service";
 import { LayoutComponent } from './layout/layout.component';
 import { LynxModule } from './custom-components/lynx-table/lynx-table.module';
+import { MaterialModule } from '@angular/material';
 
 @NgModule({
 
@@ -38,7 +39,8 @@ import { LynxModule } from './custom-components/lynx-table/lynx-table.module';
     HttpModule,
     CKEditorModule,
     routing,
-    LynxModule
+    LynxModule,
+    MaterialModule.forRoot()
   ],
 
   providers: [

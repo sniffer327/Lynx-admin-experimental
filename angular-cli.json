@@ -16,14 +16,12 @@
       "mobile": false,
       "styles": [
         "../node_modules/material-design-icons/iconfont/material-icons.css",
-        "../node_modules/materialize-css/sass/materialize.scss",
+        "material2-app-theme.scss",
         "styles.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
-        "../node_modules/tether/dist/js/tether.js",
-        "../node_modules/materialize-css/dist/js/materialize.js",
-        "../js/site.js"
+        "../node_modules/tether/dist/js/tether.js"
       ],
       "environments": {
         "source": "environments/environment.ts",
