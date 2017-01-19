@@ -1,5 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "assets/sass/vars",
-"assets/sass/mixins",
-"assets/sass/layout";
+
+
+// Material
+@import '~@angular/material/core/theming/all-theme';
+
+// Lynx styles
+@import "assets/sass/default",
+        "assets/sass/vars",
+        "assets/sass/mixins",
+        "assets/sass/layout";
+
+// Material initialization
+@include md-core();
+
+$primary: md-palette($md-deep-purple);
+$accent:  md-palette($md-amber, A200, A100, A400);
+
+$theme: md-light-theme($primary, $accent);
+
+@include angular-material-theme($theme);
+
+.m2app-dark {
+  $dark-primary: md-palette($md-pink, 700, 500, 900);
+  $dark-accent:  md-palette($md-blue-grey, A200, A100, A400);
+  $dark-warn:    md-palette($md-deep-orange);
+
+  $dark-theme: md-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+  @include angular-material-theme($dark-theme);
+}
