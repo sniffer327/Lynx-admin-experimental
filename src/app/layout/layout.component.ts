@@ -14,6 +14,8 @@ export class LayoutComponent implements OnInit {
   public sitesList: any[];
   public loginInfo: LoginInfoModel;
 
+  public sidebarState: boolean = true;
+
   constructor(public authService: AuthService,
               private router: Router,
               private lynxService: LynxService) {
@@ -47,6 +49,23 @@ export class LayoutComponent implements OnInit {
     this.lynxService.Get("/Main/SetWorkingSite?siteId=" + siteId).subscribe(res => {
       this.router.navigate(['/']);
     }, error => console.log(error));
+  }
+
+  /**
+   * Текущее состояние боковой панели
+   * @returns {string|string}
+   * @constructor
+   */
+  public SideNav(): string {
+    return (this.sidebarState) ? 'sidenav-opened' : '';
+  }
+
+  /**
+   * Переключатель боковой панели
+   * @constructor
+   */
+  public ToggleSideNav(): void {
+    this.sidebarState = !this.sidebarState;
   }
 
 }

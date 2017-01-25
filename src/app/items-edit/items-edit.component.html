@@ -15,79 +15,77 @@
 
   <form action="" (ngSubmit)="Save(true)" #itemEditForm="ngForm" id="item-edit" *ngIf="item">
 
-    <div *ngIf="isEdit">
-      <strong>ID</strong> редактируемого объекта - {{ item.id }}
+    <div *ngIf="isEdit"  class="row">
+      <div class="col-xs-12">
+        <md-toolbar color="primary">
+          ID редактируемого объекта - {{ item.id }}
+        </md-toolbar>
+      </div>
     </div>
 
-    <hr>
+    <hr *ngIf="isEdit" >
 
     <div *ngIf="isEdit" class="row">
 
       <div class="form-group col-md-4">
-        <label for="item-prioritet" class="col-form-label">
-          Приоритет
-        </label>
-        <input class="form-control" type="text" id="item-prioritet" [(ngModel)]="item.Prioritet" name="prioritet">
+        <md-input-container class="example-full-width">
+          <input md-input type="text" [(ngModel)]="item.Prioritet" name="prioritet" placeholder="Приоритет">
+        </md-input-container>
       </div>
 
       <div class="form-group col-md-4">
-        <label for="item-datecreating" class="col-form-label">
-          Дата создания
-        </label>
-        <input class="form-control" type="text" id="item-datecreating" [(ngModel)]="item.DateCreating" name="datecreating">
+        <md-input-container class="example-full-width">
+          <input md-input type="text" [(ngModel)]="item.DateCreating" name="datecreating" placeholder="Дата создания">
+        </md-input-container>
       </div>
 
       <div class="form-group col-md-4">
-        <label for="item-dateEditing" class="col-form-label">
-          Дата редактирования
-        </label>
-        <input class="form-control" type="text" id="item-dateEditing" [(ngModel)]="item.DateEditing" name="dateediting">
+        <md-input-container class="example-full-width">
+          <input md-input type="text" [(ngModel)]="item.DateEditing" name="dateediting" placeholder="Дата редактирования">
+        </md-input-container>
       </div>
 
     </div>
 
-    <hr>
-
     <div class="row">
 
       <div class="form-group col-md-12">
-        <label for="item-title" class="col-form-label">
-          Наименование
-        </label>
-        <input class="form-control" type="text" id="item-title" [(ngModel)]="item.title" name="title">
+        <md-input-container class="example-full-width">
+          <input md-input type="text" [(ngModel)]="item.title" name="title" placeholder="Наименование">
+        </md-input-container>
       </div>
 
       <div class="form-group col-md-6">
-        <label for="item-subtitle" class="col-form-label">
-          Подзаголовок
-        </label>
-        <input class="form-control" type="text" id="item-subtitle" [(ngModel)]="item.subTitle" name="subtitle">
+        <md-input-container class="example-full-width">
+          <input md-input type="text" [(ngModel)]="item.subTitle" name="subtitle" placeholder="Подзаголовок">
+        </md-input-container>
       </div>
 
       <div class="form-group col-md-6">
-        <label for="item-description" class="col-form-label">
-          Описание
-        </label>
-        <input class="form-control" type="text" id="item-description" [(ngModel)]="item.description" name="description">
+        <md-input-container class="example-full-width">
+          <input md-input type="text" [(ngModel)]="item.description" name="description" placeholder="Описание">
+        </md-input-container>
       </div>
 
       <div class="form-group col-md-12">
-        <label for="item-categoryid" class="col-form-label">
-          Категория
-        </label>
         <div *ngIf="categories">
-          <select class="form-control" id="item-categoryid" [(ngModel)]="item.categoryId" name="categoryid">
-            <option *ngFor="let category of categories" [value]="category.id"> {{category.title}}</option>
-          </select>
+          <md-select placeholder="Категория" [(ngModel)]="item.categoryId" name="categoryid">
+            <md-option *ngFor="let category of categories" [value]="category.id">
+              {{category.title}}
+            </md-option>
+          </md-select>
         </div>
       </div>
 
     </div>
 
-    <hr>
-
     <div class="form-group row">
-      <label for="item-body" class="col-xs-12 col-form-label">Содержимое товара</label>
+      <div class="col-xs-12">
+        <md-toolbar color="primary">
+          <span>Содержимое товара</span>
+        </md-toolbar>
+      </div>
+
       <div class="col-xs-12">
         <ckeditor name="body" id="item-body" [(ngModel)]="item.body"></ckeditor>
       </div>

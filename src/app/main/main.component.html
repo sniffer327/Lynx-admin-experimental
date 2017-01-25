@@ -2,23 +2,30 @@
 
 <div class="row">
 
-  <div class="col-md-4" *ngFor="let module of modules">
+  <div *ngFor="let module of modules" class="col-md-4">
+
     <md-card>
       <md-card-header>
-        <md-card-title>
-          <a [routerLink]="module.url">{{ module.title }}</a>
-        </md-card-title>
-        <md-card-subtitle>
-          {{ module.subtitle }}
-        </md-card-subtitle>
+        <a [routerLink]="module.url">
+          {{ module.title }}
+        </a>
       </md-card-header>
+
       <img md-card-image [src]="module.img">
+
       <md-card-content>
         <p>
           {{ module.description }}
         </p>
       </md-card-content>
+
+      <md-card-actions>
+        <a [routerLink]="module.url" md-button="">
+          Перейти
+        </a>
+      </md-card-actions>
     </md-card>
+
   </div>
 
 </div>
