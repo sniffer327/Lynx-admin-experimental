@@ -15,15 +15,15 @@
 
   <form action="" (ngSubmit)="Save(true)" #itemEditForm="ngForm" id="item-edit" *ngIf="item">
 
-    <div class="row">
-      <div *ngIf="isEdit" class="col-xs-12">
+    <div *ngIf="isEdit"  class="row">
+      <div class="col-xs-12">
         <md-toolbar color="primary">
-          <strong>ID</strong> редактируемого объекта - {{ item.id }}
+          ID редактируемого объекта - {{ item.id }}
         </md-toolbar>
       </div>
     </div>
 
-    <hr>
+    <hr *ngIf="isEdit" >
 
     <div *ngIf="isEdit" class="row">
 
