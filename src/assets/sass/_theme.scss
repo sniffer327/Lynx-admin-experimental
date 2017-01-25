@@ -1,0 +1,11 @@
+// Main theme styles
+
+@import "vars";
+
+a {
+  color: $main-color;
+
+  &:hover, &:focus, &:active {
+    color: $sub-color;
+  }
+}

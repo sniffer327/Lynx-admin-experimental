@@ -1,29 +1,32 @@
 /**
  * Created by sniffer on 19.12.16.
  */
-import { NgModule }      from '@angular/core';
+import {NgModule}      from '@angular/core';
 import {CommonModule, DatePipe} from '@angular/common';
-import { RouterModule } from "@angular/router";
+import {RouterModule} from "@angular/router";
 
-import { LynxTableComponent } from "./lynx-table/lynx-table.component";
-import { LynxItemComponent } from './lynx-item/lynx-item.component';
+import {LynxTableComponent} from "./lynx-table/lynx-table.component";
+import {LynxItemComponent} from './lynx-item/lynx-item.component';
+import {MaterialModule} from "@angular/material";
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MaterialModule
   ],
 
   declarations: [
     LynxTableComponent,
-    LynxItemComponent
+    LynxItemComponent,
   ],
 
   providers: [
     DatePipe
   ],
 
-  exports: [ LynxTableComponent ]
+  exports: [LynxTableComponent]
 })
 
-export class LynxModule { }
+export class LynxModule {
+}

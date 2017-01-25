@@ -13,11 +13,18 @@
 .lynx-toolbar {
   background: $main-color;
   z-index: $toolbar-z;
+  height: $header-height;
+  line-height: $header-height;
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
   padding: 0 $main-padding;
+}
+
+button.toggle-sidenav {
+  color: $white-color;
+  outline: none;
 }
 
 .lynx-brand {

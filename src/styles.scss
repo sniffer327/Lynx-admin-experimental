@@ -7,8 +7,9 @@
 @import "../node_modules/sass-bootstrap-grid-only/assets/stylesheets/bootstrap-custom";
 
 // Lynx styles
-@import "assets/sass/material",
-        "assets/sass/default",
-        "assets/sass/vars",
+@import "assets/sass/vars",
         "assets/sass/mixins",
-        "assets/sass/layout";
+        "assets/sass/default",
+        "assets/sass/theme",
+        "assets/sass/layout",
+        "assets/sass/material";
