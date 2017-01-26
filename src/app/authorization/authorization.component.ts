@@ -17,21 +17,30 @@ export class AuthorizationComponent implements OnInit {
               private cookieService: CookieService) {
   }
 
-
-  public Login(login: string, password: string): void {
+  /**
+   * Вход в админку
+   * @param login Логин
+   * @param password Пароль
+   */
+  public login(login: string, password: string): void {
 
     this.authService.Login(login, password)
       .subscribe(
         res => {
-          this.LoginHandler(res);
+          this.loginHandler(res);
           this.cookieService.put(LynxConstants.SessionCookieKey, 'true');
         },
 
-        error => this.LoginHandler(error)
+        error => this.loginHandler(error)
       );
   }
 
-  private LoginHandler(response: any): void {
+  /**
+   * Обработчик входа в админку
+   * @param response
+   * @constructor
+   */
+  private loginHandler(response: any): void {
 
     if (response != null || response.email != null) {
       this.authService.CheckAuth();
