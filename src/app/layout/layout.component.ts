@@ -11,9 +11,16 @@ import {Router} from "@angular/router";
 })
 export class LayoutComponent implements OnInit {
 
-  public sitesList: any[];
+  // Информация о пользователе
   public loginInfo: LoginInfoModel;
 
+  // Список сайтов
+  public sitesList: any[];
+
+  // Имя текущего сайта
+  public currentSiteName: string;
+
+  // Полощение sidebar
   public sidebarState: boolean = true;
 
   constructor(public authService: AuthService,
@@ -21,32 +28,43 @@ export class LayoutComponent implements OnInit {
               private lynxService: LynxService) {
   }
 
-  ngOnInit() {
-    this.GetSites();
-    this.loginInfo = AuthService.LoginInfo;
-  }
-
-  public LogOut(): void {
+  /**
+   * Выход из приложения
+   * @constructor
+   */
+  public logOut(): void {
     this.authService.Logout();
   }
 
   /**
    * Получаем список сайтов, принадлежащих пользователю
+   * Делаем активным выбранный сайт
    * @constructor
    */
-  private GetSites(): void {
+  private getSites(): void {
     this.lynxService.Get("/Main/GetSitesForUser").subscribe(res => {
       this.sitesList = res;
+
+      let siteId = AuthService.LoginInfo.CurrentSiteId;
+
+      let currentSiteId = this.sitesList.find((item) => item.id === siteId);
+
+      this.currentSiteName = currentSiteId.siteName;
     }, error => console.log(error));
   }
 
   /**
    * Назначаем отображаемй сайт
-   * @param siteId
+   * @param siteId id сайта
+   * @param siteName Наименование сайта
    * @constructor
    */
-  public ChangeSite(siteId: number): void {
-    this.lynxService.Get("/Main/SetWorkingSite?siteId=" + siteId).subscribe(res => {
+  public changeSite(siteId: number, siteName: string): void {
+    this.loginInfo.CurrentSiteId = siteId;
+
+    this.currentSiteName = siteName;
+
+    this.lynxService.Get("/Main/SetWorkingSite?siteId=" + siteId).subscribe(() => {
       this.router.navigate(['/']);
     }, error => console.log(error));
   }
@@ -56,7 +74,7 @@ export class LayoutComponent implements OnInit {
    * @returns {string|string}
    * @constructor
    */
-  public SideNav(): string {
+  public sideNav(): string {
     return (this.sidebarState) ? 'sidenav-opened' : '';
   }
 
@@ -64,8 +82,13 @@ export class LayoutComponent implements OnInit {
    * Переключатель боковой панели
    * @constructor
    */
-  public ToggleSideNav(): void {
+  public toggleSideNav(): void {
     this.sidebarState = !this.sidebarState;
   }
 
+  ngOnInit() {
+    this.loginInfo = AuthService.LoginInfo;
+
+    this.getSites();
+  }
 }

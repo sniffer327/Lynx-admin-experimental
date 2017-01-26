@@ -1,5 +1,5 @@
 <!--Основной layout-->
-<section [ngClass]="SideNav()" class="lynx-layout">
+<section [ngClass]="sideNav()" class="lynx-layout">
 
   <aside class="lynx-side-nav">
 
@@ -7,15 +7,6 @@
       <a routerLink="/">
         Lynx CMS Admin
       </a>
-    </div>
-
-    <div class="input-field col s12">
-      <select #siteSelect *ngIf="authService.LoginInfo && sitesList"
-              (change)="ChangeSite(siteSelect.value)"
-              [(ngModel)]="authService.LoginInfo.CurrentSiteId">
-        <option *ngFor="let site of sitesList" [value]="site.id"> {{site.siteName}}</option>
-        <label>Сайты</label>
-      </select>
     </div>
 
     <ul class="sidenav-list">
@@ -38,7 +29,7 @@
       </li>
 
       <li>
-        <a href="#" (click)="LogOut(); false">
+        <a href="#" (click)="logOut(); false">
           <i class="material-icons">exit_to_app</i> Выйти
         </a>
       </li>
@@ -49,11 +40,26 @@
   <div class="lynx-container">
 
     <nav class="lynx-toolbar">
-      <div class="nav-wrapper">
+      <div class="nav-wrapper row">
 
-        <button md-icon-button (click)="ToggleSideNav()" class="toggle-sidenav">
-          <i class="material-icons">menu</i>
-        </button>
+          <div class="col-sm-4 text-left">
+            <button md-icon-button (click)="toggleSideNav()" class="toggle-sidenav">
+              <i class="material-icons">menu</i>
+            </button>
+          </div>
+
+          <div class="col-sm-8 text-right">
+            <button *ngIf="authService.LoginInfo && sitesList"
+                    class="toolbar-sites" [mdMenuTriggerFor]="sites" md-button>
+              Текущий сайт: {{ currentSiteName }}
+            </button>
+            <md-menu #sites="mdMenu">
+              <button *ngFor="let site of sitesList"
+                      (click)="changeSite(site.id, site.siteName)" md-menu-item>
+                <span>{{ site.siteName }}</span>
+              </button>
+            </md-menu>
+          </div>
 
       </div>
     </nav>

@@ -9,11 +9,7 @@
   top: 0;
   left: 0;
   bottom: 0;
-  background-color: #154265 20%;
-  background-image: radial-gradient(farthest-side ellipse at 10% 0, #3d77a5 20%, #60718a);
-  background-image: -webkit-radial-gradient(10% 0, farthest-side ellipse, #3d77a5 20%, #60718a);
-  background-image: -moz-radial-gradient(10% 0, farthest-side ellipse, #3d77a5 20%, #60718a);
-  background-attachment: fixed, fixed;
+  background-color: #212121;
 }
 
 .lynx-auth-form {
@@ -23,26 +19,30 @@
   left: 0;
   transform: translateY(-50%);
   margin: 0 auto;
-  width: 540px;
+  width: 300px;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 2px;
+  background-color: #424242;
+  box-shadow: 0 5px 30px 10px rgba(0, 0, 0, 0.25);
 
   & > div {
     padding: $main-padding;
   }
 
   .lynx-auth-form__title {
-    background-color: $main-color;
-    color: $white-color;
+    background-color: #383838;
+    color: $main-color;
     font-size: 22px;
   }
 
   .lynx-auth-form__content {
     padding-top: $main-padding + $main-padding;
-  }
 
-  .lynx-auth-form__content input + input {
-    margin-top: $main-padding;
+    .md-input-element {
+      color: #EEEEEE;
+    }
+
+    input + input {
+      margin-top: $main-padding;
+    }
   }
 }
