@@ -3,7 +3,7 @@
   <span class="col-xs-12 col-form-label">Изображения</span>
 
   <div class="col-xs-12">
-    <button class="btn btn-primary">+ Добавить</button>
+    <button type="button" class="btn btn-primary" (click)="AddImage()">+ Добавить</button>
   </div>
 
   <div class="col-xs-12">
@@ -18,16 +18,16 @@
           <th>Действие</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody [dragula]="'images-bag'" [dragulaModel]='images'>
 
         <tr *ngFor="let image of images">
 
           <td>
-            <img [src]="image.pathPrefix + image.path" onError="this.src='/assets/images/no-image.jpg'">
+            <img [src]="image.pathPrefix + image.path" style="max-width: 140px;" onError="src='/assets/images/no-image.jpg'">
           </td>
 
           <td>
-            {{ image.name ? image.name : 'Без названия' }}
+            <input [(ngModel)]="image.name" class="item-input" type="text" placeholder="Без названия">
           </td>
 
           <td>
@@ -35,12 +35,16 @@
           </td>
 
           <td>
-            <md-checkbox [(ngModel)]="image.isMain"></md-checkbox>
+            <md-checkbox class="main-checkbox" [(ngModel)]="image.isMain"></md-checkbox>
           </td>
 
           <td>
-            <button title="Удалить" class="btn btn-sm btn-danger">
+            <button title="Удалить" type="button" (click)="DeleteImage(image)" class="btn btn-sm btn-danger">
               <i class="material-icons">close</i>
+            </button>
+
+            <button title="Перетащить" class="btn btn-sm btn-info dnd-cursor">
+              <i class="material-icons dnd-cursor">swap_vert</i>
             </button>
           </td>
 
