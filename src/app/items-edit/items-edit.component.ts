@@ -4,7 +4,6 @@ import {LynxService} from "../Services/lynx.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {CategoryModel} from "../Models/category.model";
 import {LynxLoggingService} from "../Services/lynx-logging.service";
-import {List} from "linqts";
 
 @Component({
   selector: 'app-items-edit',
