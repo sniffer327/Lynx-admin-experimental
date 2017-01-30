@@ -74,9 +74,8 @@ export class ItemsEditComponent implements OnInit {
   // Обновление item
   public Save(exit?: boolean): void {
 
-    for (var i = 0; i < this.item.Images.length; i++) {
-      this.item.Images[i].Priority = i;
-    }
+    // Выставляем приоритет для изображений
+    this.item.Images.forEach((item, index) => item.Priority = index);
 
     this.lynxService.Post('/Items/UpdateItem', this.item).subscribe(
       res => {
