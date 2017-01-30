@@ -4,6 +4,7 @@ import {LynxService} from "../Services/lynx.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {CategoryModel} from "../Models/category.model";
 import {LynxLoggingService} from "../Services/lynx-logging.service";
+import {List} from "linqts";
 
 @Component({
   selector: 'app-items-edit',
@@ -55,12 +56,15 @@ export class ItemsEditComponent implements OnInit {
   }
 
   // Получаем данные item
-  public GetItemInfo(): void {
+  public getItemInfo(): void {
 
     this.lynxService.Get('/Items/GetItem?itemId=' + this.id)
       .subscribe(
         res => {
           this.item = res;
+
+          // Сортируем изображения по приоритету
+          this.item.Images.sort((prev, next) => (prev.Priority > next.Priority) ? 1 : -1);
 
           LynxLoggingService.Log('Данные о товаре: ', res);
         }
@@ -68,7 +72,11 @@ export class ItemsEditComponent implements OnInit {
   }
 
   // Обновление item
-  public Save(exit?: boolean): void {
+  public save(exit?: boolean): void {
+
+    // Выставляем приоритет для изображений
+    this.item.Images.forEach((item, index) => item.Priority = index);
+
     this.lynxService.Post('/Items/UpdateItem', this.item).subscribe(
       res => {
         if (exit == true){
@@ -82,7 +90,7 @@ export class ItemsEditComponent implements OnInit {
   }
 
   // Удаление item
-  public DeleteItem(): void {
+  public deleteItem(): void {
     this.lynxService.Get('/Items/DeleteItem?itemId=' + this.id).subscribe(
       res => {
         this.router.navigate(['/' + this.backPage]);
@@ -95,7 +103,7 @@ export class ItemsEditComponent implements OnInit {
    * Получение списка товаров
    * @constructor
    */
-  public GetCategories(): void {
+  public getCategories(): void {
 
     this.lynxService.Post('/Items/GetCategoriesAsync', {})
       .subscribe(
@@ -109,7 +117,7 @@ export class ItemsEditComponent implements OnInit {
 
     // Если редактирование
     if (this.isEdit) {
-      this.GetItemInfo();
+      this.getItemInfo();
     } else {
       this.item = new ItemModel();
 
@@ -123,6 +131,6 @@ export class ItemsEditComponent implements OnInit {
     }
 
     // Список категорий
-    this.GetCategories();
+    this.getCategories();
   }
 }

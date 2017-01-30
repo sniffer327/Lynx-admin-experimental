@@ -14,6 +14,7 @@ a {
   }
 }
 
-button, button[md-button] {
+button, button[md-button],
+button[md-icon-button] {
   outline-style: none;
 }

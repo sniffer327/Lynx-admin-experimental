@@ -17,6 +17,10 @@
   width: 100%;
 }
 
+.gu-mirror img {
+  width: 140px;
+}
+
 .item-input {
   width: 100%;
   outline: none;
@@ -27,4 +31,11 @@
   &:focus, &:hover {
     border-bottom: 2px solid $main-color;
   }
+}
+
+.dragula-trigger {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
 }

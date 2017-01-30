@@ -1,16 +1,17 @@
 <div class="form-group row">
 
-  <span class="col-xs-12 col-form-label">Изображения</span>
+  <div class="col-12 col-form-label">Изображения</div>
 
-  <div class="col-xs-12">
-    <button class="btn btn-primary">+ Добавить</button>
+  <div class="col-12">
+    <button type="button" class="btn btn-primary" (click)="addImage()">+ Добавить</button>
   </div>
 
-  <div class="col-xs-12">
+  <div class="col-12">
 
     <table class="table table-bordered table-stripped item-images-table">
       <thead>
         <tr>
+          <th></th>
           <th>Изображение</th>
           <th>Название</th>
           <th>Путь</th>
@@ -18,16 +19,22 @@
           <th>Действие</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody [dragula]="'images-bag'" [dragulaModel]='images'>
 
         <tr *ngFor="let image of images">
 
           <td>
-            <img [src]="image.pathPrefix + image.path" onError="this.src='/assets/images/no-image.jpg'">
+            <button md-icon-button class="dragula-trigger" type="button">
+              <i class="material-icons" title="Пеместить">more_vert</i>
+            </button>
           </td>
 
           <td>
-            {{ image.name ? image.name : 'Без названия' }}
+            <img [src]="image.pathPrefix + image.path" onError="src='/assets/images/no-image.jpg'">
+          </td>
+
+          <td>
+            <input [(ngModel)]="image.name" class="item-input" type="text" placeholder="Без названия">
           </td>
 
           <td>
@@ -35,11 +42,11 @@
           </td>
 
           <td>
-            <md-checkbox [(ngModel)]="image.isMain"></md-checkbox>
+            <md-checkbox class="main-checkbox" [(ngModel)]="image.isMain"></md-checkbox>
           </td>
 
           <td>
-            <button title="Удалить" class="btn btn-sm btn-danger">
+            <button title="Удалить" type="button" (click)="deleteImage(image)" class="btn btn-sm btn-danger">
               <i class="material-icons">close</i>
             </button>
           </td>

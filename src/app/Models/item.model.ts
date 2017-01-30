@@ -14,7 +14,7 @@ export class ItemModel {
   public body: string;
   public meta_keywords: string;
   public meta_description: string;
-  public Prioritet: number;
+  public Priority: number;
   public DateCreating: Date;
   public DateEditing: Date;
   public ItemType: number;

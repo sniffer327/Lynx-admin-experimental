@@ -1,5 +1,6 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {ImageModel} from "../../Models/image.model";
+import {DragulaService} from "ng2-dragula";
 
 @Component({
   selector: 'item-images',
@@ -8,13 +9,37 @@ import {ImageModel} from "../../Models/image.model";
 })
 
 export class ItemImagesComponent implements OnInit {
-
   @Input() images: ImageModel[];
+  @Output() imagesChange = new EventEmitter<ImageModel[]>();
 
-  constructor() { }
+  constructor(private dragulaService: DragulaService) {
+    dragulaService.setOptions('images-bag', {
+      moves: function (el, container, handle) {
+
+        // Костыль. Заточен под md-button
+        var isDragulaTrigger = handle
+          .parentElement
+          .parentElement
+          .classList
+          .contains('dragula-trigger');
+
+        return isDragulaTrigger;
+      }
+    });
+  }
 
   ngOnInit() {
 
+  }
+
+  public addImage(): void {
+    this.images.unshift(new ImageModel);
+  }
+
+  public deleteImage(image: ImageModel): void {
+    this.images = this.images.filter((item) => item !== image);
+
+    this.imagesChange.emit(this.images);
   }
 
 }
