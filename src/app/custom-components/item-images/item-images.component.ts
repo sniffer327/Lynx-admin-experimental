@@ -14,7 +14,7 @@ export class ItemImagesComponent implements OnInit {
   constructor(private dragulaService: DragulaService) {
     dragulaService.setOptions('images-bag', {
       moves: function (el, container, handle) {
-        return (handle.className === 'material-icons dnd-cursor');
+        return (handle.className === 'material-icons dragula-trigger');
       }
     });
   }

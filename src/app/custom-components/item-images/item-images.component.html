@@ -1,16 +1,17 @@
 <div class="form-group row">
 
-  <span class="col-xs-12 col-form-label">Изображения</span>
+  <div class="col-12 col-form-label">Изображения</div>
 
-  <div class="col-xs-12">
+  <div class="col-12">
     <button type="button" class="btn btn-primary" (click)="AddImage()">+ Добавить</button>
   </div>
 
-  <div class="col-xs-12">
+  <div class="col-12">
 
     <table class="table table-bordered table-stripped item-images-table">
       <thead>
         <tr>
+          <th></th>
           <th>Изображение</th>
           <th>Название</th>
           <th>Путь</th>
@@ -21,6 +22,10 @@
       <tbody [dragula]="'images-bag'" [dragulaModel]='images'>
 
         <tr *ngFor="let image of images">
+
+          <td>
+              <i class="material-icons dragula-trigger" title="Пеместить">more_vert</i>
+          </td>
 
           <td>
             <img [src]="image.pathPrefix + image.path" style="max-width: 140px;" onError="src='/assets/images/no-image.jpg'">
@@ -41,10 +46,6 @@
           <td>
             <button title="Удалить" type="button" (click)="DeleteImage(image)" class="btn btn-sm btn-danger">
               <i class="material-icons">close</i>
-            </button>
-
-            <button title="Перетащить" class="btn btn-sm btn-info dnd-cursor">
-              <i class="material-icons dnd-cursor">swap_vert</i>
             </button>
           </td>
 
