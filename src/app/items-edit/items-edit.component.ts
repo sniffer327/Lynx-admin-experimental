@@ -63,12 +63,9 @@ export class ItemsEditComponent implements OnInit {
         res => {
           this.item = res;
 
-          console.log(this.item.Images);
+          // Сортируем изображения по приоритету
+          this.item.Images.sort((prev, next) => (prev.Priority > next.Priority) ? 1 : -1);
 
-          let list = new List(this.item.Images);
-          let list1 = list.OrderBy(x => x.Priority);
-          let list2 = list1.ToArray();
-          console.log(list2);
           LynxLoggingService.Log('Данные о товаре: ', res);
         }
       )

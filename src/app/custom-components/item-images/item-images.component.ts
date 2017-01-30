@@ -37,9 +37,7 @@ export class ItemImagesComponent implements OnInit {
   }
 
   public deleteImage(image: ImageModel): void {
-    this.images = this.images.filter(function(item) {
-      return item !== image;
-    });
+    this.images = this.images.filter((item) => item !== image);
 
     this.imagesChange.emit(this.images);
   }
