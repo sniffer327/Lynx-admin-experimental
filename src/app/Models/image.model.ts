@@ -7,4 +7,5 @@ export class ImageModel {
   public name: string;
   public isMain: boolean;
   public pathPrefix: string;
+  public Priority: number;
 }

@@ -20,6 +20,7 @@ import {LynxCookiesService} from "./Services/lynx-cookies.service";
 import { LayoutComponent } from './layout/layout.component';
 import { LynxModule } from './custom-components/lynx-table/lynx-table.module';
 import { MaterialModule } from '@angular/material';
+import {DragulaModule} from "ng2-dragula";
 
 @NgModule({
 
@@ -40,6 +41,7 @@ import { MaterialModule } from '@angular/material';
     CKEditorModule,
     routing,
     LynxModule,
+    DragulaModule,
     MaterialModule.forRoot()
   ],
 
