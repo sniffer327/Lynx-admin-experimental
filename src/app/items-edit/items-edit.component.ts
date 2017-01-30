@@ -56,7 +56,7 @@ export class ItemsEditComponent implements OnInit {
   }
 
   // Получаем данные item
-  public GetItemInfo(): void {
+  public getItemInfo(): void {
 
     this.lynxService.Get('/Items/GetItem?itemId=' + this.id)
       .subscribe(
@@ -72,7 +72,7 @@ export class ItemsEditComponent implements OnInit {
   }
 
   // Обновление item
-  public Save(exit?: boolean): void {
+  public save(exit?: boolean): void {
 
     // Выставляем приоритет для изображений
     this.item.Images.forEach((item, index) => item.Priority = index);
@@ -90,7 +90,7 @@ export class ItemsEditComponent implements OnInit {
   }
 
   // Удаление item
-  public DeleteItem(): void {
+  public deleteItem(): void {
     this.lynxService.Get('/Items/DeleteItem?itemId=' + this.id).subscribe(
       res => {
         this.router.navigate(['/' + this.backPage]);
@@ -103,7 +103,7 @@ export class ItemsEditComponent implements OnInit {
    * Получение списка товаров
    * @constructor
    */
-  public GetCategories(): void {
+  public getCategories(): void {
 
     this.lynxService.Post('/Items/GetCategoriesAsync', {})
       .subscribe(
@@ -117,7 +117,7 @@ export class ItemsEditComponent implements OnInit {
 
     // Если редактирование
     if (this.isEdit) {
-      this.GetItemInfo();
+      this.getItemInfo();
     } else {
       this.item = new ItemModel();
 
@@ -131,6 +131,6 @@ export class ItemsEditComponent implements OnInit {
     }
 
     // Список категорий
-    this.GetCategories();
+    this.getCategories();
   }
 }

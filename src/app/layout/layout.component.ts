@@ -47,9 +47,9 @@ export class LayoutComponent implements OnInit {
 
       let siteId = AuthService.LoginInfo.CurrentSiteId;
 
-      let currentSiteId = this.sitesList.find((item) => item.id === siteId);
+      let currentSite = this.sitesList.find((item) => item.id === siteId);
 
-      this.currentSiteName = currentSiteId.siteName;
+      this.currentSiteName = currentSite.siteName;
     }, error => console.log(error));
   }
 

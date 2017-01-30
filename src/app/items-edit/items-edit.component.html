@@ -13,7 +13,7 @@
 
 <div class="lynx-content-block">
 
-  <form action="" (ngSubmit)="Save(true)" #itemEditForm="ngForm" id="item-edit" *ngIf="item">
+  <form action="" (ngSubmit)="save(true)" #itemEditForm="ngForm" id="item-edit" *ngIf="item">
 
     <div *ngIf="isEdit"  class="row">
       <div class="col-md-12">
@@ -116,8 +116,8 @@
     <hr>
 
     <button class="btn btn-primary" type="submit">Сохранить и выйти</button>
-    <button class="btn btn-info" type="button" (click)="Save()">Сохранить</button>
-    <button class="btn btn-danger" type="button" (click)="DeleteItem()">Удалить</button>
+    <button class="btn btn-info" type="button" (click)="save()">Сохранить</button>
+    <button class="btn btn-danger" type="button" (click)="deleteItem()">Удалить</button>
 
   </form>
 
