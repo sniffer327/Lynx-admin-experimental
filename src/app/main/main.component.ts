@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {UserInfoModel} from "../Models/user-info.model";
-import {AuthService} from "../Services/auth.service";
 
 @Component({
   selector: 'app-main',
@@ -20,15 +18,19 @@ export class MainComponent implements OnInit {
       {
         title: 'Товары',
         url: '/items',
-        img: '/assets/images/developing.jpg',
-        subtitle: 'Модуль с товарами',
+        img: '/assets/images/items.jpg',
         description: 'В данном модуле Вы можете отредактировать товары'
+      },
+      {
+        title: 'Страницы',
+        url: '/pages',
+        img: '/assets/images/pages.jpg',
+        description: 'В данном модуле Вы можете отредактировать страницы'
       },
       {
         title: 'Новости',
         url: '/news',
         img: '/assets/images/news.jpg',
-        subtitle: 'Модуль с новостями',
         description: 'В данном модуле Вы можете отредактировать новости'
       }
     ];

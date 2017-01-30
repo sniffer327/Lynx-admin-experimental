@@ -1,29 +1,12 @@
 <!--Основной layout-->
-<md-sidenav-layout fullscreen class="lynx-layout">
+<section [ngClass]="sideNav()" class="lynx-layout">
 
-  <md-toolbar color="primary" class="lynx-toolbar">
+  <aside class="lynx-side-nav">
 
-    <button md-icon-button (click)="sidenav.toggle()">
-      <i class="material-icons">menu</i>
-    </button>
-
-    <span class="example-fill-remaining-space"></span>
-
-  </md-toolbar>
-
-  <md-sidenav #sidenav mode="side" [opened]="true">
-    <div class="sidenav-header">
+    <div class="lynx-brand">
       <a routerLink="/">
         Lynx CMS Admin
       </a>
-    </div>
-
-    <div>
-      <select #siteSelect *ngIf="authService.LoginInfo && sitesList"
-            (change)="ChangeSite(siteSelect.value)"
-            [(ngModel)]="authService.LoginInfo.CurrentSiteId" class="form-control">
-        <option *ngFor="let site of sitesList" [value]="site.id"> {{site.siteName}}</option>
-      </select>
     </div>
 
     <ul class="sidenav-list">
@@ -34,30 +17,54 @@
       </li>
 
       <li>
-        <a routerLink="/pages">
+        <a routerLink="/pages" routerLinkActive="active">
           <i class="material-icons">receipt</i> Страницы
         </a>
       </li>
 
       <li>
-        <a routerLink="/news">
+        <a routerLink="/news" routerLinkActive="active">
           <i class="material-icons">fiber_new</i> Новости
         </a>
       </li>
 
       <li>
-        <a href="#" (click)="LogOut(); false">
+        <a href="#" (click)="logOut(); false">
           <i class="material-icons">exit_to_app</i> Выйти
         </a>
       </li>
-
     </ul>
 
-  </md-sidenav>
+  </aside>
 
-  <!-- Routed views go here -->
   <div class="lynx-container">
+
+    <nav class="lynx-toolbar">
+      <div class="nav-wrapper row">
+
+          <div class="col-sm-4 text-left">
+            <button md-icon-button (click)="toggleSideNav()" class="toggle-sidenav">
+              <i class="material-icons">menu</i>
+            </button>
+          </div>
+
+          <div class="col-sm-8 text-right">
+            <button *ngIf="authService.LoginInfo && sitesList"
+                    class="toolbar-sites" [mdMenuTriggerFor]="sites" md-button>
+              Текущий сайт: {{ currentSiteName }}
+            </button>
+            <md-menu #sites="mdMenu">
+              <button *ngFor="let site of sitesList"
+                      (click)="changeSite(site.id, site.siteName)" md-menu-item>
+                <span>{{ site.siteName }}</span>
+              </button>
+            </md-menu>
+          </div>
+
+      </div>
+    </nav>
+
     <router-outlet></router-outlet>
   </div>
 
-</md-sidenav-layout>
+</section>

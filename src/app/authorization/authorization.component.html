@@ -2,19 +2,23 @@
 
 <div class="lynx-auth-bg-wrapper">
 
-  <form (ngSubmit)="Login(email.value, password.value)" #loginForm="ngForm" class="lynx-auth-form">
+  <form (ngSubmit)="login(email.value, password.value)" #loginForm="ngForm" class="lynx-auth-form">
 
-    <div class="lynx-auth-form__title text-xs-center">
-      Войти
+    <div class="lynx-auth-form__title text-center">
+      Lynx CMS Admin
     </div>
 
     <div class="lynx-auth-form__content">
-      <input type="text" #email name="email" placeholder="Email" class="form-control">
-      <input type="password" #password name="password" placeholder="Пароль" class="form-control">
+      <md-input-container>
+        <input #email md-input placeholder="Email" name="email">
+      </md-input-container>
+      <md-input-container>
+        <input #password md-input placeholder="Пароль" name="password" type="password">
+      </md-input-container>
     </div>
 
-    <div class="lynx-auth-form__footer text-xs-right">
-      <button type="submit" class="btn btn-primary">Войти</button>
+    <div class="lynx-auth-form__footer text-center">
+      <button md-button type="submit">Войти</button>
     </div>
 
   </form>

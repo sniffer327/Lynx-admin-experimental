@@ -1,5 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+// Файлы стилей
 
+// Material
+@import '~@angular/material/core/theming/all-theme';
+
+// Bootstrap grid
+@import "../node_modules/sass-bootstrap-grid-only/assets/stylesheets/bootstrap-custom";
+
+// Lynx styles
 @import "assets/sass/vars",
-"assets/sass/mixins",
-"assets/sass/layout";
+        "assets/sass/mixins",
+        "assets/sass/default",
+        "assets/sass/theme",
+        "assets/sass/layout",
+        "assets/sass/material";
