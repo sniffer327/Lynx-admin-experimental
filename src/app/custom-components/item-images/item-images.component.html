@@ -24,11 +24,13 @@
         <tr *ngFor="let image of images">
 
           <td>
-              <i class="material-icons dragula-trigger" title="Пеместить">more_vert</i>
+            <button md-icon-button class="dragula-trigger" type="button">
+              <i class="material-icons" title="Пеместить">more_vert</i>
+            </button>
           </td>
 
           <td>
-            <img [src]="image.pathPrefix + image.path" style="max-width: 140px;" onError="src='/assets/images/no-image.jpg'">
+            <img [src]="image.pathPrefix + image.path" onError="src='/assets/images/no-image.jpg'">
           </td>
 
           <td>

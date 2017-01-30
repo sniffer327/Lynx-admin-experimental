@@ -17,6 +17,10 @@
   width: 100%;
 }
 
+.gu-mirror img {
+  width: 140px;
+}
+
 .item-input {
   width: 100%;
   outline: none;
@@ -34,10 +38,4 @@
   cursor: grab;
   cursor: -moz-grab;
   cursor: -webkit-grab;
-
-  &:active {
-    cursor: grabbing;
-    cursor: -moz-grabbing;
-    cursor: -webkit-grabbing;
-  }
 }
