@@ -14,10 +14,12 @@ import {ActivatedRoute} from "@angular/router";
 
 export class ItemsComponent implements OnInit {
 
-  // Список товаров
+  // Список элементов
   public items: ItemModel[];
 
+  // Тип редактируемых элементов
   public itemTypeId: number = 1;
+  public itemTypeName: string = 'Список товаров';
   public editUrlSegment: string = "item-edit";
 
   // Столбцы таблицы
@@ -39,19 +41,23 @@ export class ItemsComponent implements OnInit {
     switch (urlSegment) {
       case 'items':
         this.itemTypeId = 1;
-        this.editUrlSegment = "item-edit";
+        this.editUrlSegment = 'item-edit';
+        this.itemTypeName = 'Список товаров';
         break;
       case 'pages':
         this.itemTypeId = 3;
-        this.editUrlSegment = "page-edit";
+        this.editUrlSegment = 'page-edit';
+        this.itemTypeName = 'Список страниц';
         break;
       case 'news':
         this.itemTypeId = 2;
-        this.editUrlSegment = "news-edit";
+        this.editUrlSegment = 'news-edit';
+        this.itemTypeName = 'Список новостей';
         break;
       default:
         this.itemTypeId = 1;
-        this.editUrlSegment = "item-edit";
+        this.editUrlSegment = 'item-edit';
+        this.itemTypeName = 'Список товаров';
         break;
     }
   }

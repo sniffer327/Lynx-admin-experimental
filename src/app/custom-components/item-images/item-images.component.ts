@@ -41,6 +41,8 @@ export class ItemImagesComponent implements OnInit {
   ngOnInit() {}
 
   ngOnDestroy() {
+
+    // Уничтожаем images-bag при закрытии страницы
     this.dragulaService.destroy('images-bag');
   }
 
