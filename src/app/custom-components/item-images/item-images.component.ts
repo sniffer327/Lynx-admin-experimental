@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, OnDestroy, Input, Output, EventEmitter} from '@angular/core';
 import {ImageModel} from "../../Models/image.model";
 import {DragulaService} from "ng2-dragula";
 
@@ -17,7 +17,7 @@ export class ItemImagesComponent implements OnInit {
       moves: function (el, container, handle) {
 
         // Костыль. Заточен под md-button
-        var isDragulaTrigger = handle
+        let isDragulaTrigger = handle
           .parentElement
           .parentElement
           .classList
@@ -28,10 +28,6 @@ export class ItemImagesComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-
-  }
-
   public addImage(): void {
     this.images.unshift(new ImageModel);
   }
@@ -40,6 +36,14 @@ export class ItemImagesComponent implements OnInit {
     this.images = this.images.filter((item) => item !== image);
 
     this.imagesChange.emit(this.images);
+  }
+
+  ngOnInit() {}
+
+  ngOnDestroy() {
+
+    // Уничтожаем images-bag при закрытии страницы
+    this.dragulaService.destroy('images-bag');
   }
 
 }

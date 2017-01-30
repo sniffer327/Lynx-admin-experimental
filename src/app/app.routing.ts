@@ -9,6 +9,7 @@ import {AuthorizationComponent} from "./authorization/authorization.component";
 import {CanActivateService} from "./Services/can-activate.service";
 import {MainComponent} from "./main/main.component";
 import {LayoutComponent} from "./layout/layout.component";
+import {SettingsComponent} from "./settings/settings.component";
 
 const appRoutes: Routes = [
 
@@ -47,6 +48,12 @@ const appRoutes: Routes = [
       {
         path: 'news',
         component: ItemsComponent
+      },
+
+      // Страница с настройками
+      {
+        path: 'settings',
+        component: SettingsComponent
       },
 
       // Страница добавления товара

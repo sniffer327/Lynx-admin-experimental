@@ -21,6 +21,8 @@ import { LayoutComponent } from './layout/layout.component';
 import { LynxModule } from './custom-components/lynx-table/lynx-table.module';
 import { MaterialModule } from '@angular/material';
 import {DragulaModule} from "ng2-dragula";
+import { SettingsComponent } from './settings/settings.component';
+import {LocalStorageModule} from "angular-2-local-storage";
 
 @NgModule({
 
@@ -31,7 +33,8 @@ import {DragulaModule} from "ng2-dragula";
     ItemsEditComponent,
     AuthorizationComponent,
     ItemImagesComponent,
-    LayoutComponent
+    LayoutComponent,
+    SettingsComponent
   ],
 
   imports: [
@@ -42,7 +45,11 @@ import {DragulaModule} from "ng2-dragula";
     routing,
     LynxModule,
     DragulaModule,
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    LocalStorageModule.withConfig({
+      prefix: 'lynx-cms',
+      storageType: 'localStorage'
+    })
   ],
 
   providers: [
