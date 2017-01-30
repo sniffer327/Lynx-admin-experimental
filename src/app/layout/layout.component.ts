@@ -3,6 +3,7 @@ import {AuthService} from "../Services/auth.service";
 import {LynxService} from "../Services/lynx.service";
 import {LoginInfoModel} from "../Models/login-info.model";
 import {Router} from "@angular/router";
+import {LocalStorageService} from "angular-2-local-storage";
 
 @Component({
   selector: 'app-layout',
@@ -20,12 +21,10 @@ export class LayoutComponent implements OnInit {
   // Имя текущего сайта
   public currentSiteName: string;
 
-  // Полощение sidebar
-  public sidebarState: boolean = true;
-
   constructor(public authService: AuthService,
               private router: Router,
-              private lynxService: LynxService) {
+              private lynxService: LynxService,
+              private localStorageService: LocalStorageService) {
   }
 
   /**
@@ -75,7 +74,9 @@ export class LayoutComponent implements OnInit {
    * @constructor
    */
   public sideNav(): string {
-    return (this.sidebarState) ? 'sidenav-opened' : '';
+    let sideBarStatus = this.localStorageService.get('sidebar');
+
+    return (sideBarStatus === 'closed') ? '' : 'sidenav-opened';
   }
 
   /**
@@ -83,7 +84,15 @@ export class LayoutComponent implements OnInit {
    * @constructor
    */
   public toggleSideNav(): void {
-    this.sidebarState = !this.sidebarState;
+    let sideBarStatus = this.localStorageService.get('sidebar');
+
+    if (!sideBarStatus) {
+      this.localStorageService.set('sidebar', 'closed');
+
+      return;
+    }
+
+    this.localStorageService.remove('sidebar');
   }
 
   ngOnInit() {
