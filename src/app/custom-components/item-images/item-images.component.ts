@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {ImageModel} from "../../Models/image.model";
 import {DragulaService} from "ng2-dragula";
 
@@ -10,6 +10,7 @@ import {DragulaService} from "ng2-dragula";
 
 export class ItemImagesComponent implements OnInit {
   @Input() images: ImageModel[];
+  @Output() imagesChange = new EventEmitter<ImageModel[]>();
 
   constructor(private dragulaService: DragulaService) {
     dragulaService.setOptions('images-bag', {
@@ -31,13 +32,16 @@ export class ItemImagesComponent implements OnInit {
 
   }
 
-  public AddImage(): void {
+  public addImage(): void {
     this.images.unshift(new ImageModel);
   }
 
-  public DeleteImage(image: ImageModel): void {
-    let index: number = this.images.indexOf(image);
-    this.images.splice(index, 1);
+  public deleteImage(image: ImageModel): void {
+    this.images = this.images.filter(function(item) {
+      return item !== image;
+    });
+
+    this.imagesChange.emit(this.images);
   }
 
 }
