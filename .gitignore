@@ -6,15 +6,21 @@
 
 # dependencies
 /node_modules
-/bower_components
 
 # IDEs and editors
 /.idea
 .project
 .classpath
+.c9/
 *.launch
 .settings/
-.vscode/
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 # misc
 /.sass-cache
@@ -23,16 +29,15 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
-debug.log
 /typings
 
 # e2e
 /e2e/*.js
 /e2e/*.map
 
-# System Files
+#System Files
 .DS_Store
 Thumbs.db
 
-# Project config
+# Config files
 /src/app/lynx-constants.ts

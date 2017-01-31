@@ -1,10 +1,10 @@
-import { NgAdminPage } from './app.po';
+import { LynxCmsPage } from './app.po';
 
-describe('ng-admin App', function() {
-  let page: NgAdminPage;
+describe('lynx-cms App', function() {
+  let page: LynxCmsPage;
 
   beforeEach(() => {
-    page = new NgAdminPage();
+    page = new LynxCmsPage();
   });
 
   it('should display message saying app works', () => {
