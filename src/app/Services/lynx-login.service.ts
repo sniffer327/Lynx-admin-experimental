@@ -12,6 +12,13 @@ export class LynxLoginService {
               private router: Router) { }
 
   /**
+   * Устанавливаем данные о логине
+   */
+  public setAuthData(): void {
+    this.localStorageService.set(LynxConstants.SessionCookieKey, true);
+  }
+
+  /**
    * Проверка данных авторизации
    * @param key {string} Ключ, который необходимо найти
    * @returns {boolean}

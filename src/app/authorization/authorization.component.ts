@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../Services/auth.service";
 import {Router} from "@angular/router";
-import {CookieService} from "angular2-cookie/services/cookies.service";
-import {LynxConstants} from "../lynx-constants";
+import {LynxLoginService} from "../Services/lynx-login.service";
 
 @Component({
   selector: 'app-authorization',
@@ -14,7 +13,7 @@ export class AuthorizationComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private router: Router,
-              private cookieService: CookieService) {
+              private isLogedIn: LynxLoginService) {
   }
 
   /**
@@ -28,7 +27,7 @@ export class AuthorizationComponent implements OnInit {
       .subscribe(
         res => {
           this.loginHandler(res);
-          this.cookieService.put(LynxConstants.SessionCookieKey, 'true');
+          this.isLogedIn.setAuthData();
         },
 
         error => this.loginHandler(error)

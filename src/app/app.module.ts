@@ -13,12 +13,16 @@ import {LynxService} from "./Services/lynx.service";
 import {CanActivateService} from "./Services/can-activate.service";
 import {LynxLoggingService} from "./Services/lynx-logging.service";
 import {LynxLoginService} from "./Services/lynx-login.service";
+import {AuthorizationComponent} from "./authorization/authorization.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent
+    LayoutComponent,
+
+    // TODO: Вынести в отдельный модуль
+    AuthorizationComponent
   ],
   imports: [
     BrowserModule,
