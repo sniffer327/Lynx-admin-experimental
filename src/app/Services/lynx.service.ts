@@ -4,12 +4,12 @@ import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {LynxConstants} from "../lynx-constants";
 import {LynxLoggingService} from "./lynx-logging.service";
-import {LynxCookiesService} from "./lynx-cookies.service";
+import {LynxLoginService} from "./lynx-login.service";
 
 @Injectable()
 export class LynxService {
 
-  constructor(private cookies: LynxCookiesService,
+  constructor(private isLogedIn: LynxLoginService,
               private http: Http,
               private router: Router) {
 
@@ -81,7 +81,7 @@ export class LynxService {
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
 
     if (error.status === 401) {
-      this.cookies.DestroyAuthCookies();
+      this.isLogedIn.DestroyAuthData();
 
       this.router.navigate(['/auth']);
     }

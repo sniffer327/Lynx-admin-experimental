@@ -3,7 +3,7 @@ import {LynxService} from "./lynx.service";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {LynxLoggingService} from "./lynx-logging.service";
-import {LynxCookiesService} from "./lynx-cookies.service";
+import {LynxLoginService} from "./lynx-login.service";
 import {LoginInfoModel} from "../Models/login-info.model";
 
 @Injectable()
@@ -11,7 +11,7 @@ export class AuthService {
 
   constructor(private lynxService: LynxService,
               private router: Router,
-              private cookies: LynxCookiesService) {
+              private isLogedIn: LynxLoginService) {
   }
 
   /**
@@ -36,7 +36,7 @@ export class AuthService {
 
     this.lynxService.Get('/Account/LogOut').subscribe(
       () => {
-        this.cookies.DestroyAuthCookies();
+        this.isLogedIn.DestroyAuthData();
         this.router.navigate(['/auth']);
         LynxLoggingService.Log('Выход из аккаунта');
       },
