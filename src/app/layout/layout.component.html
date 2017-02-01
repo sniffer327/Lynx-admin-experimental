@@ -62,18 +62,18 @@
           </button>
         </div>
 
-        <!--<div class="col-sm-8 text-right">-->
-          <!--<button *ngIf="authService.LoginInfo && sitesList"-->
-                  <!--class="toolbar-sites" [mdMenuTriggerFor]="sites" md-button>-->
-            <!--Текущий сайт: {{ currentSiteName }}-->
-          <!--</button>-->
-          <!--<md-menu #sites="mdMenu">-->
-            <!--<button *ngFor="let site of sitesList"-->
-                    <!--(click)="changeSite(site.id, site.siteName)" md-menu-item>-->
-              <!--<span>{{ site.siteName }}</span>-->
-            <!--</button>-->
-          <!--</md-menu>-->
-        <!--</div>-->
+        <div class="col-sm-8 text-right">
+          <button *ngIf="authService.LoginInfo && sitesList"
+                  class="toolbar-sites" [mdMenuTriggerFor]="sites" md-button>
+            Текущий сайт: {{ currentSiteName }}
+          </button>
+          <md-menu #sites="mdMenu">
+            <button *ngFor="let site of sitesList"
+                    (click)="changeSite(site.id, site.siteName)" md-menu-item>
+              <span>{{ site.siteName }}</span>
+            </button>
+          </md-menu>
+        </div>
 
       </div>
     </nav>
