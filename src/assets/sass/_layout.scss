@@ -1,0 +1,134 @@
+// Layout styles
+.lynx-layout {
+  position: relative;
+  height: 100%;
+}
+
+// Общие стили
+.material-icons {
+  vertical-align: middle;
+}
+
+// Главная панель навигации
+.lynx-toolbar {
+  background: $main-color;
+  z-index: $toolbar-z;
+  height: $header-height;
+  line-height: $header-height;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 0 $main-padding;
+}
+
+button.toggle-sidenav {
+  color: $white-color;
+  outline: none;
+}
+
+.lynx-brand {
+  color: $white-color;
+  font-size: $header-size;
+  width: $side-nav-w;
+  height: $header-height;
+  background-color: $main-color;
+  border-left: none;
+
+  a {
+    height: $header-height;
+
+    @include default-link;
+    @include white-dark-link;
+    @include flex-center;
+  }
+}
+
+nav .nav-wrapper i {
+  line-height: inherit;
+  height: inherit;
+}
+
+.toolbar-sites .md-button-wrapper {
+  color: $white-color;
+}
+
+// Боковое меню
+.lynx-layout .lynx-side-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: $side-nav-z;
+  width: $side-nav-w;
+  background-color: $dark-color;
+  color: $white-dark-color;
+  transform: translateX(-$side-nav-w);
+
+  @include transition;
+}
+
+.lynx-layout.sidenav-opened {
+
+  .lynx-side-nav {
+    transform: translateX(0);
+  }
+
+  .lynx-container {
+    margin-left: $side-nav-w;
+  }
+
+}
+
+.sidenav-list {
+  margin: $main-padding 0 0 0;
+  padding: 0;
+  list-style-type: none;
+
+  li a {
+    @include white-dark-link;
+    padding: 10px $main-padding + 10px;
+
+    i {
+      margin-right: 4px;
+    }
+  }
+}
+
+// Заголовок
+.lynx-title {
+  color: $main-color;
+  margin: $main-padding 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+// Контентная часть
+.lynx-container {
+  position: relative;
+  padding: $header-height + $main-padding $main-padding $main-padding;
+  background-color: $background-color;
+  min-height: 100%;
+}
+
+.lynx-content-block {
+  background-color: $lynx-block;
+  padding: $main-padding;
+
+  @include block;
+
+  & + & {
+    margin-top: $main-padding;
+  }
+}
+
+// Стилизация для таблиц
+.lynx-table {
+  thead th,
+  tbody td {
+    vertical-align: middle;
+    text-align: center;
+  }
+}

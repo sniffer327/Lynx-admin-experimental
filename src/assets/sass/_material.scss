@@ -1,0 +1,21 @@
+// Material styles
+
+@import "vars";
+
+@include md-core();
+
+$primary: md-palette($md-blue);
+$accent:  md-palette($md-blue);
+
+$theme: md-light-theme($primary, $accent);
+
+@include angular-material-theme($theme);
+
+// Default input full width
+md-input-container, md-select {
+  width: 100%;
+}
+
+md-select {
+  margin-top: 1rem;
+}

@@ -9,6 +9,14 @@ export class LayoutComponent implements OnInit {
 
   constructor() { }
 
+  public sideNav() {
+
+  }
+
+  public logOut() {
+
+  }
+
   ngOnInit() {
   }
 

@@ -1,0 +1,20 @@
+// Отмена стандартных стилей
+
+html, body {
+  height: 100%;
+}
+
+a {
+  color: inherit;
+  outline-style: none;
+
+  &:hover, &:active, &:focus {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+button, button[md-button],
+button[md-icon-button] {
+  outline-style: none;
+}
