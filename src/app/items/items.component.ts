@@ -1,17 +1,17 @@
-import {Component, OnInit} from '@angular/core';
-import {ItemModel} from "../Models/item.model";
-import {LynxService} from "../Services/lynx.service";
-import {LynxLoggingService} from "../Services/lynx-logging.service";
-import {IItemColumn} from "../custom-components/lynx-table/Models/item.model";
-import {CategoryModel} from "../Models/category.model";
+import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+
+import {ItemModel} from "../Models/item.model";
+import {IItemColumn} from "../Shared/lynx-table/Models/item.model";
+
+import {LynxLoggingService} from "../Services/lynx-logging.service";
+import {LynxService} from "../Services/lynx.service";
 
 @Component({
   selector: 'app-items',
   templateUrl: './items.component.html',
   styleUrls: ['./items.component.scss']
 })
-
 export class ItemsComponent implements OnInit {
 
   // Список элементов
@@ -28,7 +28,7 @@ export class ItemsComponent implements OnInit {
   constructor(private lynxService: LynxService,
               private route: ActivatedRoute) {
 
-    let urlSegment = "";
+    let urlSegment = '';
 
     this.route.url.subscribe(
       res => {
@@ -39,7 +39,7 @@ export class ItemsComponent implements OnInit {
     );
 
     switch (urlSegment) {
-      case 'items':
+      case 'goods':
         this.itemTypeId = 1;
         this.editUrlSegment = 'item-edit';
         this.itemTypeName = 'Список товаров';
@@ -119,5 +119,4 @@ export class ItemsComponent implements OnInit {
       },
     ];
   }
-
 }

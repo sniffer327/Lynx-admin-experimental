@@ -16,19 +16,19 @@ export class HomeComponent implements OnInit {
     this.modules = [
       {
         title: 'Товары',
-        url: '/items',
+        url: '/items/goods',
         img: '/assets/images/items.jpg',
         description: 'В данном модуле Вы можете отредактировать товары'
       },
       {
         title: 'Страницы',
-        url: '/pages',
+        url: '/items/pages',
         img: '/assets/images/pages.jpg',
         description: 'В данном модуле Вы можете отредактировать страницы'
       },
       {
         title: 'Новости',
-        url: '/news',
+        url: '/items/news',
         img: '/assets/images/news.jpg',
         description: 'В данном модуле Вы можете отредактировать новости'
       }

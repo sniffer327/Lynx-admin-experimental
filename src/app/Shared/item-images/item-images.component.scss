@@ -1,0 +1,41 @@
+// Стили для компонента с изображениями
+
+@import "../../../assets/sass/vars";
+
+.item-images-table {
+  margin-top: $main-padding;
+}
+
+.item-images-table thead tr th,
+.item-images-table tbody tr td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.item-images-table img {
+  max-width: 140px;
+  width: 100%;
+}
+
+.gu-mirror img {
+  width: 140px;
+}
+
+.item-input {
+  width: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+
+  &:focus, &:hover {
+    border-bottom: 2px solid $main-color;
+  }
+}
+
+.dragula-trigger {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
