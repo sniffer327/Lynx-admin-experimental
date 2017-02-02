@@ -10,7 +10,6 @@ import {MaterialModule} from "@angular/material";
 import {LocalStorageModule} from "angular-2-local-storage";
 import {AuthService} from "./Services/auth.service";
 import {LynxService} from "./Services/lynx.service";
-import {CanActivateService} from "./Services/can-activate.service";
 import {LynxLoggingService} from "./Services/lynx-logging.service";
 import {LynxLoginService} from "./Services/lynx-login.service";
 import {AuthorizationComponent} from "./authorization/authorization.component";
@@ -38,7 +37,6 @@ import {AuthorizationComponent} from "./authorization/authorization.component";
   providers: [
     AuthService,
     LynxService,
-    CanActivateService,
     LynxLoggingService,
     LynxLoginService
   ],
