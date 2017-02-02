@@ -1,0 +1,13 @@
+<h4 class="lynx-title">
+  {{ itemTypeName }}
+</h4>
+
+<!--Таблица с элементами-->
+<div class="lynx-content-block">
+
+  <lynx-table
+    [addLink]="editUrlSegment"
+    [items]="items"
+    [columns]="itemsColumns"></lynx-table>
+
+</div>

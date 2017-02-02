@@ -1,0 +1,43 @@
+<div class="items-controls">
+  <div class="row">
+
+    <div class="form-group col-md-6">
+      <md-input-container>
+        <input md-input placeholder="Найти">
+      </md-input-container>
+    </div>
+
+    <div class="form-group col-md-6 text-right">
+      <a [routerLink]="'/' + addLink" md-button title="Добавить">
+        <i class="material-icons">add</i>
+        Добавить
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<table class="table table-striped table-hover items-table lynx-table">
+  <thead>
+  <tr>
+
+    <th *ngFor="let column of columns">
+      {{ column.header }}
+    </th>
+
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let item of items">
+
+    <td *ngFor="let column of columns" [ngStyle]="column.styles">
+
+      <lynx-item
+        [item]="item"
+        [column]="column"></lynx-item>
+    </td>
+
+  </tr>
+  </tbody>
+</table>

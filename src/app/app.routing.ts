@@ -22,6 +22,11 @@ export const routes: Routes = [
       // Главная страница
       {
         path: '', loadChildren: 'app/home/home.module#HomeModule'
+      },
+
+      // Страница с товарами
+      {
+        path: 'items', loadChildren: 'app/items/items.module#ItemsModule'
       }
     ]
   },

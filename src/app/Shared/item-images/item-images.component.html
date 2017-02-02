@@ -1,0 +1,61 @@
+<div class="form-group row">
+
+  <div class="col-12 col-form-label">Изображения</div>
+
+  <div class="col-12">
+    <button type="button" class="btn btn-primary" (click)="addImage()">+ Добавить</button>
+  </div>
+
+  <div class="col-12">
+
+    <table class="table table-bordered table-stripped item-images-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Изображение</th>
+          <th>Название</th>
+          <th>Путь</th>
+          <th>Главное изображение</th>
+          <th>Действие</th>
+        </tr>
+      </thead>
+      <tbody [dragula]="'images-bag'" [dragulaModel]='images'>
+
+        <tr *ngFor="let image of images">
+
+          <td>
+            <button md-icon-button class="dragula-trigger" type="button">
+              <i class="material-icons" title="Пеместить">more_vert</i>
+            </button>
+          </td>
+
+          <td>
+            <img [src]="image.pathPrefix + image.path" onError="src='/assets/images/no-image.jpg'">
+          </td>
+
+          <td>
+            <input [(ngModel)]="image.name" class="item-input" type="text" placeholder="Без названия">
+          </td>
+
+          <td>
+            <input [(ngModel)]="image.path" class="item-input" type="text" placeholder="Введите путь к изображению">
+          </td>
+
+          <td>
+            <md-checkbox class="main-checkbox" [(ngModel)]="image.isMain"></md-checkbox>
+          </td>
+
+          <td>
+            <button title="Удалить" type="button" (click)="deleteImage(image)" class="btn btn-sm btn-danger">
+              <i class="material-icons">close</i>
+            </button>
+          </td>
+
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
