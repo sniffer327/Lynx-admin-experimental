@@ -13,6 +13,7 @@ import {LynxService} from "./Services/lynx.service";
 import {LynxLoggingService} from "./Services/lynx-logging.service";
 import {LynxLoginService} from "./Services/lynx-login.service";
 import {AuthorizationComponent} from "./authorization/authorization.component";
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({

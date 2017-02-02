@@ -16,7 +16,14 @@ export const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    canActivate: [ CanActivateService ]
+    canActivate: [ CanActivateService ],
+    children: [
+
+      // Главная страница
+      {
+        path: '', loadChildren: 'app/home/home.module#HomeModule'
+      }
+    ]
   },
 
   // Некорректный маршрут
