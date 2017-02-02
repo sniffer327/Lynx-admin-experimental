@@ -9,7 +9,7 @@ import {LynxLoginService} from "./lynx-login.service";
 @Injectable()
 export class LynxService {
 
-  constructor(private isLogedIn: LynxLoginService,
+  constructor(private logInService: LynxLoginService,
               private http: Http,
               private router: Router) {
 
@@ -81,7 +81,7 @@ export class LynxService {
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
 
     if (error.status === 401) {
-      this.isLogedIn.DestroyAuthData();
+      this.logInService.DestroyAuthData();
 
       this.router.navigate(['/auth']);
     }

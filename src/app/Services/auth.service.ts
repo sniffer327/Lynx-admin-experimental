@@ -11,7 +11,7 @@ export class AuthService {
 
   constructor(private lynxService: LynxService,
               private router: Router,
-              private isLogedIn: LynxLoginService) {
+              private logInService: LynxLoginService) {
   }
 
   /**
@@ -36,7 +36,7 @@ export class AuthService {
 
     this.lynxService.Get('/Account/LogOut').subscribe(
       () => {
-        this.isLogedIn.DestroyAuthData();
+        this.logInService.DestroyAuthData();
         this.router.navigate(['/auth']);
         LynxLoggingService.Log('Выход из аккаунта');
       },
@@ -49,7 +49,7 @@ export class AuthService {
   public LoginInfo: LoginInfoModel;
 
   public CheckAuth(): void {
-    this.CheckUserAuth()
+    this.checkUserAuth()
       .subscribe(
         res => {
           LynxLoggingService.Log('Проверка авторизации ', res);
@@ -67,7 +67,7 @@ export class AuthService {
    * @returns {Observable<any>}
    * @constructor
    */
-  private CheckUserAuth(): Observable<any> {
+  private checkUserAuth(): Observable<any> {
     return this.lynxService.Get('/Account/CheckAuth');
   }
 }
