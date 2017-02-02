@@ -9,7 +9,7 @@ export const routes: Routes = [
   // Страница авторизации
   {
     path: 'auth',
-    component: AuthorizationComponent
+    loadChildren: 'app/authorization/authorization.module#AuthorizationModule'
   },
 
   // Основной Layout
