@@ -9,8 +9,7 @@ import {LynxService} from "../Services/lynx.service";
 
 @Component({
   selector: 'app-items',
-  templateUrl: './items.component.html',
-  styleUrls: ['./items.component.scss']
+  templateUrl: './items.component.html'
 })
 export class ItemsComponent implements OnInit {
 
@@ -41,22 +40,22 @@ export class ItemsComponent implements OnInit {
     switch (urlSegment) {
       case 'goods':
         this.itemTypeId = 1;
-        this.editUrlSegment = 'item-edit';
+        this.editUrlSegment = 'edit-goods';
         this.itemTypeName = 'Список товаров';
         break;
       case 'pages':
         this.itemTypeId = 3;
-        this.editUrlSegment = 'page-edit';
+        this.editUrlSegment = 'edit-pages';
         this.itemTypeName = 'Список страниц';
         break;
       case 'news':
         this.itemTypeId = 2;
-        this.editUrlSegment = 'news-edit';
+        this.editUrlSegment = 'edit-news';
         this.itemTypeName = 'Список новостей';
         break;
       default:
         this.itemTypeId = 1;
-        this.editUrlSegment = 'item-edit';
+        this.editUrlSegment = 'edit-goods';
         this.itemTypeName = 'Список товаров';
         break;
     }
@@ -92,7 +91,7 @@ export class ItemsComponent implements OnInit {
         data: 'title',
         template: {
           type: 'link',
-          linkUrl: '/' + this.editUrlSegment,
+          linkUrl: '/items/' + this.editUrlSegment,
           param: 'id'
         },
         styles: {
