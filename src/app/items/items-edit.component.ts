@@ -75,11 +75,13 @@ export class ItemsEditComponent implements OnInit {
   public save(exit?: boolean): void {
 
     // Выставляем приоритет для изображений
-    this.item.Images.forEach((item, index) => item.Priority = index);
+    if (this.item.Images) {
+      this.item.Images.forEach((item, index) => item.Priority = index);
+    }
 
     this.lynxService.Post('/Items/UpdateItem', this.item).subscribe(
       res => {
-        if (exit == true){
+        if (exit === true){
           this.router.navigate(['/' + this.backPage]);
         }
       },
@@ -123,10 +125,18 @@ export class ItemsEditComponent implements OnInit {
 
       // Записываем в модель принадлежность текущего item
       switch (this.backPage) {
-        case 'items': this.item.ItemType = 1; break;
-        case 'news': this.item.ItemType = 2; break;
-        case 'pages': this.item.ItemType = 3; break;
-        default: this.item.ItemType = 1; break;
+        case 'items':
+          this.item.ItemType = 1;
+          break;
+        case 'news':
+          this.item.ItemType = 2;
+          break;
+        case 'pages':
+          this.item.ItemType = 3;
+          break;
+        default:
+          this.item.ItemType = 1;
+          break;
       }
     }
 
